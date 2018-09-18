@@ -1,2 +1,2 @@
 # practice
-Some small exercises
+一些平时的练习和小样
