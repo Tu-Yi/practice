@@ -1,0 +1,86 @@
+.body{
+  font-family: "Microsoft YaHei",sans-serif;
+  font-size: 10px;
+}
+.container{
+  position:absolute;
+  width: 500px;
+  border: 1px solid #cecdcd;
+  text-align: center;
+  left:0;
+  right:0;
+  top:50px;
+  bottom: 0;
+  margin: auto;
+}
+.header,.header2{
+  padding: 15px;
+  border-bottom: 1px solid #f3eeee;
+}
+.header{
+  font-size: 1.5rem;
+}
+.header2{
+  padding: 10px;
+  font-size: 1rem;
+}
+.baseinfo {
+  height: 100px;
+  width: 100%;
+}
+.baseinfo-left{
+  width: 64%;
+  height: 100px;
+  border: 1px solid #f3eeee;
+  float: left;
+}
+.baseinfo-right{
+  text-align: center;
+  height: 100px;
+  border: 1px solid #f3eeee;
+  float: left;
+  width: 35%;
+}
+.baseinfo-right img {
+  width:100px;
+  height: 100%;
+}
+.divnameage{
+  float: left;
+  text-align: center;
+  border-right: 1px solid #f3eeee;
+  width: 24.65%;
+}
+#div4{
+  border-right: 0px;
+}
+.email{
+  float: left;
+  text-align: center;
+  border-right: 1px solid #f3eeee;
+  width: 24.65%;
+  border-top: 1px solid #f3eeee;
+}
+.email+div {
+  border-top: 1px solid #f3eeee;
+}
+.clear{
+  clear: both;
+}
+.project{
+  padding: 20px;
+  border-bottom: 1px solid #f3eeee;
+}
+.projectinfo {
+  text-indent: 20px;
+  text-align: justify;
+  font-size: 0.5rem;
+  margin-top: 10px;
+}
+.projecttitle{
+  text-align: left;
+}
+.divrow{
+  width: 100%;
+  height: 25px;
+}
