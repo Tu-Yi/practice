@@ -52,13 +52,17 @@
 .jiaoyu{
   display: inline-block;
   width: 106px;
+  height:62px;
+  line-height: 62px;
   text-align: center;
   border-right: 1px solid #cecdcd;
   border-top: 1px solid #cecdcd;
+  vertical-align: bottom;
 }
 .jiaoyuinfo{
   display: inline-block;
   width: 480px;
+  vertical-align: top;
 }
 .cell1{
   display: inline-block;
@@ -88,6 +92,7 @@
   border-right: 1px solid #cecdcd;
 }
 .jinengright{
+  vertical-align: top;
   display: inline-block;
   text-align: center;
   width:486px;
