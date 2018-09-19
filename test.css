@@ -1,0 +1,116 @@
+/* 设置body字体及字体大小 */
+.body{
+  font-family: "Microsoft YaHei",sans-serif;
+}
+/* 框架div的样式 */
+.container{
+  position:absolute;
+  width: 600px;
+  border: 1px solid #cecdcd;
+  left:0;
+  right:0;
+  top:50px; 
+  /*设置边距为自己分配，实现div居中*/
+  margin: auto;
+}
+/* 大标题样式 */
+.title{
+  padding: 10px;
+  font-size: 1.5rem;
+  text-align: center;
+
+}
+/* 左侧基本信息 */
+.baseinfo{
+  border-right: 1px solid #cecdcd;
+  width: 444px;
+  display: inline-block;
+}
+/* 右侧头像 */
+.picture{
+  width: 150px;
+  display: inline-block;
+}
+.picture img{
+  width: 150px;
+  transform: translate(-2px,5px);
+}
+/* 基本信息单元格样式 */
+.cell{
+  display: inline-block;
+  width: 106px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-right: 1px solid #cecdcd;
+  border-top: 1px solid #cecdcd;
+}
+[title="nof"]{
+  border-right: 0px;
+}
+/* 教育 */
+.jiaoyu{
+  display: inline-block;
+  width: 106px;
+  text-align: center;
+  border-right: 1px solid #cecdcd;
+  border-top: 1px solid #cecdcd;
+}
+.jiaoyuinfo{
+  display: inline-block;
+  width: 480px;
+}
+.cell1{
+  display: inline-block;
+  width: 156px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-right: 1px solid #cecdcd;
+  border-top: 1px solid #cecdcd;
+}
+[title="nof1"]{
+  border-right: 0px;
+}
+/* 空行 */
+.zhanwei{
+  padding: 10px;
+  border-top: 1px solid #cecdcd;
+  border-bottom: 1px solid #cecdcd;
+}
+/* 技能 */
+.jinengleft{
+  display: inline-block;
+  text-align: center;
+  width:106px;
+  height: 200px;
+  line-height: 200px;
+  border-right: 1px solid #cecdcd;
+}
+.jinengright{
+  display: inline-block;
+  text-align: center;
+  width:486px;
+  height: 200px;
+}
+.jinengright div{
+  text-align: left;
+  height: 25px;
+  border-bottom: 1px solid #cecdcd;
+  line-height: 25px;
+}
+/* 工作 */
+[data-title="work"]{
+  border-top: 1px solid #cecdcd;
+}
+[data-title="workp"]{
+  border-top: 1px solid #cecdcd;
+  height: 200px;
+  padding: 20px;
+}
+[data-title="workp"] p{
+  margin-left: 15px;
+}
+[data-title="workp"] span{
+  text-align: justify;
+}
