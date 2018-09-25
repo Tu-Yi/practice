@@ -1,6 +1,7 @@
 /* 设置body字体及字体大小 */
-.body{
+.html{
   font-family: "Microsoft YaHei",sans-serif;
+  font-size: 10px;
 }
 /* 框架div的样式 */
 .container{
@@ -18,7 +19,7 @@
   padding: 10px;
   font-size: 1.5rem;
   text-align: center;
-
+  background-color:yellowgreen;
 }
 /* 左侧基本信息 */
 .baseinfo{
@@ -94,9 +95,19 @@
 .jinengright{
   vertical-align: top;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   width:486px;
   height: 200px;
+}
+.jinengright ul{
+  list-style-type: none;
+}
+.jinengright ul li{
+  padding-left: 2rem;
+  background-image: url(test.jpg);
+  background-position: 0 0;
+  background-size: 1.6rem 1.6rem;
+  background-repeat: no-repeat;
 }
 .jinengright div{
   text-align: left;
@@ -119,3 +130,16 @@
 [data-title="workp"] span{
   text-align: justify;
 }
+a{
+  text-decoration: none;
+  background-image: url(test.jpg);
+  padding-left: 19px;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: 0;
+}
+a:link{ color:blue; }
+a:visited{ color:green;}
+a:focus{ color:red;}
+a:hover{ color:orange;}
+a:active{ color:chocolate;}
