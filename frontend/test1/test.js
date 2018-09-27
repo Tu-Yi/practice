@@ -1,7 +1,11 @@
-function test() {
-    var arr = ['Bart', 'Lisa', 'Adam'];
-    var i;
-    for (i = arr.length - 1; i >= 0; i--) {
-        alert(arr[i]);
+var arr = [10, 20, 1, 2];
+arr.sort(function (x, y) {
+    if (x < y) {
+        return -1;
     }
-}
+    if (x > y) {
+        return 1;
+    }
+    return 0;
+});
+console.log(arr); // [1, 2, 10, 20]
