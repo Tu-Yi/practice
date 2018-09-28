@@ -1,0 +1,57 @@
+.html {
+    font-family: "Microsoft YaHei", sans-serif;
+    font-size: 10px;
+}
+
+.container {
+    position: absolute;
+    width: 800px;
+    left: 0;
+    right: 0;
+    top: 50px;
+    margin: auto;
+}
+
+.container>:first-child {
+    font-weight: 900;
+    font-size: 1.5rem;
+    color:white;
+    height: 70px;
+    line-height: 70px;
+    background-color: rgb(129, 134, 134);
+    text-align: left;
+    padding-left: 20px;
+}
+.alinfo > div{
+    display: table;
+}
+.rowdiv{
+    height: 150px;
+    border: 2px solid #eee;
+}
+.title {
+    float: left;
+    font-size: 1rem;
+    width: 150px;
+    height: 100%;
+    line-height: 150px;
+    text-align: center;
+    background-color: #D6D6D6;
+}
+.info {
+    float: left;
+    width: 636px;
+    padding-left: 10px;
+}
+.info span {
+    margin-right: 20px;
+}
+
+.title2 {
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-block;
+}
+.title2+div{
+    display: inline-block;
+}
