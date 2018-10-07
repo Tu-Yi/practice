@@ -1,14 +1,15 @@
 .html{
-    font-family: sans-serif;
+    font-family: 'Montserrat';
 }
 *{margin: 0px;padding: 0px;border: 0px}
 header,section,footer{
     width: 1600px;
     margin: 0 auto;
 }
+/*header*/
 header{
     background-image: url(./image/Background1.png);
-    height:900px;
+    height:990px;
     background-repeat: no-repeat;
     overflow: hidden;
 }
@@ -18,12 +19,82 @@ header h1{
     color: rgb(255, 255, 255);
     margin-top: 207px;
     font-weight: normal;
-    line-height: 47px;
+    height:48px;
+    line-height: 48px;
+    letter-spacing: 0px;
 }
-header p{
+header>p{
     font-size: 20px;
     text-align: center;
-    color: rgb(255, 255, 255,0.702);
-    margin-top: 83px;
-    width: 751px;
+    color: rgb(255, 255, 255);
+    opacity: 0.7;
+    margin-top: 86px;
+    width: 766px;
+    line-height: 32px;
+    letter-spacing: 0px;
+    margin-left: 419px;
+}
+header>div{
+    margin-left:auto;
+    margin-right: auto;
+    margin-top:95px;
+    width:970px;
+    height:250px;
+	border-radius: 2px;
+    border: solid 1px rgba(255, 255, 255, 0.2);
+    
+}
+header>div h3{
+    font-size: 16px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-top:56px;
+    font-weight: normal;
+    line-height: 28px;
+	letter-spacing: 2px;
+}
+header>div p{
+    text-align: center;
+    margin-top:19px;
+    width: 200px;
+    margin-left: 387px;
+    font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 2px;
+	color: #ffffff;
+	opacity: 0.3;
+}
+header>div div{
+    margin-top:45px;
+    text-align: left;
+    padding-left: 100px;
+    display: flex;
+}
+header>div div input{
+    width: 292px;
+	height: 50px;
+	border-radius: 2px;
+	border: solid 1px rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0);
+    color:white;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    margin-right: 30px;
+    box-sizing: border-box;
+}
+input::-webkit-input-placeholder{
+    color:#ffffff;
+    opacity: 0.3;
+    font-size: 14px;
+}
+header>div div button{
+    width: 125px;
+	height: 50px;
+	background-color: #ffffff;
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 1px;
+	color: #141414;
 }
