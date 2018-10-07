@@ -1,0 +1,29 @@
+.html{
+    font-family: sans-serif;
+}
+*{margin: 0px;padding: 0px;border: 0px}
+header,section,footer{
+    width: 1600px;
+    margin: 0 auto;
+}
+header{
+    background-image: url(./image/Background1.png);
+    height:900px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+header h1{
+    font-size: 62px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-top: 207px;
+    font-weight: normal;
+    line-height: 47px;
+}
+header p{
+    font-size: 20px;
+    text-align: center;
+    color: rgb(255, 255, 255,0.702);
+    margin-top: 83px;
+    width: 751px;
+}

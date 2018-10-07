@@ -1,0 +1,141 @@
+/*default css*/
+.html{
+    margin: 0;
+    font-size: 10px;
+}
+h4{
+    text-align: center;
+}
+.clearfix {
+    *zoom: 1;
+}
+.clearfix:after {
+    content: ''; display: table; clear: both;
+}
+.left{
+    background-color: aqua;
+    text-align: center;
+    width:120px;
+}
+.center{
+    background-color: darkslateblue;
+    text-align: center;
+    width: 120px;
+}
+.right{
+    background-color: darkkhaki;
+    text-align: center;
+}
+.threecols{
+    border: 1px dashed pink;
+    padding: 15px 20px;
+    margin: 0 auto;
+    width: 60%;
+}
+/*double float*/
+.threecols-doublefloat .left{
+    float: left;
+    margin-right: 20px;
+}
+.threecols-doublefloat .right{
+    margin-left: 280px;
+}
+.threecols-doublefloat .center{
+    float: left;
+}
+/*double float bfc*/
+.threecols-doublefloatbfc .left{
+    float: left;
+    margin-right: 20px;
+}
+.threecols-doublefloatbfc .right{
+    display: table-cell; width: 9999px;
+    *display: inline-block; *width: auto;
+}
+.threecols-doublefloatbfc .center{
+    float: left;
+    margin-right: 20px;
+    
+}
+/*double fly*/
+.threecols-doublefly .left{
+    float: left;
+    margin-left:-100%;
+}
+.threecols-doublefly .right{
+    margin-left:280px;
+}
+.threecols-doublefly .center{
+    float: left;
+    margin-left:calc(140px - 100%);
+}
+.threecols-doublefly .content {
+    float: left;
+    width: 100%;
+}
+/*grail*/
+.threecols-grail .left{
+    position: relative;
+    float: left;
+    margin-left:-100%;
+    left: -280px;
+    
+}
+.threecols-grail .right{
+    width: 100%;
+    float:left;
+}
+.threecols-grail .center{
+    position: relative;
+    float: left;
+    margin-left:-100%;
+    left:-140px;
+}
+.threecols-grail .content {
+    margin-left: 280px;
+}
+/*flex*/
+.threecols-flex .left{
+    order: -2;
+    flex: 0 1 120px;
+    margin-right: 20px;
+}
+.threecols-flex .right{
+    flex: 1 1 120px;
+}
+.threecols-flex .center{
+    order: -1;
+    flex: 0 1 120px;
+    margin-right: 20px;
+}
+.threecols-flex .content {
+    display:flex;
+}
+/*table*/
+.threecols-table .left,
+.threecols-table .right,
+.threecols-table .center
+{
+    display:table-cell;
+}
+.threecols-table .content {
+    display: table;
+    width: 100%;
+}
+/*absolute*/
+.threecols-absolute .left{
+    left: 0;
+    top:0;
+    position: absolute;
+}
+.threecols-absolute .right{
+    margin-left:280px;
+}
+.threecols-absolute .center{
+    left:140px;
+    top:0;
+    position: absolute;
+}
+.threecols-absolute .content {
+    position: relative;
+}
