@@ -1,0 +1,6 @@
+# nohup commond output file
+nohup.out
+
+# vscode config files
+.vscode
+web.config
