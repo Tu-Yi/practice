@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>videodemo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Videos.js v5.19 -->
+    <link href="htts://vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
+    <script src="htts://vjs.zencdn.net/5.19/video.min.js"></script>
+    <link rel="stylesheet" href="videodemo.css">
+    <script src="videodemo.js" defer></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <video id="my-video" class="<video></video>-js" width="360" height="240" data-setup='{ "autoplay": true, "controls": true, "poster": "", "preload": "auto" }'>
+        <source src="http://www.sample-videos.com/video/mp4/240/big_buck_bunny_240p_1mb.mp4" type='video/mp4'>
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+    </video>
+    <br />
+    <button onclick="play()">Play</button>
+    <button onclick="pause()">Pause</button>
+    <button onclick="mute()">Mute</button>
+    <script>
+        var videoPlayer = videojs("my-video");
+
+        function play() {
+            videoPlayer.play(); // 播放
+        }
+
+        function pause() {
+            videoPlayer.pause(); // 暫停
+        }
+
+        function mute() {
+            videoPlayer.muted(true); // 靜音
+        }
+    </script>
+
+</body>
+
+</html>
