@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        .a{
+            background-color: red;
+        }
+        .b{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    v-text
+    v-html
+    v-if
+    v-else-if
+    v-else
+    v-show
+    v-bind
+    v-model  只能绑定value
+    v-for
+    methods
+    -->
+    <div id="app"></div>
+
+    <script>
+        new Vue({
+            el : '#app',
+            template : `
+                <div>
+                    <span v-text="mytext"></span><br>
+                    <span v-html="myhtml"></span> <br>
+                    <button v-if="num == 1">1</button> <br>
+                    <button v-else-if="num == 2">2</button> <br>
+                    <button v-else>3</button>
+                    <br>
+                    <button v-show="isShow">isshow</button> <br>
+                    <input  type='text' v-bind:placeholder="myvalue" :file=" 'xxx' "> <br>
+                    <button v-on:click=" myvalue='abc' ">dianwogaibian</button> <br>
+                    <button @click=" myvalue='efg' ">jianxie</button> <br>
+                    <input  type='text' v-model="myvalue"> <br>
+                    <button v-show=" myvalue == 'xxxx' ">sigexxxx</button> <br>
+                    <ul>
+                    <li v-for="item in stus" :class="item.myclass">
+                        {{ item.name }}
+                    </li>
+                    </ul>
+                    <br>
+                    <ul>
+                    <li v-for="(val,key,index) in stus2">
+                        val : {{val}}
+                        key : {{key}}
+                        index : {{index}}
+                    </li>
+                    </ul>
+                    <br>
+                    <button @click="changeIsShow">sfdsfsdaf</button>
+                </div>
+            `,
+            data : function(){
+                return {
+                    mytext : 'hahahhaha',
+                    myhtml:'<h1>hahahhaha</h1>',
+                    isExit:true,
+                    num:4,
+                    isShow:true,
+                    myvalue:'hahahahha',
+                    stus:[{name:'战三',myclass:'a'},{name:'lisi',myclass:'b'},{name:'laowang',myclass:'a'}],
+                    stus2:{'A':'张三','B':'lisi','C':'wangwu'}
+                }
+            },
+            methods : {
+                changeIsShow(){
+                    this.isShow = !this.isShow;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!--
+        el 元素
+        data 数据
+        components  子组件
+        methods  方法
+        props 父参数
+    -->
+
+    <div id="app"></div>
+
+    <script>
+        Vue.component(
+            'my-global-lib', {
+                template: `
+                <div>
+                    v-model: <input type='text' v-model='myText'> {{myText}}
+                    <hr/>
+                    v-bind: <input type='text' :value='myText'>
+                    <hr/>
+                    v-text: <span v-text='myText'></span>
+                    <hr/>
+                    v-html: <div v-html='myHTML'  :style='myStyle'></div>
+                    <hr/>
+                    v-show: <div v-show='isShow' :style='myStyle'>v-show</div> 
+                    <hr/>
+                    v-if v-else-if v-else
+                    <button v-if="num == 1">1</button> 
+                    <button v-else-if="num == 2">2</button> 
+                    <button v-else>3</button>
+                    <hr/>
+                    methods1: <button @click='isShow=!isShow'>change1</button>
+                    <hr/>
+                    methods2: <button @click='changeShow'>change2</button>
+                    <hr/>
+                    v-for
+                    <ul>
+                    <li v-for='item in stus'>
+                        {{item.name}} : {{item.age}}
+                    </li>
+                    </ul>
+                    <hr/>
+                    filter:
+                    <input type='text' v-model='myText'> {{myText | reverse('zh')}}
+                    <hr/>
+                    watch:
+                    <input type='text' v-model='myText'> {{myText}}
+                    <hr/>
+                    <input type='text' v-model='n1'>+
+                    <input type='text' v-model='n2'>*
+                    <input type='text' v-model='n3'>=
+                    {{result}}
+                </div>
+                `,
+                data: function () {
+                    return {
+                        myText: '阿大使多',
+                        myHTML: '<p>fasfafasd</p>',
+                        myStyle: 'display:inline-block',
+                        isShow: true,
+                        num: 1,
+                        stus: [{
+                            name: 'yuankun',
+                            age: 34
+                        }, {
+                            name: 'kangyingting',
+                            age: 32
+                        }],
+                        n1:0,
+                        n2:0,
+                        n3:0
+                    }
+                },
+                methods: {
+                    changeShow() {
+                        this.isShow = !this.isShow;
+                    }
+                },
+                filters: {
+                    reverse: function (datastr, lang) {
+                        return lang + ' ' + datastr.split('').reverse().join('');
+                    }
+                },
+                watch:{
+                    myText:function(n,o){
+                        n=n+'123';
+                    }
+                },
+                computed:{
+                    result:function(){
+                        return (+this.n1)+(+this.n2)+(+this.n3);
+                    }
+                }
+            }
+        );
+        var myTest = {
+            template: `
+                <div>
+                    <input type='text' placeholder="defalut" >
+                </div>
+            `,
+            //父传子参数
+            props: ['default']
+        };
+
+        //slot
+        var mySlot={
+            template:`
+                <div>
+                    <slot></slot>
+                </div>
+            `
+        };
+
+        //slot填坑
+        var myTwoSlot={
+            template:`
+                <div>
+                    <slot name="one"></slot>
+                    <slot name="two"></slot>
+                </div>
+            `
+        };
+
+        new Vue({
+            el: '#app',
+            // el:document.getElementById('app'),
+            // el:'div'
+            components: {
+                'my-test': myTest,
+                'my-slot':mySlot,
+                'my-Two-Slot':myTwoSlot
+            },
+            template: `<div>
+                props: <my-test  :defalut="text"></my-test>
+                <hr/>
+                <my-global-lib></my-global-lib>
+                <hr/>
+                <my-slot>1</my-slot>
+                <my-slot>2</my-slot>
+                <my-slot>3</my-slot>
+                <my-slot><p>sdfdsf</p></my-slot>
+                <my-slot><p>123123</p></my-slot>
+                <my-Two-Slot>
+                    <p slot="one">123</p>
+                    <p slot="two">456</p>
+                </my-Two-Slot>
+                </div>
+                `,
+            data: function () {
+                return {
+                    text: 'hello world!'
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

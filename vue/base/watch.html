@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!--watch-->
+    <div id="app"></div>
+
+    <script>
+
+        var App = {
+            template: `
+                <div>
+                    <input type='text' v-model='myText'>
+                    {{myText}}
+                    <button @click="stus[0].name='rose';">sfds</button><br>
+                    {{stus[0].name}}
+                </div>
+            `,
+            data: function () {
+                return {
+                    myText: '',
+                    stus:[{name:'yuankun'}]
+                }
+            },
+            watch:{
+                stus:{
+                    deep:true,
+                    handler:function(newo,oldo){
+                        console.log('success');
+                    }
+                },
+                myText:function(newt,oldt){
+                    console.log(oldt,newt);
+                    if(newt==='yuankun'){
+                        alert(newt);
+                    }
+                }
+            }
+        }
+
+
+
+        new Vue({
+            el: '#app',
+            components: {
+                app: App
+            },
+            template: '<app/>'
+        });
+    </script>
+</body>
+
+</html>

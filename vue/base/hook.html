@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        li {
+            list-style: none;
+            float:left;
+            width:33%;
+            background-color: yellowgreen;
+            height: 150px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 150px;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--钩子函数-->
+    <div id="app"></div>
+
+    <script>
+
+        var Test={
+            template:`
+            <div>
+                我是test {{text}}
+                <button @click='text = text+1'></button>
+            </div>
+            `,
+            data:function(){
+                return {
+                    text : 'hello'
+                }
+            },
+            beforeCreate:function(){
+                console.log('beforeCreate');
+            },
+            created:function(){
+                console.log('created');
+            },
+            beforeMount:function(){
+                //console.log(document.body.innerHTML);
+                console.log('beforeMount');
+            },
+            mounted:function(){
+                //console.log(document.body.innerHTML);
+                console.log('mounted');
+            },
+            beforeUpdate:function(){
+                console.log(document.body.innerHTML);
+            },
+            updated:function(){ 
+                console.log(document.body.innerHTML);
+            },
+            beforeDestroy:function(){
+                console.log('beforeDestroy');
+            },
+            destroyed:function(){
+                console.log('destoryed');
+            },
+            activated:function(){
+                console.log('jihuo');
+            },
+            deactivated:function(){
+                console.log('beitingyong');
+            }
+        }
+
+        var App = {
+            components:{
+                'my-test':Test
+            },
+            data:function(){
+                return {
+                    isExit:true
+                }
+            },
+            template: `
+                <div>
+                    <keep-alive>
+                        <my-test v-if="isExit"></my-test>
+                    </keep-alive>
+                   
+                    <button @click='isExit=!isExit'>sfdsf</button>
+                </div>
+            `
+        }
+
+        new Vue({
+            el: '#app',
+            components: {
+                app: App
+            },
+            template: '<app/>'
+        });
+    </script>
+</body>
+
+</html>

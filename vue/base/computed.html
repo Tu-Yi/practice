@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!--computed-->
+    <div id="app"></div>
+
+    <script>
+
+        var App = {
+            template: `
+                <div>
+                    <input type='text' v-model='n1'>+
+                    <input type='text' v-model='n2'>*
+                    <input type='text' v-model='n3'>=
+                    {{result}}
+                </div>
+            `,
+            data: function () {
+                return {
+                    n1:0,n2:0,n3:0
+                }
+            },
+            computed:{
+                    result:function(){
+                        return ((this.n1-0)+(this.n2-0)) * this.n3
+                    }
+                }
+        }
+
+
+
+        new Vue({
+            el: '#app',
+            components: {
+                app: App
+            },
+            template: '<app/>'
+        });
+    </script>
+</body>
+
+</html>

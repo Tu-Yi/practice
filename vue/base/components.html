@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!--components props-->
+        <div id="app"></div>
+        <script>
+            var myHeader={
+                template:'<div>我是myheader</div>'
+            };
+            var myBody={
+                template:'<div>我是myBody</div>'
+            };
+            var myFooter={
+                template:`
+                    <div>
+                            myFooter: <button @click='showNum(123)'>click</button>
+                    </div>
+                `,
+                methods : {
+                    showNum(num){
+                        alert(num);
+                    }
+                }
+            };
+            var son={
+                template:`
+                    <div>
+                                {{ title }}
+
+                        <h1 v-if="xxx">1</h1>
+                        <h2 v-if="isShow">2</h2>
+                        <ul>
+                            <li v-for="item in items">
+                                {{item}}
+                            </li>
+                        </ul>
+                        <button @click="changeIsShow">改变显示</butoon>
+                            <hr/><br>
+                        <input type='text' :value='value'>
+                        <input type='text' v-model='value'><br>
+                        {{value}}
+                    </div>
+                `,
+                data : function(){
+                    return {
+                        xxx:true,
+                        isShow:true,
+                        items:[1,2,3,4,5],
+                        value:'123'
+                    }
+                },
+                methods:{
+                    changeIsShow(){
+                        this.isShow = !this.isShow;
+                    }
+                },
+                props:['title']
+            }
+
+            var App={
+                components:{
+                    'my-header':myHeader,
+                    'my-Body':myBody,
+                    'my-Footer':myFooter,
+                    'son':son
+                },
+                template:`
+                    <div>
+                        <my-header></my-header>
+                        <my-Body/>
+                        <my-Footer/>
+                        <son :title='xxx'></son>
+                        <!--<son title='xxx'></son>-->
+                    </div>
+                `,
+                data:function(){
+                    return {
+                        xxx : 'woshi xxx'
+                    }
+                }
+            };
+
+
+            new Vue({
+                el:"#app",
+                components:{
+                    app : App
+                },
+                template:"<app/>"
+            });
+        </script>
+
+</body>
+</html>

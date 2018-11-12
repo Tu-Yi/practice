@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        li {
+            list-style: none;
+            float:left;
+            width:33%;
+            background-color: yellowgreen;
+            height: 150px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 150px;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--slot-->
+    <div id="app"></div>
+
+    <script>
+
+        var myli={
+            template:`<li>
+                <slot></slot>
+            </li>`
+        }
+        Vue.component('my-li',myli);
+
+        var App = {
+            template: `
+                <div>
+                    <ul>
+                        <my-li>1</my-li>
+                        <my-li>2</my-li>
+                        <my-li>3</my-li>
+                        <my-li>4</my-li>
+                        <my-li>5</my-li>
+                        <my-li>6</my-li>
+                        <my-li>7</my-li>
+                        <my-li>8</my-li>
+                        <my-li>9</my-li>
+                    </ul>
+                </div>
+            `
+        }
+
+
+
+        new Vue({
+            el: '#app',
+            components: {
+                app: App
+            },
+            template: '<app/>'
+        });
+    </script>
+</body>
+
+</html>

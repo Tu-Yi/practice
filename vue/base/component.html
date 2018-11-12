@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!--component-->
+    <div id="app"></div>
+
+    <script>
+        
+            Vue.component(
+                'my-btn',
+                {
+                    template:`
+                        <button>all</button>
+                    `
+                }
+            );
+
+            var myHeader={
+                template:'<div>myHeader<my-btn/></div>'
+            };
+            var myFooter={
+                template:'<div>myFooter<my-btn/></div>'
+            };
+
+
+        var App = {
+            components:{
+                'my-header':myHeader,
+                'my-Footer':myFooter
+            },
+            template:`
+                <div>
+                    <my-header/>
+                    <my-Footer/>
+                    <my-btn/>
+                    </div>
+            `
+        }
+
+
+
+        new Vue({
+            el:'#app',
+            components:{
+                app:App
+            },
+            template:'<app/>'
+        });
+    </script>
+</body>
+</html>

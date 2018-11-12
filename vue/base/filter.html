@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!--filter-->
+    <div id="app"></div>
+
+    <script>
+
+        Vue.filter(
+            'myReverse',function(data,lang){
+                return lang + data;
+            }
+        );
+
+        var App = {
+            template: `
+                <div>
+                    <input type="text" v-model="myText">
+                    {{myText | reverse('zh')}}
+                    </div>
+            `,
+            data: function () {
+                return {
+                    myText: ''
+                }
+            },
+            filters: {
+                reverse: function (datastr,lang) {
+                    return lang + ' '+ datastr.split('').reverse().join('');
+                }
+            }
+        }
+
+
+
+        new Vue({
+            el: '#app',
+            components: {
+                app: App
+            },
+            template: '<app/>'
+        });
+    </script>
+</body>
+
+</html>
