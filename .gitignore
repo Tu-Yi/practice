@@ -4,3 +4,5 @@ nohup.out
 # vscode config files
 .vscode
 web.config
+node_modules
+
