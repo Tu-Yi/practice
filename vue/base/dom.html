@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!--获取dom元素-->
+    <div id="app"></div>
+
+    <script>
+        Vue.component('temp', {
+            template: `
+            <div>
+                i am son
+            </div>
+            `
+        })
+
+        var App = {
+            template: `
+                <div>
+                    <temp ref='temp'/>
+                    <button ref='btn'>adas</button>
+                    <input type='text' v-if='isShow' ref='input'>
+                </div>
+            `,
+            data:function(){
+                return {
+                    isShow:false
+                }
+            },
+            beforeCreate: function () {
+                console.log(this.$refs.btn);
+            },
+            created: function () {
+                //console.log('created');
+                console.log(this.$refs.btn);
+            },
+            beforeMount: function () {
+                //console.log(document.body.innerHTML);
+                //console.log('beforeMount');
+                console.log(this.$refs.btn);
+            },
+            mounted: function () {
+                //console.log(document.body.innerHTML);
+                //console.log('mounted');
+                console.log(this.$refs.temp.$el);
+                console.log(this.$refs.btn);
+
+                this.isShow=true;
+                
+
+                this.$nextTick(function(){
+                    this.$refs.input.focus();
+                })
+                
+
+            }
+        }
+
+
+
+
+        new Vue({
+            el: '#app',
+            components: {
+                app: App
+            },
+            template: '<app/>'
+        });
+    </script>
+</body>
+
+</html>

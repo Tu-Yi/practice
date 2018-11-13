@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+
+    <!--computed-->
+    <div id="app"></div>
+
+    <script>
+        var isLogin=false;
+        var Login={
+            template:`
+            <div>
+            i am login
+            <button @click='login'>login</button>
+            </div>
+            `,
+            created(){
+                isLogin=false;
+            },
+            methods:{
+                login(){
+                    isLogin = true;
+                    this.$router.push({name:'Woman'});
+                }
+            }
+        };
+        var Woman={
+            template:`
+                <div>
+                    i am woman
+                </div>
+            `
+        }
+        
+        Vue.use(VueRouter);
+        //创建路由对象
+        var router = new VueRouter();
+        router.addRoutes(
+            [
+                {
+                    path:'/',redirect:{name:'login'}
+                },
+                { 
+                    name:'login', path:'/login',component:Login
+
+                },
+                { 
+                    name:'Woman', path:'/Woman',component:Woman,meta:{isChecked:true}
+                }
+
+            
+            ]
+        );
+        router.beforeEach(
+            function(to,from,next){
+                if(!to.meta.isChecked){
+                    next();
+                }
+                else{
+                    if(isLogin){
+                        next();
+                    }
+                    else{
+                        next({name:'login'});
+                        //next(false);
+                    }
+                }
+                
+            }
+        );
+        
+        //指定路由结果的显示位置
+        var App = {
+            template: `
+                <div>
+                   <router-view></router-view>
+                </div>
+            `
+        }
+
+
+
+        new Vue({
+            el: '#app',
+            router:router,
+            components: {
+                app: App
+            },
+            template: '<app/>'
+        });
+    </script>
+</body>
+
+</html>

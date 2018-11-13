@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+
+    <!--computed-->
+    <div id="app"></div>
+
+    <script>
+
+        var Register={
+            template:`
+            <div>
+                i am register
+            </div>
+            `,
+            created:function(){
+                console.log(this.$route.params);
+            }
+        };
+        var Login={
+            template:`
+            <div>
+                i am login
+            </div>
+            `,
+            created:function(){
+                console.log(this.$route.query);
+            }
+        };
+        
+        Vue.use(VueRouter);
+        //创建路由对象
+        var router = new VueRouter({
+            //配置路由对象
+            routes:[
+                { name:'login', path:'/login',component:Login},
+                { name:'register', path:'/register/:name',component:Register}
+
+            
+            ]
+        });
+        
+        //指定路由结果的显示位置
+        var App = {
+            template: `
+                <div>
+                    <router-link :to='{name : "login",query:{id:1}}'>Login</router-link>
+                    <router-link :to='{name : "register",params:{name:"abc"}}'>Register</router-link>
+                   <router-view></router-view>
+                </div>
+            `
+        }
+
+
+
+        new Vue({
+            el: '#app',
+            router:router,
+            components: {
+                app: App
+            },
+            template: '<app/>'
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+
+    <!--computed-->
+    <div id="app"></div>
+
+    <script>
+
+        var Register={
+            template:`
+            <div>
+                <router-view></router-view>
+            </div>
+            `
+        };
+        var Login={
+            template:`
+            <div>
+            i am login
+                <router-view></router-view>
+            </div>
+            `
+        };
+        var Woman={
+            template:`
+                <div>
+                    i am woman
+                </div>
+            `
+        }
+        
+        Vue.use(VueRouter);
+        //创建路由对象
+        var router = new VueRouter({
+            //配置路由对象
+            routes:[
+                { 
+                    name:'login', path:'/login',component:Login,
+                    children:[
+                        {
+                            name:'login.woman', path:'woman',component:Woman
+                        }
+                    ]
+
+                },
+                { name:'register', path:'/register/:name',component:Register}
+
+            
+            ]
+        });
+        
+        //指定路由结果的显示位置
+        var App = {
+            template: `
+                <div>
+                    <router-link :to='{name:"login.woman"}'>woman</router-link>
+                   <router-view></router-view>
+                </div>
+            `
+        }
+
+
+
+        new Vue({
+            el: '#app',
+            router:router,
+            components: {
+                app: App
+            },
+            template: '<app/>'
+        });
+    </script>
+</body>
+
+</html>

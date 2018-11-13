@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    
+    <script>
+
+        var App = {
+            template: `
+                <div>
+                    {{ res1 }}
+                   <button @click="sendAJax">request</button>
+                </div>
+            `,
+            data:function(){
+                return {
+                    res1 : 'ha'
+                }
+            },
+            methods:{
+                sendAJax(){
+                    var that =this;
+                    axios.get('http://127.0.0.1:8888/login')
+                    .then(res => {
+                        console.log(res);
+                        this.res1 = res.data;
+                    })
+                    .catch(function(err){
+                        console.log(err);
+                    })
+                }
+            }
+        };
+        Vue.prototype.$axios=axios;
+
+        new Vue({
+            el: '#app',
+            components: {
+                app: App
+            },
+            template: '<app/>'
+        });
+    </script>
+</body>
+</html>
