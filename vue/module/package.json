@@ -1,0 +1,19 @@
+{
+  "name": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "webpack --config ./webpack.dev.config.js",
+    "pro": "webpack --config ./webpack.pro.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^1.0.1",
+    "file-loader": "^2.0.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^3.6.0"
+  }
+}

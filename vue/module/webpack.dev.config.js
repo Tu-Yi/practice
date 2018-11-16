@@ -1,0 +1,19 @@
+module.exports={
+    entry:{
+        'main':'./main.js'
+    },
+    output:{
+        filename:'./build.js'
+    },
+    module:{
+        loaders:[
+            {
+                test:/\.css$/,loader:'style-loader!css-loader'
+            },
+            {
+                test:/\.(jpg|png|gif|svg)$/,loader:'url-loader?limit=12,964'
+            }
+        ]
+    },
+    watch:true
+}
