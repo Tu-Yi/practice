@@ -37,7 +37,7 @@ public class Human {
 
     //获取number的值
     public static int getNumber(){
-        return Human.number;
+        return number;
     }
     //设置number的值
     public static void setNumber(int number) {
