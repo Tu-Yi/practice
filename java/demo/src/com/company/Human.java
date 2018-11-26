@@ -1,7 +1,7 @@
 package com.company;
 
 public class Human {
-    private static int number=0; //类变量
+    static int number=0; //类变量
     private  final String name;// final必须初始化或者构造函数初始化
     private   int weight; //private修饰符只能在本类中访问
 
@@ -12,7 +12,7 @@ public class Human {
         number += 1;
     }
     // 构造函数2
-    public  Human(String name,int weight){
+    public Human(String name,int weight){
         this.name=name;
         this.weight=weight;
     }
