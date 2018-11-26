@@ -1,0 +1,51 @@
+.div-img{
+    float: left;
+    margin-right: 30px;
+}
+.div-img div{
+    width: 300px;
+    height: 300px;
+    border: 1px solid #000;
+    
+}
+.div-img div img{
+    width: 100px;
+    height: 100px;
+}
+/*absolute+margin:auto*/
+.div-img .absolute{
+    position: relative;
+}
+.div-img .absolute img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+/*flex*/
+.div-img .flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*table-cell*/
+.div-img .table-cell{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+/*empty-element*/
+.div-img .empty-element{
+    text-align:center;
+}
+.div-img .empty-element img{
+    vertical-align:middle;
+}
+.div-img .empty-element .empty{
+    display:inline-block;
+	height:100%;
+	width:0;
+	vertical-align:middle
+}

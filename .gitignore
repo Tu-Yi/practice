@@ -6,3 +6,6 @@ nohup.out
 web.config
 node_modules
 
+# java
+.idea
+

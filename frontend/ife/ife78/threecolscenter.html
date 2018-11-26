@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ife78</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="threecolscenter.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <h3>三栏布局，左右定宽中间自适应</h3>
+    <h4>左右double-float</h4>
+    <div class="threecols threecols-doublefloat clearfix">
+        <div class="left">
+            float: left
+        </div>
+        <div class="right">
+            float: right
+        </div>
+        <div class="center">
+            margin-left: 140px;
+            margin-right: 140px;<br>
+            缺点：中间内容无法首先加载
+        </div>
+    </div>
+    <h4>左右double-float+BFC</h4>
+    <div class="threecols threecols-doublefloatbfc clearfix">
+        <div class="left">
+            float: left
+        </div>
+        <div class="right">
+            float: right
+        </div>
+        <div class="center">
+            display: table-cell; width: 9999px;
+            *display: inline-block; *width: auto;<br>
+            缺点：中间内容无法首先加载<br>
+            优点：不用计算margin,中间设置margin无效
+        </div>
+    </div>
+    <h4>双飞翼</h4>
+    <div class="threecols threecols-doublefly clearfix">
+        <div class="content">
+            <div class="center">
+                content: float: left;width: 100%;<br>
+                center:margin-left: 140px;margin-right: 140px;<br>
+                缺点：HTML代码复杂提高<br>
+                优点：中间内容可以优先显示
+            </div>
+        </div>
+        <div class="left">
+            margin-left:-100%;
+        </div>
+        <div class="right">
+            margin-left:-120px;
+        </div>
+    </div>
+    <h4>圣杯</h4>
+    <div class="threecols threecols-grail clearfix">
+        <div class="content">
+            <div class="center">
+                content: margin-left: 140px;margin-right: 140px;<br>
+                center:width: 100%;float:left;<br>
+                缺点：CSS代码复杂提高<br>
+                优点：中间内容可以优先显示
+            </div>
+            <div class="left">
+                position: relative;
+                left: -140px;
+            </div>
+            <div class="right">
+                position: relative;
+                right:-140px
+            </div>
+        </div>
+    </div>
+    <h4>flex</h4>
+    <div class="threecols threecols-flex clearfix">
+        <div class="content">
+            <div class="center">
+                flex: 1 1 auto;<br>
+                缺点：浏览器兼容
+            </div>
+            <div class="left">
+                order: -1;flex: 0 1 120px;
+            </div>
+            <div class="right">
+                flex: 0 1 120px;
+            </div>
+        </div>
+    </div>
+    <h4>table</h4>
+    <div class="threecols threecols-table clearfix">
+        <div class="content">
+            <div class="left">
+                order: -1;flex: 0 1 120px;
+            </div>
+            <div class="center">
+                flex: 1 1 auto;
+            </div>
+            <div class="right">
+                flex: 0 1 120px;
+            </div>
+        </div>
+    </div>
+    <h4>absolute+margin</h4>
+    <div class="threecols threecols-absolute clearfix">
+        <div class="content">
+            <div class="center">
+                    margin: 0 140px;<br>
+                    优点：简单，主要内容优先加载<br>
+                    缺点：绝对元素内容过高会出现父元素高度溢出
+                缺点：浏览器兼容
+            </div>
+            <div class="left">
+                    left: 0;top:0;position: absolute;<br>
+                    left: 0;top:0;position: absolute;<br>
+                    left: 0;top:0;position: absolute;<br>
+            </div>
+            <div class="right">
+                    right: 0;top:0;position: absolute;
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

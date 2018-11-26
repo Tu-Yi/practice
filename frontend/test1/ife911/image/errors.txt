@@ -1,3 +1,0 @@
-[2018-10-07 10:38:37] layer "denis@getcraftwork.com": Unsupported extension: com
-[2018-10-07 10:38:37] layer "China is speeding up strategic plan, standards, traffic rules, ": Expected end of input but "," found.
-[2018-10-07 10:38:37] layer "youname@mail.com": Unsupported extension: com
