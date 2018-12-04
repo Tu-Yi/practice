@@ -95,28 +95,29 @@ module.exports = g;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return num1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return num2; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__w15_png__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__w15_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__w15_png__);
+/* unused harmony export num1 */
+/* unused harmony export num2 */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__1_jpg__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__1_jpg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__1_jpg__);
+  // 引用图片  需要url-loader,file-loader
 
 
-var app={
+var app = {
     template:`
-        <div>
-            hello module!
-            <img :src="imgSrc" />
-        </div>
+    <div>
+        <img :src='imgSrc' />>
+    </div>
     `,
-    data:function(){
+    data(){
         return {
-            imgSrc:__WEBPACK_IMPORTED_MODULE_0__w15_png___default.a
+            imgSrc:__WEBPACK_IMPORTED_MODULE_0__1_jpg___default.a
         }
     }
 }
 
-var num1 = 1;
-var num2 = 2;
+var num1= 1;
+
+var num2=2;
 
 /* harmony default export */ __webpack_exports__["a"] = (app);
 
@@ -126,10 +127,10 @@ var num2 = 2;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_js__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Cal__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__main_css__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__main_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__main_css__);
@@ -137,24 +138,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+ // 引用css  需要css-loader
 
 
-console.log(__WEBPACK_IMPORTED_MODULE_2__App__["b" /* num1 */],__WEBPACK_IMPORTED_MODULE_2__App__["c" /* num2 */]);
-console.log(__WEBPACK_IMPORTED_MODULE_3__Cal__["a" /* default */]);
-console.log('abc');
+console.log(__WEBPACK_IMPORTED_MODULE_3__Cal__["a" /* default */])
+console.log(123)
 
 
+new __WEBPACK_IMPORTED_MODULE_0__vue___default.a({
+    el:'#app',
+    components:{
+        app:__WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */]
+    },
+    template:`<app/>`
+})
 
-
-new __WEBPACK_IMPORTED_MODULE_0__vue_js___default.a(
-    {
-        el:'#app',
-        components:{
-            'app':__WEBPACK_IMPORTED_MODULE_2__App__["a" /* default */]
-        },
-        template:`<app/>`
-    }
-);
+// npm init -y 根据目录名初始化package
+// npm i webpack@3.6.0 -S
+// npm i css-loader -S
+// npm i style-loader -S
+// npm i url-loader file-loader -S
+// npm可以识别本目录中 package的配置，从而调用配置命令，以达到目录环境变量的效果
+// package里配置的命令可以直接关联到 npm_modules里模块启动文件
+// 可以将配置写在webpack.config.js中，npm-->package-->webpack-->config 
 
 /***/ }),
 /* 3 */
@@ -11567,16 +11573,14 @@ process.umask = function() { return 0; };
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "16912207aa58cf7717eb241def122e2d.png";
+module.exports = __webpack_require__.p + "424d252ffce562c0a4e6a9539349ff5a.jpg";
 
 /***/ }),
 /* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    template:' i am ca'
-});
+/* harmony default export */ __webpack_exports__["a"] = ("i am Calculate");
 
 /***/ }),
 /* 9 */
@@ -11602,8 +11606,8 @@ var update = __webpack_require__(12)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {
-	module.hot.accept("!!./node_modules/css-loader/index.js!./main.css", function() {
-		var newContent = require("!!./node_modules/css-loader/index.js!./main.css");
+	module.hot.accept("!!./node_modules/_css-loader@1.0.1@css-loader/index.js!./main.css", function() {
+		var newContent = require("!!./node_modules/_css-loader@1.0.1@css-loader/index.js!./main.css");
 
 		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 
@@ -11637,7 +11641,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "body{\n    background-color: red;\n}", ""]);
+exports.push([module.i, "body{\r\n    background-color: red;\r\n}", ""]);
 
 // exports
 

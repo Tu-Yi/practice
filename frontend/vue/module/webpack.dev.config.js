@@ -1,19 +1,22 @@
-module.exports={
+module.exports = {
     entry:{
         'main':'./main.js'
-    },
+    }, // 入口
     output:{
         filename:'./build.js'
-    },
+    }, // 出口
+    watch:true, // 自动生成
+    // 调用模块
     module:{
         loaders:[
             {
-                test:/\.css$/,loader:'style-loader!css-loader'
+                test:/\.css$/,
+                loader:'style-loader!css-loader'
             },
             {
-                test:/\.(jpg|png|gif|svg)$/,loader:'url-loader?limit=12,964'
+                test:/\.(jpg|png)/,
+                loader:'url-loader?limit=4096'
             }
         ]
-    },
-    watch:true
-}
+    }
+}// 开发环境

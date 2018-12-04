@@ -1,20 +1,21 @@
-import img from  './w15.png';
+import img from './1.jpg'  // 引用图片  需要url-loader,file-loader
 
-var app={
+
+var app = {
     template:`
-        <div>
-            hello module!
-            <img :src="imgSrc" />
-        </div>
+    <div>
+        <img :src='imgSrc' />>
+    </div>
     `,
-    data:function(){
+    data(){
         return {
             imgSrc:img
         }
     }
 }
 
-export var num1 = 1;
-export var num2 = 2;
+export var num1= 1;
 
-export default app;
+export var num2=2;
+
+export default app

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        // 创建路由对象
+        // 配置路由对象
+        // 安装插件
+        // 关联到vue实例
+        // 指定路由的位置
+        var isLogin = false
+
+        var Login = {
+            template: `
+                <div>
+                    我是登录页面,下面女人
+                    <button @click="change">login</button>
+                    <router-view></router-view>
+                </div>
+            
+            `,
+            created () {
+                console.log(this.$route.query)
+            },
+            methods: {
+                change(){
+                    isLogin = true
+                }
+            }
+        }
+
+        var Woman = {
+            template: `
+                <div>
+                    我是女人
+                </div>
+            
+            `
+        }
+
+        var Register = {
+            template: `
+                <div>
+                    我是注册页面
+                    <router-view></router-view>
+                </div>
+            
+            `,
+            created () {
+                console.log(this.$route.params)
+            }
+        }
+        var Man = {
+            template: `
+                <div>
+                    我是男人
+                </div>
+            
+            `
+        }
+
+
+        Vue.use(VueRouter)
+        var router = new  VueRouter({
+            routes:[
+                {
+                    path: '/',
+                    redirect: {
+                        name:'login'
+                    }
+                },
+                {
+                    name: 'login',
+                    path:'/login',
+                    component: Login,
+                    children: [
+                        {
+                            name: 'login.woman',
+                            path:'woman',
+                            component: Woman
+                        }
+                    ]
+                },
+                {
+                    name: 'register',
+                    path:'/register/:name',
+                    component: Register,
+                    meta:{
+                        isChecked:true
+                    },
+                    children: [
+                        {
+                            name: 'register.man',
+                            path:'man',
+                            component: Man
+                        }
+                    ]
+                }
+            ]
+        })
+        
+        router.beforeEach(function(to,from,next){
+            if(!to.meta.isChecked){
+                next();
+            }
+            else{
+                if(isLogin){
+                    next()
+                }else{
+                    alert('请先登录')
+                    next({name:'login'})
+                }
+            }
+
+        })
+        var App = {
+            template: `
+                <div>
+                    <a href="/login?id=1">登录页面</a>
+                    <router-link :to="{name:'login',query:{id:1}}">登录页面</router-link>
+                    <router-link :to="{name:'register',params:{name:'abc'}}">注册页面</router-link>
+                    <router-link :to="{name:'login.woman'}">女人页面</router-link>
+                    <router-link :to="{name:'register.man'}">男人页面</router-link>
+                    <router-view></router-view>
+                </div>
+            `,
+            created () {
+                console.log(this.$router)
+            },
+            mounted () {
+                console.log(this.$router)
+            }
+        }
+
+
+        new Vue({
+            el: '#app',
+            router:router,
+            components: {
+                app: App
+            },
+            template: `
+                <div>
+                    <app/>
+                </div>
+            `
+        })
+    </script>
+</body>
+</html>

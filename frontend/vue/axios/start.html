@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="../node_modules/vue/dist/vue.js"></script>
-    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
     <script src="../node_modules/axios/dist/axios.js"></script>
 </head>
 <body>
@@ -29,11 +28,42 @@
             methods:{
                 sendAJax(){
                     var that =this;
-                    axios.get('http://127.0.0.1:8888/login')
-                    .then(res => {
-                        console.log(res);
-                        this.res1 = res.data;
+                    this.$axios.defaults.baseURL='http://127.0.0.1:8888/'
+
+                    //拦截器
+                    this.$axios.interceptors.request.use((config)=>{
+                        console.log('interceptorsrequest'+config)
+                        return config
+                    }) // 1
+
+                    this.$axios.interceptors.response.use((res)=>{
+                        console.log('interceptorsresponse',res)
+                        return res
+                    })//4
+                    // var q1 = this.$axios.get('login')
+                    // var q2 = this.$axios.get('add')
+                    // // 合并请求
+                    // this.$axios.all([q1,q2])
+                    // // 全部成功
+                    // .then(this.$axios.spread((req1,req2)=>{
+                    //     this.res1 = req1.data + req2.data
+                    // }))
+                    axios.get('login',{
+                        transformRequest(req){
+                            console.log('transformRequest'+req)
+                            return req
+                        },//2
+                        transformResponse(data){
+                            console.log('transformResponse',data)
+                            data = 'transformResponse'+data
+                            return data
+                        }//3
                     })
+                    .then(res => {
+                        console.log('响应回来了',res);
+                        this.res1 = res.data;
+                    })//5
+                    // 一个失败
                     .catch(function(err){
                         console.log(err);
                     })

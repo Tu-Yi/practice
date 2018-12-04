@@ -1,3 +1,1 @@
-export default {
-    template:' i am ca'
-}
+export default "i am Calculate"

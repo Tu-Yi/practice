@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        #appDiv{
+            margin: 0 auto;
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        // 全局过滤器，所有数据都可以使用，优先级小于组件自身过滤器
+        Vue.filter('changeText',function(dataStr,lang){
+            return lang + ':' +dataStr + '| filter'
+        })
+        Vue.component(
+            'global-com', {
+                template: `
+                    <div id='globalDiv'>
+                        <p>数据</p>
+                        <p>mySubText: {{mySubText | changeText('zh')}} 过滤器</p>
+                        obj: {{obj[0].name}}<hr/>
+                        <p>computed:</p> {{result}} <hr/>
+                        <p>watch:</p> 
+                        <p ref='watchO'></p>
+                        <p ref='watchN'></p>
+                        <hr/>
+                        <p>传值</p>
+                        {{father}}<hr/>
+                        model: <input v-model='mySubText'/><hr/>
+                        bind: <input :value='mySubText'/><hr/>
+                        <p v-text='mySubText' ref='watchP'></p>
+                        <p v-html='mySubText'></p><hr/>
+                        v-if: <span v-if='mySubText == "hello com"'>hello my name is superman</span><hr/>
+                        v-show: <span v-show='mySubText'>hello my name is superman</span><hr/>
+                        @click='mySubText=""': <button @click='mySubText=""'>change</button><hr/>
+                        change: <button @click='change'>change</button><hr/>
+                        obj[0].name="yuankun"': <button @click='obj[0].name="yuankun"'>改变obj</button><hr/>
+                        <p>v-for</p>
+                        <div v-for='(item,index) in stu'>
+                            {{index}}:{{item}}
+                        </div>
+                        <hr/>
+                        <p>slot:传递dom</p>
+                        <slot name="one"></slot>
+                        <slot name="two"></slot>
+                        <hr/>
+                        <p>mounted:操作dom nextTick</p>
+                        <input v-if='isExit' ref='input'/>
+                        <hr/>
+                    </div>
+                `,
+                // 父组件传来名字为'father'的值
+                props: ['father'],
+                data () {
+                    return {
+                        mySubText: 'hello com',
+                        stu: [1,2,3,4,5],
+                        obj: [{name:'jack'}],
+                        isExit: false
+                    }
+                },
+                methods: {
+                    change () {
+                        this.mySubText = 'hello com'
+                    }
+                },
+                // 数据使用的时候改变它
+                filters: {
+                    changeText (dataStr,lang) {
+                        return lang + ':' +dataStr + '| filters'
+                    }
+                },
+                // 监视单个数据的变化
+                watch: {
+                    obj: {
+                        deep: true,
+                        handler(n,o){
+                            console.log(o,n)
+                        }
+                    },
+                    mySubText: function (n,o) {
+                        this.$refs.watchO.innerText = o;
+                        this.$refs.watchN.innerText = n;
+                    }
+                },
+                // 监视所有数据的变化
+                computed: {
+                    result () {
+                        return this.mySubText + " || " + this.obj[0].name
+                    }
+                },
+                beforeCreate () {
+                    console.log(this.mySubText)  // 组件创建之前，undefined
+                },
+                created () {
+                    console.log(this.mySubText) // 组件创建之后，可以操作数据，hello com  可以掉ajax
+                    console.log(this.$refs.watchP)
+                },
+                beforeMount () {
+                    console.log('beforeMount')  // vue起作用，装在到dom之前
+                },
+                mounted () {
+                    console.log('mounted') // vue起作用，装在到dom之后  //也可以在这里调ajax
+                    console.log(this.$refs.watchP)
+                    this.isExit = true
+                    this.$nextTick(function(){
+                        this.$refs.input.focus();
+                    })
+                },
+                beforeUpdate () {
+                    console.log('beforeUpdate')  // 更新前
+                },
+                updated () {
+                    console.log('updated') // 更新后
+                },
+                beforeDestroy () {
+                    console.log('beforeDestroy')  // 
+                },
+                destroyed () {
+                    console.log('destroyed') // 
+                },
+                activated () {
+                    console.log('activated')  // 避免频繁销毁创建，被keep-alive包含
+                },
+                deactivated () {
+                    console.log('deactivated') // 避免频繁销毁创建，被keep-alive包含
+                }
+            }
+        )
+
+        // 定义入口组件
+        var App = {
+            template: `
+            <div id='appDiv'>
+                <keep-alive>
+                    <global-com :father='myText' v-if='isExit' ref="global">
+                        <p slot="one">i am slot one</p>
+                        <p slot="two">i am slot two</p>
+                    </global-com>
+                </keep-alive>
+                    <button @click='isExit = !isExit'>组件生死</button>
+            </div>
+            `,
+            data () {
+                return {
+                    myText: 'hello vue',
+                    isExit: true
+                }
+            },
+            mounted () {
+                console.log(this.$refs.global)
+            }
+        }
+
+        // 初始化vue对象，并传入入口组件
+        new Vue({
+            el: '#app',
+            components: {
+                app:App
+            },
+            template: `<app/>`
+        });
+    </script>
+</body>
+</html>

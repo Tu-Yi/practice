@@ -1,27 +1,33 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-
-public class News {
+public class News implements Displayable {
 
     private String title;
     private String content;
 
-    void read(String url){
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(url));
-            title = reader.readLine();
-            content = reader.readLine();
-            reader.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+    public News(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
-    String display(){
-        return  title + "\n" + content;
+    public String getTitle() {
+        return title;
     }
 
+    public String getContent() {
+        return content;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    @Override
+    public void display() {
+        System.out.println("News: i am News`s display"+"\n"+getTitle() + "\n" + getContent());
+    }
 }
