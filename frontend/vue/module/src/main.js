@@ -2,7 +2,7 @@ import Vue from './vue'
 import App from './App'
 import {num1,num2} from './App.js'
 import ca from './Cal'
-import './main.css' // 引用css  需要css-loader
+import './main.less' // 引用css  需要css-loader
 
 
 console.log(ca)
@@ -25,3 +25,6 @@ new Vue({
 // npm可以识别本目录中 package的配置，从而调用配置命令，以达到目录环境变量的效果
 // package里配置的命令可以直接关联到 npm_modules里模块启动文件
 // 可以将配置写在webpack.config.js中，npm-->package-->webpack-->config 
+// npm i less -S
+// npm i less-loader -S
+// npm i html-webpack-plugin -S

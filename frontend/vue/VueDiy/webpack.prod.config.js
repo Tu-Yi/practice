@@ -8,7 +8,6 @@ module.exports = {
         path: path.resolve('./dist'),
         filename:'build.js'
     },
-    watch:true,
     module:{
         loaders:[
             {
@@ -22,6 +21,19 @@ module.exports = {
             {
                 test:/\.less$/,
                 loader:'style-loader!css-loader!less-loader'
+            },
+            {
+                test:/\.js$/,
+                loader:'babel-loader',
+                exclude:/node_modules/,
+                options:{
+                    presets:[
+                        'env'
+                    ],
+                    plugins:[
+                        'transform-runtime'
+                    ]
+                }
             }
         ]
     },
