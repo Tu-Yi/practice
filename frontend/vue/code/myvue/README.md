@@ -124,6 +124,30 @@ props: ['title']
 main里引入
 newslist 放入navbar,传递title
 
+解决点击下方菜单不跳转的问题
+菜单图片加点击事件changehash
+this.$nextTick(function(){
+  this.$router.push
+})
+
+修改新闻列表每一项，router-link :to="{name: 'news.detail',query:{id:news.id}}"
+创建详情页，配置路由，构造数据，制作页面，绑定数据，导航栏
+
+home里创建图文分享链接
+params:{categoryId:0}
+创建图文列表和路由
+/photo/list/:categoryId
+制作图文分享列表页面，绑定数据
+图片懒加载
+点菜单加载
+路由变化的时候触发：路由守卫  beforeRouteUpdate(to,from,next)  next()，路由不变，参数改变触发
+绑定分类信息，调用绑定函数，添加全部节点，添加toast，数据为空提示(找矢量图标，放入assets，main引入矢量图css，)
+if(this.imgs.length)===0   this.$toast
+
+
+
+
+
 
 
 

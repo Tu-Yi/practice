@@ -57,11 +57,17 @@ export default {
     }
   },
   created () {
+    this.sendTitle()
     this.$axios.get('getlunbo')
       .then(res => {
         console.log(res)
         this.imgs = res.data
       })
+  },
+  methods: {
+    sendTitle () {
+      this.$emit('getChildTitle', '首页')
+    }
   }
 }
 </script>
