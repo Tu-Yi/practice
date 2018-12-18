@@ -1,0 +1,85 @@
+<template>
+    <div>
+      <header>
+        <ul>
+          <li>
+            <a href="javascript:;" @click="loadPhoto(0)">全部图片</a>
+          </li>
+          <li>
+            <a href="javascript:;" @click="loadPhoto(1)">食品</a>
+          </li>
+          <li>
+            <a href="javascript:;" @click="loadPhoto(2)">截图</a>
+          </li>
+          <li>
+            <a href="javascript:;" @click="loadPhoto(3)">其他</a>
+          </li>
+        </ul>
+      </header>
+      <ul id="photolist">
+        <li v-for="item in photoList" :key="item.id" :id="item.id">
+          <img v-lazy="item.path" alt="图片不存在">
+        </li>
+      </ul>
+    </div>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      msg: '',
+      photoList: []
+    }
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.loadPhoto(to.params.categoryId)
+    next()
+  },
+  created () {
+    this.loadPhoto(this.$route.params.categoryId)
+  },
+  methods: {
+    loadPhoto (categoryId) {
+      this.$axios.get('photoList/' + categoryId)
+        .then(res => {
+          console.log(res)
+          this.photoList = res.data
+        })
+    }
+  }
+}
+</script>
+<style scoped>
+div{
+  margin-bottom: 50px;
+  background-color: #ddd;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+  list-style: none;
+}
+header li{
+    height: 20px;
+    float: left;
+    text-align: left;
+    padding: 5px;
+}
+#photolist li{
+  margin-top: 5px;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#photolist li img{
+  width: 100%;
+  height: 200px;
+}
+image[lazy=loading] {
+  width: 40px;
+  height: 300px;
+  margin: auto;
+}
+</style>

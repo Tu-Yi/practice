@@ -31,7 +31,7 @@ export default {
         {
           title: '图文分享',
           itemClass: 'item item_share',
-          router: {name: 'news.list'}
+          router: {name: 'photo.list', params: {categoryId: 0}}
         },
         {
           title: '商品展示',
