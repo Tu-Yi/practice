@@ -1,9 +1,9 @@
 package com.littlejava.model;
 
+import org.json.JSONException;
+
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 新闻构造类
@@ -12,6 +12,8 @@ import java.util.Map;
 public class NewsFactory {
 
     private File newsDir;
+
+    public NewsFactory(){}
 
     public NewsFactory(String dirName) throws Exception {
         this.newsDir = new File(dirName);
@@ -23,26 +25,19 @@ public class NewsFactory {
         }
     }
 
-    public ArrayList<News> fetch() throws IOException {
+
+    public ArrayList<News> fetch() throws IOException, JSONException {
         ArrayList<News> news = new ArrayList<>();
         File[] files = this.newsDir.listFiles();
         for(File file : files){
-            BufferedReader newsReader = new BufferedReader(new FileReader(file));
-            String title = newsReader.readLine();
-            newsReader.readLine();
-            String content = newsReader.readLine();
-            newsReader.readLine();
+            NewsReader nr = null;
+            if(file.getName().endsWith(".txt")){
+                nr = new TxtNewsReader(file);
+            }else if(file.getName().endsWith(".json")){
+                nr = new JsonNewsReader(file);
+            }
 
-            Map<String,String> related = new HashMap<>();
-            related.put(newsReader.readLine(),newsReader.readLine());
-            newsReader.readLine();
-            related.put(newsReader.readLine(),newsReader.readLine());
-            newsReader.readLine();
-            related.put(newsReader.readLine(),newsReader.readLine());
-
-            News n = new News(title,content,related);
-
-            news.add(n);
+            news.add(nr.readNews());
         }
         return news;
     }
