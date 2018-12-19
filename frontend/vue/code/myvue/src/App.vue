@@ -1,7 +1,7 @@
 <template>
   <div>
     <mt-header :title="pageTitle">
-      <router-link :to="$store.state.routerBack" slot="left">
+      <router-link to="/" slot="left">
         <mt-button icon="back">返回</mt-button>
       </router-link>
     </mt-header>

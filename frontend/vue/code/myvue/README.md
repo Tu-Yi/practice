@@ -31,118 +31,215 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 
-## 笔记
-npm i -g vue-cli
-vue init webpack ****
-npm i axios mint-ui -S
+## vue基础笔记总结
 
-导入并配置axios和mint插件
+### 项目初始化
+
+1. 安装vue脚手架   `npm i -g vue-cli`
+2. 根据vue脚手架初始化项目  `vue init webpack 项目名` 
+3. 安装axios、mint-ui到生产环境  `npm i axios mint-ui -S`
+4. 引入并初始化axios
 ```javascript
+
 main.js
 import Axios from 'axios'
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
-
-Vue.use(MintUI)
-
-Axios.defaults.baseURL = 'https://www.sinya.online/api/'
+Axios.defaults.baseURL = 'http://localhost:8888/'
 Vue.prototype.$axios = Axios
 ```
-
-router
-![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-11/48613107.jpg)
-
-
-**初始化引入header**
+4. 引入并初始化mint-ui
 ```javascript
-<template>
-  <div>
-    <mt-header fixed title="myProject"></mt-header>
-  </div>
-</template>
-<script>
-export default {
-  data () {
-    return {
-      text: 'i am app'
-    }
-  }
-}
-</script>
+main.js
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
 ```
+5. `Vue.use(Router)`路由的挂载默认放在了router中
 
-**制作底部菜单和路由及跳转**
-引入tabbar，修改菜单图片和文字，修改selected关联的id为英文
-建立4个对应菜单的入口组件页面，router中配置好路由，APP里放好router-view,APP的watch里监视selected，this.$router.push({name:newV})
-
-关闭eslint，config-index,useEslint false
-
-引入全局css
+6. 引入全局css 有全局的css都可以写在这里面
 assets css global.css  
 import './assets/css/global.css'
 
-引入swipe
-.mint-swipe  height:200px
-建立对象imgs: []
-home created 获取轮播图数据填充imgs
-swipe，v-for绑定数据,给key
-style里加上scoped
+*PS: 关闭eslint，config-index---useEslint false*
 
-写九宫格和样式
+### APP组件制作
 
-创建ul和li组件，main。js中引入
+1. header 
+定义pageTitle变量和v-on:getChildTitle=showTitle，用于接收子组件传回的页面标题参数
+***header前进后退的控制需要再研究***
+```javascript
+<mt-header :title="pageTitle">
+    <router-link to="/" slot="left">
+      <mt-button icon="back">返回</mt-button>
+    </router-link>
+</mt-header>
+<router-view v-on:getChildTitle=showTitle></router-view>
+showTitle (data) {
+    this.pageTitle = data
+}
+```
+2. footer
+fixed: 将tabbar固定在底部，每个子组件最外层div记得`margin-bottom:50px;`
+selected： 设置每个item的id，可自动关联到selected
+changeHash: 实现路由跳转
+```javascript
+<mt-tabbar v-model="selected" fixed>
+    <mt-tab-item id="home">
+      <img @click="changeHash" slot="icon" src="./assets/img/home.png">
+      首页
+    </mt-tab-item>
+    <mt-tab-item id="member">
+      <img @click="changeHash" slot="icon" src="./assets/img/member.png">
+      会员
+    </mt-tab-item>
+    <mt-tab-item id="shopcart">
+      <img @click="changeHash" slot="icon" src="./assets/img/shopcart.png">
+      购物车
+    </mt-tab-item>
+    <mt-tab-item id="search">
+      <img @click="changeHash" slot="icon" src="./assets/img/search.png">
+      查找
+    </mt-tab-item>
+</mt-tabbar>
 
-![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-11/12432073.jpg)
+注意使用nextTick，防止事件延迟响应
+changeHash () {
+  this.$nextTick(function () {
+    this.$router.push({
+      name: this.selected
+    })
+  })
+}
+```
 
-![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-11/88272116.jpg)
+### home组件制作
 
-改造home.vue，用新组件创建
+1. 轮播图
+引入mt-swipe组件
+注意设置轮播图高度：`.mint-swipe  height:200px`
+```javascript
+<mt-swipe :auto="0">
+    <mt-swipe-item v-for="img in imgs" :key="img.id">
+        <img :src="img.path" alt="no">
+    </mt-swipe-item>
+</mt-swipe>
+```
+2. 九宫格主页菜单
+如下，创建ul/li组件，用于存放
+```javascript
+<my-ul>
+    <my-li v-for="(grid,index) in grids" :key="index">
+      <router-link :to="grid.router">
+        <div :class="grid.itemClass">
+            {{grid.title}}
+        </div>
+      </router-link>
+    </my-li>
+</my-ul>
 
-首页重定向
+main.js
+import MyUl from '@/components/common/MyUL'
+import MyLi from '@/components/common/MyLi'
+
+Vue.component(MyUl.name, MyUl)
+Vue.component(MyLi.name, MyLi)
+```
+
+3. 注意首页路由重定向
+```javascript
 {
   path: '/',
   redirect: {
     name: 'home'
   }
 }
+```
+4. 向app组件传标题
+```javascript
+sendTitle () {
+  this.$emit('getChildTitle', '首页')
+}
+```
 
+### 新闻列表及详情组件制作
 
-grid中增加router对象
-router:{name: 'news.list'}
-用router-link :to包裹griddiv，
-配置路由news.list,创建页面，制作列表页面，构造数据，绑定数据
-
-tabbar  fixed 固定在底部
-
-momentjs.com locate  定义全局过滤器 YYYY-MM-DD
+1. momentjs.com locate  定义全局过滤器 YYYY-MM-DD
 ![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-13/58266106.jpg)
 
-创建navbar
-name: 'nav-bar'
-this.$router.go(-1)
-props: ['title']
-main里引入
-newslist 放入navbar,传递title
 
-解决点击下方菜单不跳转的问题
-菜单图片加点击事件changehash
-this.$nextTick(function(){
-  this.$router.push
-})
+2. 修改新闻列表每一项，router-link :to="{name: 'news.detail',query:{id:news.id}}"
+```javascript
+ <article>
+    <section v-for="item in newsList" :key="item.id">
+        <router-link :to="currentPath" @click.native="toDetail(item.id)">
+            <div id="imgDiv">
+                <img :src="item.path" alt="不存在">
+            </div>
+            <div id="contentDiv">
+                <div id="titleDiv">{{item.title}}</div>
+                <div id="bottomDiv">
+                    <span id="click">{{item.clickCount}}</span>
+                    <span id="creatTime">{{item.creatTime | formatDate('YYYY-MM-DD')}}</span>
+                </div>
+            </div>
+        </router-link>
+    </section>
+</article>
+```
 
-修改新闻列表每一项，router-link :to="{name: 'news.detail',query:{id:news.id}}"
-创建详情页，配置路由，构造数据，制作页面，绑定数据，导航栏
+3. 创建详情页，配置路由，构造数据，制作页面，绑定数据，导航栏
 
-home里创建图文分享链接
-params:{categoryId:0}
-创建图文列表和路由
-/photo/list/:categoryId
-制作图文分享列表页面，绑定数据
-图片懒加载
-点菜单加载
-路由变化的时候触发：路由守卫  beforeRouteUpdate(to,from,next)  next()，路由不变，参数改变触发
-绑定分类信息，调用绑定函数，添加全部节点，添加toast，数据为空提示(找矢量图标，放入assets，main引入矢量图css，)
-if(this.imgs.length)===0   this.$toast
+### 图文分享组件
+
+1. home里创建图文分享链接
+创建图文列表和路由  `/photo/list/:categoryId`
+```javascript
+{
+  title: '图文分享',
+  itemClass: 'item item_share',
+  router: {name: 'photo.list', params: {categoryId: 0}}
+}
+```
+2. 图片懒加载
+每个图片加入值为图片路径的绑定属性 `v-lazy`，加入样式`image[lazy=loading] `
+```javascript
+<ul id="photolist">
+  <li v-for="item in photoList" :key="item.id" :id="item.id">
+    <img v-lazy="item.path" alt="图片不存在">
+  </li>
+</ul>
+image[lazy=loading] {
+  width: 40px;
+  height: 300px;
+  margin: auto;
+}
+```
+3. 路由守卫
+路由变化的时候触发：路由守卫  
+beforeRouteUpdate(to,from,next)  next()，路由不变，参数改变时触发
+```javascript
+beforeRouteUpdate (to, from, next) {
+  this.loadPhoto(to.params.categoryId)
+  next()
+}
+```
+4. 绑定分类信息，调用绑定函数，unshift添加全部节点
+```javascript
+<li>
+  <a href="javascript:;" @click="loadPhoto(0)">全部图片</a>
+</li>
+```
+5. 添加toast
+图片使用字体图标
+```javascript
+if (this.photoList.length === 0) {
+  this.$toast({
+    message: '没有图片',
+    iconClass: 'iconfont icon-danmokuai'
+  })
+}
+```
+
+
 
 
 

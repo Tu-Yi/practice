@@ -10,6 +10,7 @@ import MyLi from '@/components/common/MyLi'
 import Moment from 'moment'
 import 'mint-ui/lib/style.css'
 import './assets/css/global.css'
+import './assets/ttf/iconfont.css'
 
 Vue.component(MyUl.name, MyUl)
 Vue.component(MyLi.name, MyLi)

@@ -44,6 +44,12 @@ export default {
         .then(res => {
           console.log(res)
           this.photoList = res.data
+          if (this.photoList.length === 0) {
+            this.$toast({
+              message: '没有图片',
+              iconClass: 'iconfont icon-danmokuai'
+            })
+          }
         })
     }
   }
