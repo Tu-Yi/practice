@@ -5,33 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec79330-3f05-4e6f-b12b-5f9263776c55" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/BinaryTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/BubbleSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/CardinalSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/FastSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Queue_demo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/QuickSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Recursion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Solution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Stack_demo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/TreeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/TwoSums.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/WordCounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/axios/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/vue/axios/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/424d252ffce562c0a4e6a9539349ff5a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/Cal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/build.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/vue/module/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/vue/module/webpack.dev.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/vue/module/webpack.dev.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../threaddemo/src/main/java/com/threaddemo/InputTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/vue/code/myvue/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/vue/code/myvue/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/demo/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/demo/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../threaddemo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../threaddemo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../threaddemo/src/main/java/com/threaddemo/ThreadDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../threaddemo/src/main/java/com/threaddemo/ThreadDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../threaddemo/target/classes/com/threaddemo/ThreadDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../threaddemo/target/classes/com/threaddemo/ThreadDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../threaddemo/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../threaddemo/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,9 +58,9 @@
     <session id="2065241747">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="35" />
+          <entry key="project.closed" value="36" />
           <entry key="project.open.time.0" value="3" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="1" />
@@ -90,7 +70,7 @@
           <entry key="project.open.time.7" value="6" />
           <entry key="project.open.time.8" value="6" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="35" />
+          <entry key="project.opened" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -108,13 +88,13 @@
           <entry key="ArrayList" value="1" />
           <entry key="UrlNews" value="1" />
           <entry key="class" value="2" />
-          <entry key="java" value="61" />
+          <entry key="java" value="63" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="61" />
+          <entry key="JAVA" value="63" />
           <entry key="UML" value="2" />
         </counts>
       </usages-collector>
@@ -122,11 +102,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
+            <state relative-caret-position="451">
+              <caret line="369" column="32" selection-start-line="369" selection-start-column="28" selection-end-line="369" selection-end-column="32" />
               <folding>
                 <marker date="1544601665546" expanded="true" signature="7752:7886" ph="..." />
               </folding>
@@ -135,21 +115,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Stack_demo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/QuickSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="160">
               <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
             </state>
           </provider>
@@ -158,7 +126,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Queue_demo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="240">
               <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
             </state>
           </provider>
@@ -167,17 +135,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/TreeNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="40">
               <caret line="2" selection-start-line="2" selection-end-line="49" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/BinaryTree.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="440">
-              <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+              <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
               <folding>
                 <element signature="e#141#142#0" expanded="true" />
                 <element signature="e#186#187#0" expanded="true" />
@@ -187,9 +155,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/FileHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="591">
+              <caret line="119" column="37" lean-forward="true" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/CardinalSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="400">
               <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
             </state>
           </provider>
@@ -198,7 +175,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/UrlNews.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="380">
               <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
             </state>
           </provider>
@@ -207,7 +184,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Displayable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="60">
               <caret line="3" column="16" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="16" />
             </state>
           </provider>
@@ -216,7 +193,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Human.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="120">
               <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
@@ -328,6 +305,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -340,11 +318,16 @@
               <item name="demo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -442,11 +425,12 @@
       <workItem from="1544671865008" duration="455000" />
       <workItem from="1544794051258" duration="36000" />
       <workItem from="1544794121699" duration="159000" />
+      <workItem from="1545280297842" duration="1602000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127060000" />
+    <option name="totallyTimeSpent" value="128662000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -461,7 +445,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22547974" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22761194" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -573,13 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6115">
           <caret line="54" column="22" lean-forward="true" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/FileHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -804,19 +781,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
-          <folding>
-            <marker date="1544601665546" expanded="true" signature="7752:7886" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Stack_demo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="380">
           <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -826,49 +793,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/QuickSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="160">
           <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Queue_demo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="240">
           <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/TreeNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="40">
           <caret line="2" selection-start-line="2" selection-end-line="49" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/CardinalSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="400">
           <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/UrlNews.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="380">
           <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Displayable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="60">
           <caret line="3" column="16" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Human.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="120">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
@@ -876,10 +843,27 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/BinaryTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
-          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
           <folding>
             <element signature="e#141#142#0" expanded="true" />
             <element signature="e#186#187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/FileHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="119" column="37" lean-forward="true" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="369" column="32" selection-start-line="369" selection-start-column="28" selection-end-line="369" selection-end-column="32" />
+          <folding>
+            <marker date="1544601665546" expanded="true" signature="7752:7886" ph="..." />
           </folding>
         </state>
       </provider>

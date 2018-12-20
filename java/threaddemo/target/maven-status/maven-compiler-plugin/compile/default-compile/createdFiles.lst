@@ -1,2 +1,5 @@
 com\threaddemo\MainThread.class
+com\threaddemo\InputTask.class
+com\threaddemo\RunnableDemo.class
 com\threaddemo\ThreadDemo.class
+com\threaddemo\LetterTask.class

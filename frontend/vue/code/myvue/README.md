@@ -240,6 +240,16 @@ if (this.photoList.length === 0) {
 ```
 
 
+- 图文列表，点击分类，路由需要改变
+this.$router.push({
+  name: 'photo.list',
+  params: {
+    categoryId
+  }
+})
+- 新闻详情，html样式控制，golbalcss里控制img 100%
+
+
 
 
 
