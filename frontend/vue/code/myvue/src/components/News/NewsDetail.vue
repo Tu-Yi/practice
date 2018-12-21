@@ -7,8 +7,7 @@
           <div id="div_time">{{detail.createTime | formatDate('YYYY-MM-DD')}}</div>
         </div>
       </header>
-      <section>
-        {{detail.content}}
+      <section v-html="detail.content" class="newsDetail">
       </section>
     </div>
 </template>

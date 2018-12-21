@@ -109,10 +109,19 @@ let newsList = [{
         clickCount: 32
     }
 ]
+
+let newsContent = `
+<p class="one-p">腾讯体育12月20日上海（文/李旭）在今天召开的2018中国职业足球总结大会上，中国足协党委书记杜兆才介绍协会将积极推进优秀外籍球员归化工作。中超规程出炉：外援注册4人上场3人 球员顶薪税前千万</p>
+<p class="one-p"><img src="//inews.gtimg.com/newsapp_bt/0/6919673229/1000" class="content-picture"><i class="desc">埃尔克森在中超效力多年</i></p>
+<p class="one-p">在介绍中国足协的发展规划时，杜兆才透露在中超加快建设世界一流联赛的过程中，要积极推进优秀外籍球员归化工作。“<strong>出台关于归化球员的实施政策，协助俱乐部试点归化具有较高水平的优秀外籍球员参加中超联赛</strong>。”</p>
+<p class="one-p">在完善青训体系改革方面，足协将要求俱乐部设立青训总监负责制。2019赛季，俱乐部青训支出应占俱乐部总支出的10%以上，2021年达到15%以上。各中超中甲俱乐部至少建设从U19-U13的五级梯队。</p>
+<p class="one-p">此外，中国足协也将积极启用足球青少年人才海外孵化计划。<strong>组织各级U系列队伍赴欧美足球发达国家长期训练比赛</strong>，在与狼共舞中提高整体实力与比赛水平；组织球探在全国选拔具有足球天赋和发展潜力的国内顶级青少年球员，送往欧洲足球俱乐部常年培养锻炼，努力打造未来的世界级球星。</p>
+`
+
 let newsDetail = {
     id: 0,
     title: '软银前员工推出机器人伴侣，售价 3100 美元',
-    content: '据外媒报道，周二，软银机器人公司前员工的科技公司 Groove X 推出了一款售价约 3100 美元的机器人伴侣 ... 该公司表示，它设计这款名为 Lovot 的机器人是为了提高人们使用机器人的舒适感以及感受到机器人的爱意 ... 现在有两款 Lovot 机器人可供预定：一款 Lovot 机器人，售价为 59.8 万日元（约合 5300 美元），预计会在 2019 年底发货。',
+    content: newsContent,
     createTime: new Date(),
     clickCount: 10
 }
@@ -130,37 +139,206 @@ let photoList = [{
         id: 3,
         categoryId: 1,
         path: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/68511809.jpg',
-    },
-    {
-        id: 4,
-        categoryId: 1,
-        path: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/68511809.jpg',
-    },
-    {
-        id: 5,
-        categoryId: 1,
-        path: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/68511809.jpg',
-    },
-    {
-        id: 6,
-        categoryId: 1,
-        path: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/68511809.jpg',
     }
 ]
-let categoryList = [{
+let photoDetails = [
+    {
+        photoId: 1,
+        title: '足协高层：试点归化高水平外援 组织青少年赴欧美长期集训',
+        createTime: new Date(),
+        clickCount: 1000,
+        content: newsContent
+    },
+    {
+        photoId: 2,
+        title: '足协高层：试点归化高水平外援 组织青少年赴欧美长期集训',
+        createTime: new Date(),
+        clickCount: 1000,
+        content: newsContent
+    },
+    {
+        photoId: 3,
+        title: '足协高层：试点归化高水平外援 组织青少年赴欧美长期集训',
+        createTime: new Date(),
+        clickCount: 1000,
+        content: newsContent
+    }
+]
+let photos = [
+    {
+        photoId: 1,
+        thumbs: [
+            {
+                id: 1,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-12/56543555.jpg'
+            },
+            {
+                id: 2,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg'
+            },
+            {
+                id: 3,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-12/56543555.jpg'
+            },
+            {
+                id: 4,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/68511809.jpg'
+            },
+            {
+                id: 5,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-12/56543555.jpg'
+            }
+        ]
+    },
+    {
+        photoId: 2,
+        thumbs: [
+            {
+                id: 1,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-12/56543555.jpg'
+            },
+            {
+                id: 2,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg'
+            },
+            {
+                id: 3,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-12/56543555.jpg'
+            },
+            {
+                id: 4,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/68511809.jpg'
+            },
+            {
+                id: 5,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-12/56543555.jpg'
+            }
+        ]
+    },
+    {
+        photoId: 3,
+        thumbs: [
+            {
+                id: 1,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-12/56543555.jpg'
+            },
+            {
+                id: 2,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg'
+            },
+            {
+                id: 3,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-12/56543555.jpg'
+            },
+            {
+                id: 4,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/68511809.jpg'
+            },
+            {
+                id: 5,
+                src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-12/56543555.jpg'
+            }
+        ]
+    }
+]
+let comments = [
+    {
         id: 1,
-        label: '食品'
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户1',
+        content: '大家都很不错'
     },
     {
         id: 2,
-        label: '截图'
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户2',
+        content: '大家都很不错'
     },
     {
         id: 3,
-        label: '其他'
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户3',
+        content: '大家都很不错'
+    },
+    {
+        id: 4,
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户4',
+        content: '大家都很不错'
+    },
+    {
+        id: 5,
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户5',
+        content: '大家都很不错'
+    },
+    {
+        id: 6,
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户6',
+        content: '大家都很不错'
+    },
+    {
+        id: 7,
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户7',
+        content: '大家都很不错'
+    },
+    {
+        id: 8,
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户8',
+        content: '大家都很不错'
+    },
+    {
+        id: 9,
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户9',
+        content: '大家都很不错'
+    },
+    {
+        id: 10,
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户10',
+        content: '大家都很不错'
+    },
+    {
+        id: 11,
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户11',
+        content: '大家都很不错'
+    },
+    {
+        id: 12,
+        relativeId: 1,
+        relativeType: 'photo',
+        createTime: new Date(),
+        person: '匿名用户12',
+        content: '大家都很不错'
     }
 ]
-
 app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -195,6 +373,36 @@ app.get('/photoList/:categoryId', function (req, res) {
     }else{
         res.send(JSON.stringify(photoList));
     }
+})
+app.get('/photoDetail/:photoId', function (req, res) {
+    var photoId = req.params.photoId
+    let photoDetail = photoDetails.filter(function (element, index, arrays) {
+        return element.photoId+"" === photoId
+    })
+    res.send(JSON.stringify(photoDetail));
+})
+app.get('/photoThumbs/:photoId', function (req, res) {
+    var photoId = req.params.photoId
+    let photoThumbs = photos.filter(function (element, index, arrays) {
+        return element.photoId+"" === photoId
+    })
+    res.send(JSON.stringify(photoThumbs));
+})
+app.get('/getComments/:relativeId/:relativeType/:page', function (req, res) {
+    let relativeId = req.params.relativeId
+    let relativeType = req.params.relativeType
+    let page = req.params.page * 10
+    let count = comments.length
+    let isFull = parseInt((count%100)/10) === (req.params.page-2) 
+    let newComments = comments.filter(function (element, index, arrays) {
+        return (element.relativeId+"" === relativeId && element.relativeType+"" === relativeType && element.id <= page)
+    })
+    let commentObj = {
+        count: count,
+        isFull: !isFull,
+        newComments: newComments
+    }
+    res.send(JSON.stringify(commentObj));
 })
 
 var server = app.listen(8888, function () {

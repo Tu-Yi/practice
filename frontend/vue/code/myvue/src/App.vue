@@ -5,7 +5,7 @@
         <mt-button icon="back">返回</mt-button>
       </router-link>
     </mt-header>
-    <router-view v-on:getChildTitle=showTitle></router-view>
+    <router-view v-on:getChildTitle=showTitle class="tmpl"></router-view>
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="home">
         <img @click="changeHash" slot="icon" src="./assets/img/home.png">

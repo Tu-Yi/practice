@@ -3,22 +3,24 @@
       <header>
         <ul>
           <li>
-            <a href="javascript:;" @click="loadPhoto(0)">全部图片</a>
+            <a href="javascript:;" @click="loadPhotoByType(0)">全部图片</a>
           </li>
           <li>
-            <a href="javascript:;" @click="loadPhoto(1)">食品</a>
+            <a href="javascript:;" @click="loadPhotoByType(1)">食品</a>
           </li>
           <li>
-            <a href="javascript:;" @click="loadPhoto(2)">截图</a>
+            <a href="javascript:;" @click="loadPhotoByType(2)">截图</a>
           </li>
           <li>
-            <a href="javascript:;" @click="loadPhoto(3)">其他</a>
+            <a href="javascript:;" @click="loadPhotoByType(3)">其他</a>
           </li>
         </ul>
       </header>
       <ul id="photolist">
         <li v-for="item in photoList" :key="item.id" :id="item.id">
-          <img v-lazy="item.path" alt="图片不存在">
+          <router-link :to="{name: 'photo.detail', params: {photoId: item.id}}">
+            <img v-lazy="item.path" alt="图片不存在">
+          </router-link>
         </li>
       </ul>
     </div>
@@ -39,6 +41,14 @@ export default {
     this.loadPhoto(this.$route.params.categoryId)
   },
   methods: {
+    loadPhotoByType (categoryId) {
+      this.$router.push({
+        name: 'photo.list',
+        params: {
+          categoryId
+        }
+      })
+    },
     loadPhoto (categoryId) {
       this.$axios.get('photoList/' + categoryId)
         .then(res => {
@@ -57,7 +67,6 @@ export default {
 </script>
 <style scoped>
 div{
-  margin-bottom: 50px;
   background-color: #ddd;
 }
 ul{

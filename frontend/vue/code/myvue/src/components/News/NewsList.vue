@@ -1,5 +1,5 @@
 <template>
-    <div id="content">
+    <div>
         <article>
             <section v-for="item in newsList" :key="item.id">
                 <router-link :to="currentPath" @click.native="toDetail(item.id)">

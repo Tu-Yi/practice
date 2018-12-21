@@ -249,6 +249,44 @@ this.$router.push({
 })
 - 新闻详情，html样式控制，golbalcss里控制img 100%
 
+- 创建图文详情页面，绑定详细信息和content，
+npm i vue-preview -S
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+imgs新增属性 msrc,w,h
+实现图片排列
+
+解决bottom显示不全
+
+创建和引入评论组件，引入mintui的button，父组件传入id，route传入page，绑定数据，相对时间 filter fromNow（）  Moment.locale('zh-cn')
+制作加载更多，没有数据了给toast，没有更多数据就不显示按钮
+制作发表评论，发post请求，this.$axios.post('postComonent/'+this.cid,'content='+this.newContent)
+
+引入mintui indicator,
+配置请求拦截器
+Axios.interceptors.request.use(config => {
+  MintUI.Indicator.open({
+    text: ''
+  })
+  return config
+})
+配置响应拦截器
+Axios.interceptors.response.use(response => {
+  MintUI.Indicator.close()
+  return response
+})
+
+创建商铺列表页面，修改路由，修改home，传入id
+引入loadmore，上拉下拉函数记得用this.$refs.loadmore.onTop/bottom     上拉设置autofill false
+静态图片 import imgSrc from '../afa.jpg'
+去掉index,doctype
+分页控制，没有更多数据提示
+
+字符串截取过滤器
+Vue.filter('convertStr',(val,num)=>{
+  return val.subString(0,num) + '......'
+})
+
 
 
 

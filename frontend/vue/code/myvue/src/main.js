@@ -7,15 +7,19 @@ import Axios from 'axios'
 import MintUI from 'mint-ui'
 import MyUl from '@/components/common/MyUL'
 import MyLi from '@/components/common/MyLi'
+import Comment from '@/components/common/Comment'
 import Moment from 'moment'
+import VuePreview from 'vue-preview'
 import 'mint-ui/lib/style.css'
 import './assets/css/global.css'
 import './assets/ttf/iconfont.css'
 
 Vue.component(MyUl.name, MyUl)
 Vue.component(MyLi.name, MyLi)
+Vue.component(Comment.name, Comment)
 
 Vue.use(MintUI)
+Vue.use(VuePreview)
 
 Vue.filter('formatDate', function (val, str) {
   if (val) {
@@ -23,9 +27,28 @@ Vue.filter('formatDate', function (val, str) {
   }
   return '--'
 })
+Vue.filter('formatDate', function (val) {
+  if (val) {
+    return Moment(val).fromNow()
+  }
+  return '--'
+})
 
 Axios.defaults.baseURL = 'http://localhost:8888/'
 Vue.prototype.$axios = Axios
+
+// 配置请求拦截器
+Axios.interceptors.request.use(config => {
+  MintUI.Indicator.open({
+    text: ''
+  })
+  return config
+})
+// 配置响应拦截器
+Axios.interceptors.response.use(response => {
+  MintUI.Indicator.close()
+  return response
+})
 
 Vue.config.productionTip = false
 

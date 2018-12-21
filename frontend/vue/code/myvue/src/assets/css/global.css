@@ -1,6 +1,25 @@
 body{
     margin: 0;
 }
-.iconfont{
-    font-size: 32px;
+.newsDetail img{
+    width: 100%;
+}
+.tmpl{
+    margin-bottom: 55px;
+}
+.my-gallery{
+    display: flex;
+    flex-wrap: wrap;
+    widows: 100%;
+    height: 280px;
+    padding-left: 1px;
+}
+.my-gallery img{
+    height: 130px;
+    width: 123px;
+}
+figure{
+    margin: 0;
+    padding: 0;
+    margin-left: 1px;
 }
