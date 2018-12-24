@@ -279,13 +279,22 @@ Axios.interceptors.response.use(response => {
 创建商铺列表页面，修改路由，修改home，传入id
 引入loadmore，上拉下拉函数记得用this.$refs.loadmore.onTop/bottom     上拉设置autofill false
 静态图片 import imgSrc from '../afa.jpg'
-去掉index,doctype
+<div style="overflow: scroll;height:590px;">
+<mt-loadmore :auto-fill="false" :bottom-method="loadBottom" ref="loadmore" :bottom-all-loaded="isAllLoad">
 分页控制，没有更多数据提示
 
 字符串截取过滤器
 Vue.filter('convertStr',(val,num)=>{
   return val.subString(0,num) + '......'
 })
+
+创建商品详情页面，加上路由和链接，获取详情数据
+创建轮播图组件，mySwip.vue，样式，接收请求url，获取数据，注册
+
+制作购物车小球，vue过渡
+
+
+
 
 
 

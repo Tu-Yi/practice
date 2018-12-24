@@ -339,6 +339,71 @@ let comments = [
         content: '大家都很不错'
     }
 ]
+let goodsList = [
+    {
+        id: 1,
+        src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg',
+        title: '[1]龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉',
+        price: 2467,
+        store: 60
+    },
+    {
+        id: 2,
+        src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg',
+        title: '[2]龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉',
+        price: 2467,
+        store: 60
+    },
+    {
+        id: 3,
+        src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg',
+        title: '[3]龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉',
+        price: 2467,
+        store: 60
+    },
+    {
+        id: 4,
+        src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg',
+        title: '[4]龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉',
+        price: 2467,
+        store: 60
+    },
+    {
+        id: 5,
+        src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg',
+        title: '[5]龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉',
+        price: 2467,
+        store: 60
+    },
+    {
+        id: 6,
+        src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg',
+        title: '[6]龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉',
+        price: 2467,
+        store: 60
+    },
+    {
+        id: 7,
+        src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg',
+        title: '[7]龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉',
+        price: 2467,
+        store: 60
+    },
+    {
+        id: 8,
+        src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg',
+        title: '[8]龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉',
+        price: 2467,
+        store: 60
+    },
+    {
+        id: 9,
+        src: 'http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-11-21/73370656.jpg',
+        title: '[9]龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉龙夫山泉',
+        price: 2467,
+        store: 60
+    }
+]
 app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -403,6 +468,16 @@ app.get('/getComments/:relativeId/:relativeType/:page', function (req, res) {
         newComments: newComments
     }
     res.send(JSON.stringify(commentObj));
+})
+app.get('/goodsList/:page/:pagesize', function (req, res) {
+    let page = req.params.page
+    let pagesize = req.params.pagesize
+    let startId = pagesize * (page-1)
+    let endId = page * pagesize
+    let newGoodsList = goodsList.filter(function (element, index, arrays) {
+        return (element.id > startId && element.id <= endId)
+    })
+    res.send(JSON.stringify(newGoodsList));
 })
 
 var server = app.listen(8888, function () {

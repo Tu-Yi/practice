@@ -33,6 +33,12 @@ Vue.filter('formatDate', function (val) {
   }
   return '--'
 })
+Vue.filter('convertStr', (val, num) => {
+  if (val && val.length > num) {
+    return val.substring(0, num) + '......'
+  }
+  return val
+})
 
 Axios.defaults.baseURL = 'http://localhost:8888/'
 Vue.prototype.$axios = Axios

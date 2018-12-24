@@ -36,7 +36,7 @@ export default {
         {
           title: '商品展示',
           itemClass: 'item item_product',
-          router: {name: 'news.list'}
+          router: {name: 'goods.list'}
         },
         {
           title: '留言反馈',

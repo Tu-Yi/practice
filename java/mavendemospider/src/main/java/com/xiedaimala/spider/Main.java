@@ -16,7 +16,7 @@ public class Main {
     // 3. 思考 对象之间交互
     // 4. 开始写代码
 
-    static final int maximumURL = 10;
+    static final int maximumURL = 100;
 
     public static void main(String[] args) throws Exception {
         long startTime = System.currentTimeMillis();
@@ -24,7 +24,7 @@ public class Main {
         Queue<NewsWithRelated> newsQueue = new LinkedList<NewsWithRelated>();
 
         //读取第一篇新闻对象
-        String startUrl = "https://readhub.me/topic/5bMmlAm75lD";
+        String startUrl = "https://readhub.cn/topic/5bMmlAm75lD";
         NewsWithRelated startNews = UrlNewsReader.read(startUrl);
 
         int count = 0;

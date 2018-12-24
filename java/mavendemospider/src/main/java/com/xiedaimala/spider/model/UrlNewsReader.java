@@ -26,9 +26,9 @@ public class UrlNewsReader {
         NewsWithRelated news = new NewsWithRelated(url, title, content);
 
         // 获取相关新闻列表
-        Elements relatedElements = doc.select(".timeline__item___2eWUN");
+        Elements relatedElements = doc.select(".timeline__item___3bF6k");
         for (Element element : relatedElements) {
-            String relatedTitle = element.select(".content-item___3KfMq").text();
+            String relatedTitle = element.select(".date-item___14w-B").text();
             Elements children  = element.children();
             String relatedUrl = children.get(3).child(0).absUrl("href");
 

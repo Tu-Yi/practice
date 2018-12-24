@@ -2,6 +2,10 @@ package com.xiedaimala.spider.model;
 
 import java.util.*;
 
+/**
+ * @author yuankun
+ * @Description 共享队列资源类
+ */
 public class SearchSate {
     private final int maximumResults;
 
@@ -18,7 +22,7 @@ public class SearchSate {
         return newsQueue.poll();
     }
 
-    public synchronized void addResult(NewsWithRelated result) {
+    public void addResult(NewsWithRelated result) {
         results.add(result);
         count += 1;
     }
@@ -30,15 +34,11 @@ public class SearchSate {
         }
     }
 
-    public synchronized int getCount() {
-        return count;
-    }
-
-    public synchronized boolean hasTarget() {
+    public boolean hasTarget() {
         return !newsQueue.isEmpty() && count < maximumResults;
     }
 
-    public synchronized ArrayList<Viewable> getResults() {
+    public ArrayList<Viewable> getResults() {
         return results;
     }
 }
