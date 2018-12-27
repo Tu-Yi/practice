@@ -479,6 +479,13 @@ app.get('/goodsList/:page/:pagesize', function (req, res) {
     })
     res.send(JSON.stringify(newGoodsList));
 })
+app.get('/goodsDetail/:id', function (req, res) {
+    let id = req.params.id
+    let newGoodsList = goodsList.filter(function (element, index, arrays) {
+        return (element.id + '' === id)
+    })
+    res.send(JSON.stringify(newGoodsList));
+})
 
 var server = app.listen(8888, function () {
 

@@ -3,15 +3,17 @@
     <mt-loadmore :auto-fill="false" :bottom-method="loadBottom" ref="loadmore" :bottom-all-loaded="isAllLoad">
         <ul>
         <li v-for="item in goodsList" :key="item.id">
+          <router-link :to="{name: 'goods.detail', params: {id: item.id}}">
             <div class="imgDiv">
-                <img :src="item.src" alt="no">
+              <img :src="item.src" alt="no">
             </div>
             <div class="titleDiv">
-            {{item.title | convertStr(20)}}
+              {{item.title | convertStr(20)}}
             </div>
             <div class="priceDiv">
-            ￥{{item.price}}
+              ￥{{item.price}}
             </div>
+          </router-link>
         </li>
         </ul>
     </mt-loadmore>

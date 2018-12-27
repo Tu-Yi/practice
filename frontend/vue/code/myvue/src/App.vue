@@ -17,7 +17,7 @@
       </mt-tab-item>
       <mt-tab-item id="shopcart">
         <img @click="changeHash" slot="icon" src="./assets/img/shopcart.png">
-        购物车
+        购物车<mt-badge type="error" size="small">{{num}}</mt-badge>
       </mt-tab-item>
       <mt-tab-item id="search">
         <img @click="changeHash" slot="icon" src="./assets/img/search.png">
@@ -28,15 +28,24 @@
 </template>
 <script>
 import store from '@/Vuex/store'
+import EventBus from './EventBus'
+import GoodsTools from './GoodsTools.js'
 export default {
   data () {
     return {
       text: 'i am app',
       selected: '',
-      pageTitle: ''
+      pageTitle: '',
+      num: 0
     }
   },
   store,
+  created () {
+    //this.num = GoodsTools.getTotalCount()
+    EventBus.$on('addShopCart', data => {
+      this.num = data
+    })
+  },
   methods: {
     changeHash () {
       this.$nextTick(function () {

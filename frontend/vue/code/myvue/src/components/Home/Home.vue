@@ -1,10 +1,11 @@
 <template>
     <div>
-        <mt-swipe :auto="0">
+        <!-- <mt-swipe :auto="0">
             <mt-swipe-item v-for="img in imgs" :key="img.id">
                 <img :src="img.path" alt="no">
             </mt-swipe-item>
-        </mt-swipe>
+        </mt-swipe> -->
+        <my-swipe url="getlunbo" />
         <my-ul>
             <my-li v-for="(grid,index) in grids" :key="index">
               <router-link :to="grid.router">

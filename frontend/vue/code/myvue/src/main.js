@@ -7,6 +7,7 @@ import Axios from 'axios'
 import MintUI from 'mint-ui'
 import MyUl from '@/components/common/MyUL'
 import MyLi from '@/components/common/MyLi'
+import MySwipe from '@/components/common/MySwipe'
 import Comment from '@/components/common/Comment'
 import Moment from 'moment'
 import VuePreview from 'vue-preview'
@@ -17,6 +18,7 @@ import './assets/ttf/iconfont.css'
 Vue.component(MyUl.name, MyUl)
 Vue.component(MyLi.name, MyLi)
 Vue.component(Comment.name, Comment)
+Vue.component(MySwipe.name, MySwipe)
 
 Vue.use(MintUI)
 Vue.use(VuePreview)

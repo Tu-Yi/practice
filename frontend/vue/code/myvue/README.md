@@ -291,10 +291,85 @@ Vue.filter('convertStr',(val,num)=>{
 创建商品详情页面，加上路由和链接，获取详情数据
 创建轮播图组件，mySwip.vue，样式，接收请求url，获取数据，注册
 
-制作购物车小球，vue过渡
+制作购物车小球，vue过渡动画，钩子函数
+
+APPtabbar加入badge
+goodsdetail制作购买数量加减，数量不能小于1
+创建EventBus。js，APP里监听$on事件，箭头函数，detail里加入购物车afterenter加入触发函数，都需要import EventBus
+
+goodsdetail里图文介绍跳转详情制作
+加入详情页面和路由，component直接用NewsDetail
+NesDetail  加入beforeRouteEnter函数，根据from.name来判断来路，改变title变量的值，改变url，
+next（vm => {
+  vm.title = title
+}）
+
+制作商品评论
+
+新增GoodsTools.js，
+let obj={}
+obj.getGoodsList = () => {
+  return JSON.parse(window.localStorage.getItem('goods') || '{}')
+}
+obj.saveGoods=(goodsList)=>{
+  window.localStorage.setItem('goods',JSON.stringify(goodsList))
+}
+obj.add = (goods)=>{
+  let goodsList = this.getGoodsList()
+  if(goodsList[goods.id]){
+    goodsList[goods.id] += goods.num
+  }else{
+    goodsList[goods.id] = goods.num
+  }
+  this.saveGoods()
+}
+obj.getTotalCount=()=>{
+  let goodsList = this.getGoodsList()
+  let values = Object.values(goodsList)
+  let sum=0;
+  values.forEach(val => sum += val)
+  return sum
+}
+
+APP 里引入tools this.num = getTotalCount
+goodsdetail引入tools  添加本地存储，add-id,num
+
+创建购物车页面，通过localStorage传入接口id获取商品信息，getGoodsList   Object.keys(goodsList).join(',')
+mt-switch
+默认打勾和数量，手动通知vue this.$set('','num',)
+删除
+离开组件 beforeRouteleave   if(confim(''))  取消next(false)
+更新localStorage saveGoods next()
+
+computed 件数和总价
+
+npm i -g json-server
+创建db.json
+命令行 json-server --watch ./db.json
+
+router-view加上transition name='rv' mode="out-in"
+.rv-enter-active,.rv-leave-active{
+  animation 
+}
+![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-27/84926346.jpg)
+
+打包
+npm run build
+index.js build productionsourcemap false
+部署到腾讯云
+WINSCP
 
 
+优化
+main.js
+按需引入mintui import spinner from 'mint-ui/lib/spinner'  'mint-ui/lib/spinner/style.css'
 
+
+![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-27/96336771.jpg)
+
+![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-27/94125906.jpg)
+
+![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-27/74392162.jpg)
 
 
 

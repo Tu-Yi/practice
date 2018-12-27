@@ -21,21 +21,41 @@ export default {
         clickCount: 0,
         createTime: '',
         content: ''
-      }
+      },
+      appTitle: ''
     }
   },
   created () {
-    this.sendTitle()
     this.msg = this.$route.query.id
     this.$axios.get('newsDetail')
       .then(res => {
-        console.log(res)
+        console.log("res ", res.data)
         this.detail = res.data
       })
   },
-  methods: {
-    sendTitle () {
-      this.$emit('getChildTitle', '新闻详情')
+  beforeRouteEnter (to,from,next) {
+    let title = ''
+    console.log("from "+from.name)
+    console.log("to "+to.name)
+    if (from.name == null) {
+      if(to.name === 'news.detail'){
+        title = '新闻详情'
+      }else if (to.name === 'goods.detail.info'){
+        title = '图文详情'
+      }
+    }else if (from.name === 'news.list') {
+      title = '新闻详情'
+    }else if (from.name === 'goods.detail') {
+      title = '图文详情'
+    }
+    console.log(title)
+    next(vm => {
+      vm.appTitle = title
+    })
+  },
+  watch: {
+    appTitle: function(){
+      this.$emit('getChildTitle', this.appTitle)
     }
   }
 }
