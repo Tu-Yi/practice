@@ -1,14 +1,78 @@
 <template>
     <div>
-        shopcart
+        <div v-for="good in list" :key="good.id" class="section">
+          <div>
+            <img :src="good.src" alt="" class="imgDiv">
+          </div>
+          <div class="contentDiv">
+            <p class="titleDiv">{{good.title | convertStr(20)}}</p>
+            <p class="bottomDiv">{{good.price}}</p>
+          </div>
+          <p class="pNum"><span>-</span><span>{{good.num}}</span><span>+</span></p>
+        </div>
+        <footer>
+          <p>购买商品数量：{{totalNum}},&nbsp;总价格：{{totalPrice}}</p>
+        </footer>
     </div>
 </template>
 <script>
+import GoodsTools from '@/GoodsTools'
 export default {
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      list: [],
+      totalNum: 0,
+      totalPrice: 0
     }
+  },
+  created () {
+    let goodsList = GoodsTools.getGoodsList()
+    let ids = Object.keys(goodsList).join(',');
+    this.$axios.get('getShopCartList/' + ids)
+      .then( res => {
+        console.log(res)
+        this.list = res.data
+        this.list.forEach(element => {
+          if(goodsList[element.id]){
+            element.num = goodsList[element.id]
+          }
+        });
+      })
+      .catch(err => console.log(err))
   }
 }
 </script>
+<style scoped>
+.section {
+    display: flex;
+    height: 100px;
+    border-bottom: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.imgDiv{
+    flex: 0 1 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+img{
+    width: 70px;
+    height: 70px;
+}
+.pNum span{
+    border: 1px solid #333;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.pNum{
+    padding-top: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100px;
+}
+.pNum span{
+    margin-right: 2px;
+}
+</style>
