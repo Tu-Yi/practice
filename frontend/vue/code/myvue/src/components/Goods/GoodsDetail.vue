@@ -50,7 +50,6 @@ export default {
           id: this.detail.id,
           num: this.num
       })
-      EventBus.$emit('addShopCart',GoodsTools.getTotalCount())
     },
     minus () {
       if(this.num <= 0){

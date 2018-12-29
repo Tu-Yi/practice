@@ -1,9 +1,11 @@
+import EventBus from './EventBus'
 let obj = {}
 obj.getGoodsList = function () {
   return JSON.parse(window.localStorage.getItem('goods') || '{}')
 }
 obj.saveGoods = function (goodsList) {
   window.localStorage.setItem('goods', JSON.stringify(goodsList))
+  EventBus.$emit('addShopCart', obj.getTotalCount())
 }
 obj.add = function (goods) {
   let goodsList = this.getGoodsList()

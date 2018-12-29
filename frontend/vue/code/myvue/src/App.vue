@@ -2,10 +2,12 @@
   <div>
     <mt-header :title="pageTitle">
       <router-link to="/" slot="left">
-        <mt-button icon="back">返回</mt-button>
+          <mt-button icon="back">返回</mt-button>
       </router-link>
     </mt-header>
-    <router-view v-on:getChildTitle=showTitle class="tmpl"></router-view>
+    <transition name='rv' mode="out-in">
+        <router-view v-on:getChildTitle=showTitle class="tmpl"></router-view>
+    </transition>
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="home">
         <img @click="changeHash" slot="icon" src="./assets/img/home.png">
@@ -41,7 +43,7 @@ export default {
   },
   store,
   created () {
-    //this.num = GoodsTools.getTotalCount()
+    this.num = GoodsTools.getTotalCount()
     EventBus.$on('addShopCart', data => {
       this.num = data
     })
@@ -70,3 +72,11 @@ export default {
   // }
 }
 </script>
+<style scoped>
+.rv-enter-active, .rv-leave-active{
+  transition: opacity .5s;
+}
+.rv-enter,.rv-leave-to{
+  opacity: 0;
+}
+</style>

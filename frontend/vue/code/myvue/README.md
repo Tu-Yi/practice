@@ -78,7 +78,7 @@ showTitle (data) {
 }
 ```
 2. footer
-fixed: 将tabbar固定在底部，每个子组件最外层div记得`margin-bottom:50px;`
+fixed: 将tabbar固定在底部，
 selected： 设置每个item的id，可自动关联到selected
 changeHash: 实现路由跳转
 ```javascript
@@ -108,6 +108,13 @@ changeHash () {
       name: this.selected
     })
   })
+}
+
+// 解决下方tabbarr遮挡内容
+<router-view class="tmpl"></router-view>
+global.css
+.tmpl{
+    margin-bottom: 55px;
 }
 ```
 
@@ -188,6 +195,13 @@ sendTitle () {
 
 3. 创建详情页，配置路由，构造数据，制作页面，绑定数据，导航栏
 
+4. 新闻详情，html样式控制，golbal.css里控制img 100%
+```javascript
+.newsDetail img{
+    width: 100%;
+}
+```
+
 ### 图文分享组件
 
 1. home里创建图文分享链接
@@ -238,137 +252,343 @@ if (this.photoList.length === 0) {
   })
 }
 ```
-
-
-- 图文列表，点击分类，路由需要改变
+6. 点击分类，路由需要改变
+```javascript
 this.$router.push({
   name: 'photo.list',
   params: {
     categoryId
   }
 })
-- 新闻详情，html样式控制，golbalcss里控制img 100%
+```
 
-- 创建图文详情页面，绑定详细信息和content，
+### 图文详情组件
+
+1. 实现图片float排列
+引入vue-preview组件
+```javascript
 npm i vue-preview -S
 import VuePreview from 'vue-preview'
 Vue.use(VuePreview)
-imgs新增属性 msrc,w,h
-实现图片排列
+<vue-preview :slides="photos"></vue-preview>
+this.photos.forEach(element => {
+  src:
+  alt:
+  element.msrc = element.src
+  element.w = 200
+  element.h = 200
+})
+```
+2. 制作评论组件
+创建和引入评论组件，引入mintui的button，父组件传入id和type，按照page绑定数据
+加载更多：获取分页数据，如果为空提示没有更多数据不显示按钮
+相对时间 filter fromNow（）  Moment.locale('zh-cn')
+发表评论：发post请求，this.$axios.post('postComonent/'+this.cid,'content='+this.newContent)  
 
-解决bottom显示不全
-
-创建和引入评论组件，引入mintui的button，父组件传入id，route传入page，绑定数据，相对时间 filter fromNow（）  Moment.locale('zh-cn')
-制作加载更多，没有数据了给toast，没有更多数据就不显示按钮
-制作发表评论，发post请求，this.$axios.post('postComonent/'+this.cid,'content='+this.newContent)
-
+3. 配置全局加载效果
+```javascript
 引入mintui indicator,
-配置请求拦截器
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+// 配置请求拦截器
 Axios.interceptors.request.use(config => {
   MintUI.Indicator.open({
-    text: ''
+    text: '加载中'
   })
   return config
 })
-配置响应拦截器
+// 配置响应拦截器
 Axios.interceptors.response.use(response => {
   MintUI.Indicator.close()
   return response
 })
+```
 
-创建商铺列表页面，修改路由，修改home，传入id
-引入loadmore，上拉下拉函数记得用this.$refs.loadmore.onTop/bottom     上拉设置autofill false
-静态图片 import imgSrc from '../afa.jpg'
-<div style="overflow: scroll;height:590px;">
+### 商品列表
+创建商品列表页面，修改路由，修改home
+引入loadmore：
+```javascript
 <mt-loadmore :auto-fill="false" :bottom-method="loadBottom" ref="loadmore" :bottom-all-loaded="isAllLoad">
-分页控制，没有更多数据提示
 
+// 注意设置外层div滚动条和高度，否则上拉有问题
+<div style="overflow: scroll;height:590px;">
+
+methods: {
+  doSearch () {
+    this.$axios.get('goodsList/' + this.page + '/' + this.pageSize)
+      .then(res => {
+        console.log(res.data)
+        if (res.data.length === 0) {
+          this.isAllLoad = true
+        }
+        if (this.page !== 1) {
+          this.goodsList = this.goodsList.concat(res.data)
+        } else {
+          this.goodsList = res.data
+        }
+        console.log(this.goodsList)
+      })
+      .catch(err => { console.log(err) })
+  },
+  loadBottom () {
+    console.log('上拉触发')
+    this.page++
+    this.doSearch()
+    this.$refs.loadmore.onBottomLoaded()
+  }
+  // ...
+}
 字符串截取过滤器
 Vue.filter('convertStr',(val,num)=>{
   return val.subString(0,num) + '......'
 })
+```
+### 商品详情
 
 创建商品详情页面，加上路由和链接，获取详情数据
 创建轮播图组件，mySwip.vue，样式，接收请求url，获取数据，注册
 
-制作购物车小球，vue过渡动画，钩子函数
+1. 制作购物车小球，vue过渡动画，
+//钩子函数
+```javascript
+<transition name="ball" @after-enter="afterEnter"> 
+    <div class="ball" v-if="isExit"></div>
+</transition>
 
-APPtabbar加入badge
+//钩子函数
+showBall () {
+  this.isExit = true
+},
+afterEnter () {
+  this.isExit = false
+  GoodsTools.add({
+      id: this.detail.id,
+      num: this.num
+  })
+},
+
+.ball-enter-active{
+    animation: bounce-in 1.5s;
+}
+.ball-leave{
+    opacity: 0;
+}
+@keyframes bounce-in{
+    0% {
+        transform: translate3d(0,0,0);
+    }
+    50% {
+        transform: translate3d(100px,-100px,0);
+    }
+    75% {
+        transform: translate3d(160px,0px,0);
+    }
+    100% {
+        transform: translate3d(100px,170px,0);
+    }
+}
+.ball{
+    border-radius: 50%;
+    background-color: red;
+    width: 24px;
+    height:24px;
+    position:absolute;
+    top:440px;
+    left:120px;
+    display: inline-block;
+    z-index: 9999;
+}
+```
+2. 向APP组件传递参数
+```javscript
+// APP-tabbar加入badge
+购物车<mt-badge type="error" size="small">{{num}}</mt-badge>
+
 goodsdetail制作购买数量加减，数量不能小于1
-创建EventBus。js，APP里监听$on事件，箭头函数，detail里加入购物车afterenter加入触发函数，都需要import EventBus
 
-goodsdetail里图文介绍跳转详情制作
-加入详情页面和路由，component直接用NewsDetail
-NesDetail  加入beforeRouteEnter函数，根据from.name来判断来路，改变title变量的值，改变url，
-next（vm => {
-  vm.title = title
-}）
+创建EventBus.js
+import Vue from 'vue'
+let EventBus = new Vue()
+export default EventBus
 
-制作商品评论
+APP里监听事件
+EventBus.$on('addShopCart', data => {
+  this.num = data
+})
 
-新增GoodsTools.js，
-let obj={}
-obj.getGoodsList = () => {
+goodsDetail里的afterEnter发送参数，obj.getTotalCount()为localStorage里商品数量
+EventBus.$emit('addShopCart', obj.getTotalCount())
+```
+3. 商品图文介绍
+加入路由，component直接用NewsDetail
+修改NewsDetail，加入beforeRouteEnter函数，根据from.name来判断来路，改变title变量的值，改变url，
+```javascript
+beforeRouteEnter (to,from,next) {
+  let title = ''
+  if (from.name == null) {
+    if(to.name === 'news.detail'){
+      title = '新闻详情'
+    }else if (to.name === 'goods.detail.info'){
+      title = '图文详情'
+    }
+  }else if (from.name === 'news.list') {
+    title = '新闻详情'
+  }else if (from.name === 'goods.detail') {
+    title = '图文详情'
+  }
+  // 此时还没有this，所以使用vm
+  next(vm => {
+    vm.appTitle = title
+  })
+}
+// created和mounted里都获取不到vm值，现在知道的只有使用watch
+watch: {
+  appTitle: function(){
+    this.$emit('getChildTitle', this.appTitle)
+  }
+}
+```
+### 购物车
+
+1. 新增GoodsTools.js，操作localStorage，存储加入购物车的商品ID和数量`{"1":5,"2":3}`
+```javascript
+import EventBus from './EventBus'
+let obj = {}
+obj.getGoodsList = function () {
   return JSON.parse(window.localStorage.getItem('goods') || '{}')
 }
-obj.saveGoods=(goodsList)=>{
-  window.localStorage.setItem('goods',JSON.stringify(goodsList))
+obj.saveGoods = function (goodsList) {
+  window.localStorage.setItem('goods', JSON.stringify(goodsList))
+  // 数据变化时传递APP参数
+  EventBus.$emit('addShopCart', obj.getTotalCount())
 }
-obj.add = (goods)=>{
+obj.add = function (goods) {
   let goodsList = this.getGoodsList()
-  if(goodsList[goods.id]){
-    goodsList[goods.id] += goods.num
-  }else{
-    goodsList[goods.id] = goods.num
-  }
-  this.saveGoods()
+  goodsList[goods.id] = goods.num
+  this.saveGoods(goodsList)
 }
-obj.getTotalCount=()=>{
+obj.getTotalCount = function () {
   let goodsList = this.getGoodsList()
   let values = Object.values(goodsList)
-  let sum=0;
-  values.forEach(val => sum += val)
+  let sum = 0
+  values.forEach(val => { sum += val })
   return sum
 }
+export default obj
+```
 
-APP 里引入tools this.num = getTotalCount
-goodsdetail引入tools  添加本地存储，add-id,num
+2. APP 里引入
+```javascript
+created () {
+  this.num = GoodsTools.getTotalCount()
+  EventBus.$on('addShopCart', data => {
+    this.num = data
+  })
+}
+```
+3. goodsdetail里引入
+```javascript
+afterEnter () {
+  this.isExit = false
+  GoodsTools.add({
+      id: this.detail.id,
+      num: this.num
+  })
+}
+```
+4. 购物车页面
+创建购物车页面，通过localStorage传入接口id获取商品信息
+```javascript
+let goodsList = GoodsTools.getGoodsList()
+let ids = Object.keys(goodsList).join(',');
+this.$axios.get('getShopCartList/' + ids)
+  .then( res => {
+    this.list = res.data
+    this.list.forEach(element => {
+      if(goodsList[element.id]){
+        //element.num = goodsList[element.id]
+        // define后添加的属性，需要重新set才能和vue关联
+        this.$set(element,'num',goodsList[element.id])
+      }
+    });
+  })
+  .catch(err => console.log(err))
+}
 
-创建购物车页面，通过localStorage传入接口id获取商品信息，getGoodsList   Object.keys(goodsList).join(',')
-mt-switch
-默认打勾和数量，手动通知vue this.$set('','num',)
 删除
-离开组件 beforeRouteleave   if(confim(''))  取消next(false)
-更新localStorage saveGoods next()
+del (index) {
+  this.list.splice(index,1)
+}
 
-computed 件数和总价
+总价和总数量  `payment.price payment.count`
+computed: {
+  payment () {
+    let price = 0
+    let count = 0
+    this.list.forEach( good => {
+      count += good.num
+      price += good.price * good.num
+    })
+    return {
+      count,
+      price
+    }
+  }
+}
 
+离开购物车  保存数据到localStorage，放行
+beforeRouteLeave (to, from, next) {
+  console.log(1111)
+  if(confirm('do you leave?')){
+    let obj = {}
+    this.list.forEach( cur => {
+      obj[cur.id] = cur.num
+    })
+    GoodsTools.saveGoods(obj)
+    next()
+  }else {
+    next(false)
+  }
+}
+```
+### 优化
+
+1. 页面跳转加上效果
+```javascript
+<transition name='rv' mode="out-in">
+    <router-view v-on:getChildTitle=showTitle class="tmpl"></router-view>
+</transition>
+.rv-enter-active, .rv-leave-active{
+  transition: opacity .5s;
+}
+.rv-enter,.rv-leave-to{
+  opacity: 0;
+}
+```
+
+2. mint-ui组件按需引入
+```javascript
+main.js
+import spinner from 'mint-ui/lib/spinner'  
+import 'mint-ui/lib/spinner/style.css'
+```
+
+### 其他
+
+1. 数据模拟服务
 npm i -g json-server
 创建db.json
 命令行 json-server --watch ./db.json
 
-router-view加上transition name='rv' mode="out-in"
-.rv-enter-active,.rv-leave-active{
-  animation 
-}
-![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-27/84926346.jpg)
-
-打包
+2. 打包
 npm run build
 index.js build productionsourcemap false
 部署到腾讯云
 WINSCP
 
-
-优化
-main.js
-按需引入mintui import spinner from 'mint-ui/lib/spinner'  'mint-ui/lib/spinner/style.css'
-
-
+3. 总结截图
 ![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-27/96336771.jpg)
-
 ![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-27/94125906.jpg)
-
 ![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-27/74392162.jpg)
 
 

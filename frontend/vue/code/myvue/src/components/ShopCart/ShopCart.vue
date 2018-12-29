@@ -1,17 +1,20 @@
 <template>
     <div>
-        <div v-for="good in list" :key="good.id" class="section">
+        <div v-for="(good,index) in list" :key="index" class="section">
           <div>
             <img :src="good.src" alt="" class="imgDiv">
           </div>
           <div class="contentDiv">
             <p class="titleDiv">{{good.title | convertStr(20)}}</p>
-            <p class="bottomDiv">{{good.price}}</p>
+            <p class="bottomDiv">￥{{good.price}}</p>
           </div>
-          <p class="pNum"><span>-</span><span>{{good.num}}</span><span>+</span></p>
+          <p class="pNum">
+            <span @click="subStract(good)">-</span><span>{{good.num}}</span><span @click="add(good)">+</span><br>
+            <a href="javascript:;" @click="del(index)">删除</a>
+          </p>
         </div>
         <footer>
-          <p>购买商品数量：{{totalNum}},&nbsp;总价格：{{totalPrice}}</p>
+          <p>购买商品数量：{{payment.count}},&nbsp;总价格：￥{{payment.price}}</p>
         </footer>
     </div>
 </template>
@@ -20,9 +23,45 @@ import GoodsTools from '@/GoodsTools'
 export default {
   data () {
     return {
-      list: [],
-      totalNum: 0,
-      totalPrice: 0
+      list: []
+    }
+  },
+  beforeRouteLeave (to, from, next) {
+    console.log(1111)
+    if(confirm('do you leave?')){
+      let obj = {}
+      this.list.forEach( cur => {
+        obj[cur.id] = cur.num
+      })
+      GoodsTools.saveGoods(obj)
+      next()
+    }else {
+      next(false)
+    }
+  },
+  methods: {
+    subStract (good) {
+      good.num--
+    },
+    add (good) {
+      good.num++
+    },
+    del (index) {
+      this.list.splice(index,1)
+    }
+  },
+  computed: {
+    payment () {
+      let price = 0
+      let count = 0
+      this.list.forEach( good => {
+        count += good.num
+        price += good.price * good.num
+      })
+      return {
+        count,
+        price
+      }
     }
   },
   created () {
@@ -30,11 +69,11 @@ export default {
     let ids = Object.keys(goodsList).join(',');
     this.$axios.get('getShopCartList/' + ids)
       .then( res => {
-        console.log(res)
         this.list = res.data
         this.list.forEach(element => {
           if(goodsList[element.id]){
-            element.num = goodsList[element.id]
+            //element.num = goodsList[element.id]
+            this.$set(element,'num',goodsList[element.id])
           }
         });
       })
@@ -74,5 +113,8 @@ img{
 }
 .pNum span{
     margin-right: 2px;
+}
+.bottomDiv{
+  color: red;
 }
 </style>

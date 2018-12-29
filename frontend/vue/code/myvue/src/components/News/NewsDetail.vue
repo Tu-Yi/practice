@@ -35,8 +35,6 @@ export default {
   },
   beforeRouteEnter (to,from,next) {
     let title = ''
-    console.log("from "+from.name)
-    console.log("to "+to.name)
     if (from.name == null) {
       if(to.name === 'news.detail'){
         title = '新闻详情'
@@ -48,7 +46,6 @@ export default {
     }else if (from.name === 'goods.detail') {
       title = '图文详情'
     }
-    console.log(title)
     next(vm => {
       vm.appTitle = title
     })
