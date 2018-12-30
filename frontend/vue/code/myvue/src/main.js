@@ -42,7 +42,7 @@ Vue.filter('convertStr', (val, num) => {
   return val
 })
 
-Axios.defaults.baseURL = 'http://localhost:8888/'
+Axios.defaults.baseURL = 'http://118.24.175.34:8888/'
 Vue.prototype.$axios = Axios
 
 // 配置请求拦截器
