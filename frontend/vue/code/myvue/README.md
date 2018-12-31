@@ -592,6 +592,7 @@ syntax-dynamic-import,放到balelrc plugins中
 
 webpack优化
 https://segmentfault.com/q/1010000008832754
+https://webpack.docschina.org/guides/lazy-loading/
 
 vuex
 ```javascript
