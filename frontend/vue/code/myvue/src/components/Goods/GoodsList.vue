@@ -1,6 +1,7 @@
 <template>
-<div style="overflow: scroll;height:590px;">
+<div class="container">
     <mt-loadmore :auto-fill="false" :bottom-method="loadBottom" ref="loadmore" :bottom-all-loaded="isAllLoad">
+      <div style="height:98px;"></div>
         <ul>
         <li v-for="item in goodsList" :key="item.id">
           <router-link :to="{name: 'goods.detail', params: {id: item.id}}">
@@ -27,13 +28,23 @@ export default {
       goodsList: [],
       page: 1,
       pageSize: 4,
-      isAllLoad: false
+      isAllLoad: false,
+      boxHeight: ''
     // ...
     }
   },
+  props: ['appRefs'],
   created () {
     this.doSearch()
   },
+  // mounted () {
+    
+  //   let headerHeight = this.appRefs.appHeader.$el.offsetHeight
+  //   let footerHeight = this.appRefs.appFooter.$el.offsetHeight
+  //   let height = document.documentElement.clientHeight - headerHeight - footerHeight
+  //   this.boxHeight = 'height:' +  '100%;overflow: auto;'
+  //   console.log(document.documentElement.clientHeight,headerHeight,footerHeight,this.boxHeight)
+  // },
   methods: {
     doSearch () {
       this.$axios.get('goodsList/' + this.page + '/' + this.pageSize)
@@ -63,6 +74,17 @@ export default {
 }
 </script>
 <style scoped>
+.container{
+    position: absolute;
+    left:0;
+    top:-58px;
+    width:100%;
+    height: 100%;
+    overflow:auto;
+    box-sizing:border-box;
+    -webkit-overflow-scrolling: touch;
+    z-index:-1;
+}
 ul{
     margin: 0;
     padding: 0;

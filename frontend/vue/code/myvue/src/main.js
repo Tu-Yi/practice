@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './Vuex/store'
 import Axios from 'axios'
 import MintUI from 'mint-ui'
 import MyUl from '@/components/common/MyUL'
@@ -42,7 +43,8 @@ Vue.filter('convertStr', (val, num) => {
   return val
 })
 
-Axios.defaults.baseURL = 'http://118.24.175.34:8888/'
+// Axios.defaults.baseURL = 'http://118.24.175.34:8888/'
+Axios.defaults.baseURL = 'http://localhost:8888/'
 Vue.prototype.$axios = Axios
 
 // 配置请求拦截器
@@ -64,6 +66,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -11,6 +11,17 @@ import PhotoDetail from '@/components/Photo/PhotoDetail'
 import GoodsList from '@/components/Goods/GoodsList'
 import GoodsDetail from '@/components/Goods/GoodsDetail'
 
+// const Home = () => import('@/components/Home/Home')
+// const Member = () => import('@/components/Member/Member')
+// const Search = () => import('@/components/Search/Search')
+// const ShopCart = () => import('@/components/ShopCart/ShopCart')
+// const NewsList = () => import('@/components/News/NewsList')
+// const NewsDetail = () => import('@/components/News/NewsDetail')
+// const PhotoList = () => import('@/components/Photo/PhotoList')
+// const PhotoDetail = () => import('@/components/Photo/PhotoDetail')
+// const GoodsList = () => import('@/components/Goods/GoodsList')
+// const GoodsDetail = () => import('@/components/Goods/GoodsDetail')
+
 Vue.use(Router)
 
 export default new Router({

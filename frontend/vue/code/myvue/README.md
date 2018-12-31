@@ -311,7 +311,18 @@ Axios.interceptors.response.use(response => {
 <mt-loadmore :auto-fill="false" :bottom-method="loadBottom" ref="loadmore" :bottom-all-loaded="isAllLoad">
 
 // 注意设置外层div滚动条和高度，否则上拉有问题
-<div style="overflow: scroll;height:590px;">
+<div style="overflow: scroll;height:590px;">或者
+.container{
+    position: absolute;
+    left:0;
+    top:-58px;
+    width:100%;
+    height: 100%;
+    overflow:auto;
+    box-sizing:border-box;
+    -webkit-overflow-scrolling: touch;
+    z-index:-1;
+}
 
 methods: {
   doSearch () {
@@ -571,6 +582,58 @@ beforeRouteLeave (to, from, next) {
 main.js
 import spinner from 'mint-ui/lib/spinner'  
 import 'mint-ui/lib/spinner/style.css'
+```
+
+路由懒加载
+修改router
+const xx = () => import()
+npm install --save-dev babel-plugin-syntax-dynamic-import
+syntax-dynamic-import,放到balelrc plugins中
+
+webpack优化
+https://segmentfault.com/q/1010000008832754
+
+vuex
+```javascript
+import Vue from 'vue'
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+const state = {
+  num: 0
+}
+const mutations = {
+  addNum (state, payload) {
+    state.num += payload.num
+  }
+}
+let getters = {
+  getNum: function (state) {
+    return state.num
+  }
+}
+
+export default new Vuex.Store({
+  state,
+  getters,
+  mutations
+})
+
+import store from './Vuex/store'
+new Vue({
+  el: '#app',
+  router,
+  store,
+  components: { App },
+  template: '<App/>'
+})
+
+computed: {
+  appShowNum () {
+    return this.$store.getters.getNum
+  }
+}
+this.$store.commit('addNum',{num:5})
 ```
 
 ### 其他

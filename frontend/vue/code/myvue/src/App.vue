@@ -1,14 +1,11 @@
 <template>
   <div>
-    <mt-header :title="pageTitle">
-      <router-link to="/" slot="left">
-          <mt-button icon="back">返回</mt-button>
-      </router-link>
+    <mt-header :title="pageTitle" ref="appHeader">
     </mt-header>
     <transition name='rv' mode="out-in">
-        <router-view v-on:getChildTitle=showTitle class="tmpl"></router-view>
+        <router-view v-on:getChildTitle=showTitle class="tmpl" :appRefs="$refs"></router-view>
     </transition>
-    <mt-tabbar v-model="selected" fixed>
+    <mt-tabbar v-model="selected" fixed ref="appFooter">
       <mt-tab-item id="home">
         <img @click="changeHash" slot="icon" src="./assets/img/home.png">
         首页
@@ -19,7 +16,7 @@
       </mt-tab-item>
       <mt-tab-item id="shopcart">
         <img @click="changeHash" slot="icon" src="./assets/img/shopcart.png">
-        购物车<mt-badge type="error" size="small">{{num}}</mt-badge>
+        购物车<mt-badge type="error" size="small">{{appShowNum}}</mt-badge>
       </mt-tab-item>
       <mt-tab-item id="search">
         <img @click="changeHash" slot="icon" src="./assets/img/search.png">
@@ -29,7 +26,6 @@
   </div>
 </template>
 <script>
-import store from '@/Vuex/store'
 import EventBus from './EventBus'
 import GoodsTools from './GoodsTools.js'
 export default {
@@ -41,7 +37,11 @@ export default {
       num: 0
     }
   },
-  store,
+  computed: {
+    appShowNum () {
+      return this.$store.getters.getNum
+    }
+  },
   created () {
     this.num = GoodsTools.getTotalCount()
     EventBus.$on('addShopCart', data => {
