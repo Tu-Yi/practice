@@ -5,13 +5,51 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 
+//		int[] arr = new int[1000];
+//		Random random = new Random(1000);
+//		for(int i=0;i<1000;i++){
+//			arr[i] = random.nextInt(1000);
+//		}
+//
+//		SelectSort ss = new SelectSort(arr);
+//		long startTime=System.currentTimeMillis();
+//		ss.selectSortU();
+//		long endTime=System.currentTimeMillis();
+//		float excTime=(float)(endTime-startTime);
+//		System.out.println("执行时间："+excTime+"s");
+//		ss.display();
+
+//		int[] arr1 = {1,2,3,4,5,6,7,8,9};
+//		SplitHalfSearch shs = new SplitHalfSearch(arr1);
+//		int index = shs.splitHalfSearch(8);
+//		System.out.print(index);
+
+
+		BinaryConversion bc = new BinaryConversion(6,2);
+		String str = bc.convert();
+		System.out.print(str);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	    /*
+
 	    * 冒泡，递归，快速，二叉树，红黑树，基数排序，堆排序
         * 数组，栈，链表，队列
         * map list set
 	    * */
 
-	    System.out.println(Boolean.parseBoolean("false"));
+//	    System.out.println(Boolean.parseBoolean("false"));
 
 
 
