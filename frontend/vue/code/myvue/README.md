@@ -608,6 +608,16 @@ const mutations = {
     state.num += payload.num
   }
 }
+//可以存在异步操作，最后通知mutations改数据
+const actions = {
+  addNumByServer (store,playload) {
+    setTimeOut(
+      function(){
+        store.commit('addNum',{num:playload.num})
+      },1000
+    )
+  }
+}
 let getters = {
   getNum: function (state) {
     return state.num
@@ -635,6 +645,7 @@ computed: {
   }
 }
 this.$store.commit('addNum',{num:5})
+this.$store.dispatch('addNumByServer',{num:10})
 ```
 
 ### 其他
@@ -656,13 +667,17 @@ WINSCP
 ![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/18-12-27/74392162.jpg)
 
 
+## 收尾
 
+history模式
 
+预渲染
 
-
-
-
-
+骨架屏
+npm i -g lavas
+lavas init 
+选择包含app_shell，也包含了骨架屏
+npm i
 
 
 
