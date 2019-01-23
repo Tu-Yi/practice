@@ -25,9 +25,13 @@ public class Main {
 //		System.out.print(index);
 
 
-		BinaryConversion bc = new BinaryConversion(6,2);
-		String str = bc.convert();
-		System.out.print(str);
+//		BinaryConversion bc = new BinaryConversion(6,2);
+//		String str = bc.convert();
+//		System.out.print(str);
+
+
+		Zi z = new Zi();
+
 
 
 
