@@ -12,4 +12,7 @@ public class Cat extends Animal {
     public void cry(){
         System.out.println("喵喵喵！");
     }
+    protected void CatTest(){
+        System.out.println("cat");
+    }
 }
