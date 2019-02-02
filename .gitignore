@@ -6,6 +6,45 @@ nohup.out
 web.config
 node_modules
 
-# java
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Eclipse
+.project
+.classpath
+.settings
+
+# Idea
 .idea
+*.iml
+*.iws
+*.ipr
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Gradle
+.gradle
+!gradle-wrapper.jar
+
+# Maven
+target
+
+# Build
+out
+build
+bin
+
+# Other
+*.log
+*.swp
+*.bak
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8fd9204ffa831fa84a1d35ae7992a087e2f3e2ba
 

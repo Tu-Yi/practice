@@ -1,5 +1,7 @@
 package com.company;
 
+import com.test.test;
+
 public class Main {
 
 
@@ -30,7 +32,21 @@ public class Main {
 //		System.out.print(str);
 
 
-		Zi z = new Zi();
+//		Outer o = new Outer();
+//		o.method();
+
+//		Object_demo1 od = new Object_demo1(20);
+//		Object_demo1 od1 = new Object_demo1(20);
+//		//System.out.println(od.equals(od1));
+//		System.out.println(od);
+//		System.out.println(od.hashCode());
+//		System.out.println(Integer.toHexString(od.hashCode()));
+
+//		System.out.println(od.getClass() == od1.getClass());
+//		System.out.println(od.getClass().getName());
+
+		test t = new test();
+		t.CatTest();
 
 
 
