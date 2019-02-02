@@ -45,9 +45,9 @@
                     // // 合并请求
                     // this.$axios.all([q1,q2])
                     // // 全部成功
-                    // .then(this.$axios.spread((req1,req2)=>{
-                    //     this.res1 = req1.data + req2.data
-                    // }))
+                    /* .then(this.$axios.spread((req1,req2)=>{
+                        this.res1 = req1.data + req2.data
+                    })) */
                     axios.get('login',{
                         transformRequest(req){
                             console.log('transformRequest'+req)

@@ -1,5 +1,7 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
+app.set("view engine","ejs");
 
 let list = [{
         id: 0,
@@ -486,6 +488,16 @@ app.get('/goodsDetail/:id', function (req, res) {
     })
     res.send(JSON.stringify(newGoodsList));
 })
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.post('/goodsDetail', function (req, res) {
+    let id = req.body.id
+    let newGoodsList = goodsList.filter(function (element, index, arrays) {
+        return (element.id + '' === id)
+    })
+    res.send(JSON.stringify(newGoodsList));
+})
+
 app.get('/getShopCartList/:ids', function (req, res) {
     let ids = req.params.ids
     let newGoodsList = goodsList.filter(function (element, index, arrays) {
