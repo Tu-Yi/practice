@@ -1,10 +1,9 @@
 package com.company;
 
 public class Fu {
-    public Fu() {
-        show();
-    }
-    void show(){
-        System.out.print("fu show...+");
+    int i=0;
+
+    public Fu(int i) {
+        this.i = i;
     }
 }

@@ -3,6 +3,7 @@ package com.company;
 public class Cat extends Animal {
     int num = 80;
     int age = 10;
+
     public void eat(){
         System.out.println("猫吃饭");
     }
