@@ -1,6 +1,6 @@
 package com.company;
 
-import com.test.test;
+import com.test.Demo;
 
 public class Main {
 
@@ -45,8 +45,11 @@ public class Main {
 //		System.out.println(od.getClass() == od1.getClass());
 //		System.out.println(od.getClass().getName());
 
-		test t = new test();
-		t.CatTest();
+		Demo d = new Demo();
+		Thread t1 = new Thread(d);
+		Thread t2 = new Thread(d);
+		t1.start();
+		t2.start();
 
 
 
