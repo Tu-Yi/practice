@@ -584,17 +584,17 @@ import spinner from 'mint-ui/lib/spinner'
 import 'mint-ui/lib/spinner/style.css'
 ```
 
-路由懒加载
+3. 路由懒加载
 修改router
 const xx = () => import()
 npm install --save-dev babel-plugin-syntax-dynamic-import
 syntax-dynamic-import,放到balelrc plugins中
 
-webpack优化
+4. webpack优化
 https://segmentfault.com/q/1010000008832754
 https://webpack.docschina.org/guides/lazy-loading/
 
-vuex
+5. vuex
 ```javascript
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -648,6 +648,26 @@ this.$store.commit('addNum',{num:5})
 this.$store.dispatch('addNumByServer',{num:10})
 ```
 
+6. history模式
+
+![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/19-1-5/41166569.jpg)
+
+7. 预渲染
+
+8. 骨架屏
+npm i -g lavas
+lavas init 
+选择包含app_shell，也包含了骨架屏
+npm i
+
+![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/19-1-5/44792853.jpg)
+
+9. 多页应用
+
+10. pwa
+
+![](http://jtc-img.oss-cn-shenzhen.aliyuncs.com/19-1-5/12331247.jpg)
+
 ### 其他
 
 1. 数据模拟服务
@@ -669,15 +689,7 @@ WINSCP
 
 ## 收尾
 
-history模式
 
-预渲染
-
-骨架屏
-npm i -g lavas
-lavas init 
-选择包含app_shell，也包含了骨架屏
-npm i
 
 
 

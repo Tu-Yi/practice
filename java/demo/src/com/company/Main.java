@@ -1,11 +1,29 @@
 package com.company;
 
-import com.test.Demo;
+import com.test.Ticket;
 
 public class Main {
 
 
 	public static void main(String[] args) throws InterruptedException {
+
+
+		Ticket t = new Ticket();
+
+		Thread t1 = new Thread(t);
+		Thread t2 = new Thread(t);
+		Thread t3 = new Thread(t);
+		Thread t4 = new Thread(t);
+
+		t1.start();
+		t2.start();
+		t3.start();
+		t4.start();
+
+
+
+
+
 
 //		int[] arr = new int[1000];
 //		Random random = new Random(1000);
@@ -45,11 +63,7 @@ public class Main {
 //		System.out.println(od.getClass() == od1.getClass());
 //		System.out.println(od.getClass().getName());
 
-		Demo d = new Demo();
-		Thread t1 = new Thread(d);
-		Thread t2 = new Thread(d);
-		t1.start();
-		t2.start();
+
 
 
 
