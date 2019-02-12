@@ -29,6 +29,30 @@ public class Main {
 //        t1.start();
 //        t2.start();
 
+//        Resource r = new Resource();
+//        Input in = new Input(r);
+//        Output ot = new Output(r);
+//
+//        Thread tInput = new Thread(in);
+//        Thread tOutput = new Thread(ot);
+//
+//        tInput.start();
+//        tOutput.start();
+
+        RoastDuck rd = new RoastDuck();
+        DuckProductor dp = new DuckProductor(rd);
+        DuckConsumer dc = new DuckConsumer(rd);
+
+        Thread t0 = new Thread(dp);
+        Thread t1 = new Thread(dp);
+        Thread t2 = new Thread(dc);
+        Thread t3 = new Thread(dc);
+
+        t0.start();
+        t1.start();
+        t2.start();
+        t3.start();
+
 
     }
 }
