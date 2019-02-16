@@ -38,5 +38,4 @@ public class Person extends Object {
 		System.out.println(name+"|"+age+"...hashCode=" + (name.hashCode()+age*35));
 		return name.hashCode()+age*35;
 	}
-	
 }
