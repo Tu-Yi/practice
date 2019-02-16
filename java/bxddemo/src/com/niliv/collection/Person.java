@@ -1,6 +1,6 @@
 package com.niliv.collection;
 
-public class Person extends Object {
+public class Person extends Object implements Comparable {
 	private String name;
 	private int age;
 	public Person(String name, int age) {
@@ -37,6 +37,25 @@ public class Person extends Object {
 	public int hashCode() {
 		System.out.println(name+"|"+age+"...hashCode=" + (name.hashCode()+age*35));
 		return name.hashCode()+age*35;
+	}
+	@Override
+	public int compareTo(Object o) {
+		
+		
+		Person p =(Person)o;
+		int temp = this.age-p.age;
+		return temp==0?this.name.compareTo(p.name):temp;
+		
+//		if(this.age>p.age) {
+//			return 1;
+//		}
+//		if(this.age<p.age) {
+//			return -1;
+//		}
+//		if(this.age==p.age) {
+//			this.name.compareTo(p.name);
+//		}
+		
 	}
 	
 }
