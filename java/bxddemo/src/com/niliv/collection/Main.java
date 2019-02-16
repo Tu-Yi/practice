@@ -153,7 +153,41 @@ public class Main {
     	
     	//以年龄排序
     	
-    	TreeSet ts = new TreeSet();
+//    	TreeSet ts = new TreeSet(new ComparatorByName());
+//    	ts.add(new Person("zhangsan",28));
+//    	ts.add(new Person("zhangsan1",26));
+//    	ts.add(new Person("zhangsan2",22));
+//    	ts.add(new Person("zhangsan3",35));
+//    	ts.add(new Person("zhangsan3",28));
+//    	
+//
+//    	Iterator it = ts.iterator();
+//    	while(it.hasNext()) {
+//    		Person p = (Person)it.next();
+//        	System.out.println(p.getName()+"--"+p.getAge());
+//    	}
+    	//zhangsan2--22
+    	//zhangsan1--26
+    	//zhangsan--28
+    	//zhangsan3--28
+    	//zhangsan3--35
+    	
+    	
+//    	TreeSet ts = new TreeSet(new ComparatorByLength());
+//    	ts.add("asfsa");
+//    	ts.add("asfsasadfadsgf");
+//    	ts.add("asfs14gsdaa");
+//    	ts.add("asfsas");
+//    	
+//    	
+//
+//    	Iterator it = ts.iterator();
+//    	while(it.hasNext()) {
+//    		System.out.println(it.next());
+//    	}
+    	
+    	//TreeSet<Person> ts = new TreeSet<Person>();
+    	TreeSet<Person> ts = new TreeSet<Person>(new ComparatorByName());
     	ts.add(new Person("zhangsan",28));
     	ts.add(new Person("zhangsan1",26));
     	ts.add(new Person("zhangsan2",22));
@@ -161,16 +195,11 @@ public class Main {
     	ts.add(new Person("zhangsan3",28));
     	
 
-    	Iterator it = ts.iterator();
+    	Iterator<Person> it = ts.iterator();
     	while(it.hasNext()) {
-    		Person p = (Person)it.next();
+    		Person p = it.next();
         	System.out.println(p.getName()+"--"+p.getAge());
     	}
-    	//zhangsan2--22
-    	//zhangsan1--26
-    	//zhangsan--28
-    	//zhangsan3--28
-    	//zhangsan3--35
     }
 
 //	private static ArrayList getSingleArrayList(ArrayList al) {
