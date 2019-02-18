@@ -1,5 +1,6 @@
 package com.niliv.collection;
 
+
 public class Person extends Object implements Comparable<Person> {
 	private String name;
 	private int age;

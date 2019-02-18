@@ -187,20 +187,100 @@ public class Main {
 //    	}
     	
     	//TreeSet<Person> ts = new TreeSet<Person>();
-    	TreeSet<Person> ts = new TreeSet<Person>(new ComparatorByName());
-    	ts.add(new Person("zhangsan",28));
-    	ts.add(new Person("zhangsan1",26));
-    	ts.add(new Person("zhangsan2",22));
-    	ts.add(new Person("zhangsan3",35));
-    	ts.add(new Person("zhangsan3",28));
+//    	TreeSet<Person> ts = new TreeSet<Person>(new ComparatorByName());
+//    	ts.add(new Person("zhangsan",28));
+//    	ts.add(new Person("zhangsan1",26));
+//    	ts.add(new Person("zhangsan2",22));
+//    	ts.add(new Person("zhangsan3",35));
+//    	ts.add(new Person("zhangsan3",28));
+//    	
+//
+//    	Iterator<Person> it = ts.iterator();
+//    	while(it.hasNext()) {
+//    		Person p = it.next();
+//        	System.out.println(p.getName()+"--"+p.getAge());
+//    	}
     	
-
-    	Iterator<Person> it = ts.iterator();
-    	while(it.hasNext()) {
-    		Person p = it.next();
-        	System.out.println(p.getName()+"--"+p.getAge());
-    	}
+//    	Tool<String> tl = new Tool<String>();
+//    	tl.show(123);
+//    	tl.print("234");
+//    	Tool.method(465);
+    	
+//    	InterImp<String> inter = new InterImp<String>();
+//    	inter.show("234");
+    	
+//    	ArrayList<String> al1 = new ArrayList<String>();
+//    	al1.add("al11");
+//    	al1.add("al12");
+//    	al1.add("al13");
+//    	
+//    	ArrayList<String> al2 = new ArrayList<String>();
+//    	al2.add("al21");
+//    	al2.add("al22");
+//    	al2.add("al23");
+//    	
+//    	ArrayList<Integer> al3 = new ArrayList<Integer>();
+//    	al3.add(1);
+//    	al3.add(2);
+//    	al3.add(3);
+//    	
+//    	printCollection(al1);
+//    	printCollection(al2);
+//    	printCollection(al3);
+    	
+//    	ArrayList<Student> als = new ArrayList<Student>();
+//    	als.add(new Student("s1",21));
+//    	als.add(new Student("s2",22));
+//    	als.add(new Student("s3",23));
+//    	
+//    	ArrayList<Worker> alw = new ArrayList<Worker>();
+//    	alw.add(new Worker("w1",24));
+//    	alw.add(new Worker("w2",25));
+//    	alw.add(new Worker("w3",26));
+//    	
+//    	printCollection(als);
+//    	printCollection(alw);
+//    	
+//    	ArrayList<Person> alp = new ArrayList<Person>();
+//    	alp.add(new Worker("p1",27));
+//    	alp.add(new Worker("p2",28));
+//    	alp.add(new Worker("p3",29));
+//    	printCollectionBySuper(alp);
+    	
+    	Map<Integer,String> map = new HashMap<Integer, String>();
+    	
+    	//增加修改
+    	System.out.println(map.put(1, "wangcai")); //null
+    	System.out.println(map.put(1, "xiaoqiang")); //wangcai
+    	System.out.println(map); //{1=xiaoqiang}
+    	
+    	map.put(2, "zhgangshan");
+    	map.put(3, "lisi");
+    	
+    	//删除
+    	System.out.println("remove:.."+map.remove(2)); //remove:..zhgangshan
+    	System.out.println(map); //{1=xiaoqiang, 3=lisi}
+    	
+    	//判断
+    	System.out.println("containsKey:.."+map.containsKey(2)); //containsKey:..false
+    	
+    	//获取
+    	System.out.println(map.get(3)); //lisi
     }
+
+	private static void printCollection(Collection<? extends Person> al) {
+		Iterator<? extends Person> it = al.iterator();
+    	while(it.hasNext()) {
+    		Person s = it.next();
+    		System.out.println(s);
+    	}
+	}
+	private static void printCollectionBySuper(Collection<? super Student> al) {
+		Iterator<? super Student> it = al.iterator();
+    	while(it.hasNext()) {
+    		System.out.println(it.next());
+    	}
+	}
 
 //	private static ArrayList getSingleArrayList(ArrayList al) {
 //		ArrayList temp = new ArrayList();
