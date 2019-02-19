@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Main {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 //        Collection coll = new ArrayList();
 //        coll.add("abc1");
 //        coll.add("abc2");
@@ -102,7 +103,7 @@ public class Main {
 //        link.addFirst("abc1");
 //        link.addFirst("abc2");
 //        link.addFirst("abc3");
-        
+
 //        System.out.println(link.getFirst()); //abc3
 //        System.out.println(link.removeFirst()); //abc3
 
@@ -110,7 +111,7 @@ public class Main {
 //        while(it.hasNext()) {
 //        	System.out.println(it.next()); //abc3 abc2 abc1
 //        }
-        
+
 //        LinkedListSQ sq = new LinkedListSQ();
 //        sq.myAdd("abc1");
 //        sq.myAdd("abc2");
@@ -121,7 +122,7 @@ public class Main {
 //        while(!sq.isNull()) {
 //        	System.out.println(sq.myPop()); //abc1 abc2 abc3   abc3 abc2 abc1
 //        }
-        
+
 //        ArrayList al = new ArrayList();
 //        al.add(new Person("list1",21));
 //        al.add(new Person("list2",22));
@@ -132,9 +133,9 @@ public class Main {
 //        	Person p = (Person)it.next();
 //        	System.out.println(p.getName()+"--"+p.getAge());
 //        }
-        
-    	//HashSet鏁版嵁缁撴瀯鏄搱甯岃〃锛屾墍浠ュ瓨鍌ㄥ厓绱犵殑鏃跺�欎娇鐢ㄥ厓绱犵殑hashCode鏂规硶鏉ョ‘瀹氫綅缃紝濡傛灉浣嶇疆鐩稿悓锛屽啀閫氳繃
-    	//鍏冪礌鐨別quals鏉ョ‘瀹氬唴瀹规槸鍚︾浉鍚�
+
+		// HashSet鏁版嵁缁撴瀯鏄搱甯岃〃锛屾墍浠ュ瓨鍌ㄥ厓绱犵殑鏃跺�欎娇鐢ㄥ厓绱犵殑hashCode鏂规硶鏉ョ‘瀹氫綅缃紝濡傛灉浣嶇疆鐩稿悓锛屽啀閫氳繃
+		// 鍏冪礌鐨別quals鏉ョ‘瀹氬唴瀹规槸鍚︾浉鍚�
 //        HashSet hs = new HashSet();
 //        hs.add(new Person("list1",21));
 //        hs.add(new Person("list2",22));
@@ -147,7 +148,7 @@ public class Main {
 //        	Person p = (Person)it.next();
 //        	System.out.println(p.getName()+"--"+p.getAge());
 //        }
-    	
+
 //    	ArrayList al = new ArrayList();
 //    	al.add(new Person("list1",21));
 //    	al.add(new Person("list2",22));
@@ -157,10 +158,9 @@ public class Main {
 //    	System.out.println(al);
 //    	al = getSingleArrayList(al);
 //    	System.out.println(al);
-    	
-    	
-    	//以年龄排序
-    	
+
+		// 以年龄排序
+
 //    	TreeSet ts = new TreeSet(new ComparatorByName());
 //    	ts.add(new Person("zhangsan",28));
 //    	ts.add(new Person("zhangsan1",26));
@@ -174,13 +174,12 @@ public class Main {
 //    		Person p = (Person)it.next();
 //        	System.out.println(p.getName()+"--"+p.getAge());
 //    	}
-    	//zhangsan2--22
-    	//zhangsan1--26
-    	//zhangsan--28
-    	//zhangsan3--28
-    	//zhangsan3--35
-    	
-    	
+		// zhangsan2--22
+		// zhangsan1--26
+		// zhangsan--28
+		// zhangsan3--28
+		// zhangsan3--35
+
 //    	TreeSet ts = new TreeSet(new ComparatorByLength());
 //    	ts.add("asfsa");
 //    	ts.add("asfsasadfadsgf");
@@ -193,8 +192,8 @@ public class Main {
 //    	while(it.hasNext()) {
 //    		System.out.println(it.next());
 //    	}
-    	
-    	//TreeSet<Person> ts = new TreeSet<Person>();
+
+		// TreeSet<Person> ts = new TreeSet<Person>();
 //    	TreeSet<Person> ts = new TreeSet<Person>(new ComparatorByName());
 //    	ts.add(new Person("zhangsan",28));
 //    	ts.add(new Person("zhangsan1",26));
@@ -208,15 +207,15 @@ public class Main {
 //    		Person p = it.next();
 //        	System.out.println(p.getName()+"--"+p.getAge());
 //    	}
-    	
+
 //    	Tool<String> tl = new Tool<String>();
 //    	tl.show(123);
 //    	tl.print("234");
 //    	Tool.method(465);
-    	
+
 //    	InterImp<String> inter = new InterImp<String>();
 //    	inter.show("234");
-    	
+
 //    	ArrayList<String> al1 = new ArrayList<String>();
 //    	al1.add("al11");
 //    	al1.add("al12");
@@ -235,7 +234,7 @@ public class Main {
 //    	printCollection(al1);
 //    	printCollection(al2);
 //    	printCollection(al3);
-    	
+
 //    	ArrayList<Student> als = new ArrayList<Student>();
 //    	als.add(new Student("s1",21));
 //    	als.add(new Student("s2",22));
@@ -254,7 +253,7 @@ public class Main {
 //    	alp.add(new Worker("p2",28));
 //    	alp.add(new Worker("p3",29));
 //    	printCollectionBySuper(alp);
-    	
+
 		/*
 		 * Map<Integer,String> map = new HashMap<Integer, String>();
 		 * 
@@ -271,15 +270,13 @@ public class Main {
 		 * //containsKey:..false
 		 * 
 		 * //获取 System.out.println(map.get(3)); //lisi
-		 */    	
+		 */
 		/*
 		 * Set<Integer> keys = map.keySet(); Iterator<Integer> it = keys.iterator();
 		 * while(it.hasNext()) { Integer key = it.next(); String value = map.get(key);
 		 * System.out.println(key+":"+value); }
 		 */
-    	
-    	
-    	
+
 		/*
 		 * Set<Map.Entry<Integer,String>> entry = map.entrySet();
 		 * Iterator<Map.Entry<Integer,String>> it = entry.iterator();
@@ -287,12 +284,12 @@ public class Main {
 		 * me.getKey(); String value = me.getValue(); System.out.println(key+":"+value);
 		 * }
 		 */
-    	
+
 		/*
 		 * Collection<String> values = map.values(); Iterator<String> it =
 		 * values.iterator(); while(it.hasNext()) { System.out.println(it.next()); }
 		 */
-    	
+
 		/*
 		 * HashMap<Student,String> hs = new HashMap<Student,String>(); hs.put(new
 		 * Student("s1",21), "上海"); hs.put(new Student("s2",22), "北京"); hs.put(new
@@ -303,7 +300,7 @@ public class Main {
 		 * key = it.next(); String value = hs.get(key);
 		 * System.out.println(key.getName()+":"+key.getAge()+"---"+value); }
 		 */
-    	
+
 		/*
 		 * TreeMap<Student,String> hs = new TreeMap<Student,String>(new
 		 * ComparatorByName()); hs.put(new Student("s1",21), "上海"); hs.put(new
@@ -316,7 +313,7 @@ public class Main {
 		 * me.getKey(); String value = me.getValue();
 		 * System.out.println(key.getName()+":"+key.getAge()+"---"+value); }
 		 */
-    	
+
 		/*
 		 * HashMap<Integer,String> hs = new LinkedHashMap<Integer,String>();
 		 * //保证存入和取出顺序一致 hs.put(7, "zhangsan1"); hs.put(8, "zhangsan2"); hs.put(2,
@@ -327,7 +324,7 @@ public class Main {
 		 * me.getKey(); String value = me.getValue(); System.out.println(key+":"+value);
 		 * }
 		 */
-    	
+
 		/*
 		 * String str = "f+_dgavcbsacADdfs"; char[] chs = str.toCharArray();
 		 * 
@@ -344,7 +341,7 @@ public class Main {
 		 * 
 		 * System.out.println(sb.toString());
 		 */
-    	
+
 		/*
 		 * List<String> list = new ArrayList<String>(); list.add("sfas");
 		 * list.add("agg"); list.add("rth"); list.add("xzbvz"); list.add("agg");
@@ -352,9 +349,8 @@ public class Main {
 		 * Collections.sort(list);
 		 * 
 		 * System.out.println(list); //[agg, agg, rth, sfas, xzbvz]
-		 */    	
-    	
-    	
+		 */
+
 //    	TreeSet<String> ts = new TreeSet<String>(Collections.reverseOrder());
 //    	ts.add("abc");
 //    	ts.add("bcd");
@@ -362,11 +358,11 @@ public class Main {
 //    	ts.add("def");
 //    	
 //    	System.out.println(ts);
-    	
+
 //    	int[] iarr = {4,6,8,90,1,2,4};
 //    	
 //    	System.out.println(myArraysToString(iarr)); //[4,6,8,90,1,2,4]
-    	
+
 		/*
 		 * int[] iarr = {4,6,8,90,1,2,4}; int[] ibrr = {31,11,51,61}; String[] arr =
 		 * {"asdfas","agas","hh","sgas"};
@@ -376,47 +372,77 @@ public class Main {
 		 * 
 		 * System.out.println(list); System.out.println(arrList);
 		 * System.out.println(brrList); //[asdfas, agas, hh, sgas] //[[I@15db9742]
-		 */    
-    	
-    	
-    	List<String> list = new ArrayList<String>();
-    	list.add("abc1");
-    	list.add("abc2");
-    	list.add("abc3");
-    	
-    	String[] arr = list.toArray(new String[list.size()]);
-    	System.out.println(Arrays.toString(arr));  //[abc1, abc2, abc3]
-    	}
-    
-    public static String myArraysToString(int[] a) {
-    	int imax = a.length-1;
-    	if(imax==-1) {
-    		return "[]";
-    	}
-    	StringBuilder sb = new StringBuilder();
-    	sb.append("[");
-    	for(int i=0;;i++) {
-    		sb.append(a[i]);
-    		if(i == imax) {
-    			return sb.append("]").toString();
-    		}
-    		sb.append(',');
-    	}
-    }
-    
-    
+		 */
+
+		List<String> list = new ArrayList<String>();
+		list.add("abc1");
+		list.add("abc2");
+		list.add("abc3");
+
+//    	String[] arr = list.toArray(new String[list.size()]);
+//    	System.out.println(Arrays.toString(arr));  //[abc1, abc2, abc3]
+
+//		for (String string : list) {
+//			System.out.println(string);
+//		}
+//
+//		int[] ia = { 1, 2, 3, 4, 5, 6 };
+//		for (int i : ia) {
+//			System.out.println(i);
+//		}
+		
+		/*
+		 * HashMap<Integer,String> hm = new HashMap<Integer,String>(); hm.put(1,
+		 * "abc1"); hm.put(2, "abc2"); hm.put(3, "abc3");
+		 * 
+		 * for(Integer key : hm.keySet()) { String value = hm.get(key);
+		 * System.out.println(key+":"+value); } for(Map.Entry<Integer,String> me :
+		 * hm.entrySet()) { Integer key = me.getKey(); String value = me.getValue();
+		 * System.out.println(key+":"+value); }
+		 */
+		
+		System.out.println(add(1,2,3,4)); //10
+		System.out.println(add(1,2,3,4,5,6)); //21
+	}
+	
+	public static int add(int a,int... arr) {
+		System.out.println(a);
+		int sum=0;
+		for (int i = 0; i < arr.length; i++) {
+			sum+=arr[i];
+		}
+		return sum;
+	}
+
+	public static String myArraysToString(int[] a) {
+		int imax = a.length - 1;
+		if (imax == -1) {
+			return "[]";
+		}
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+		for (int i = 0;; i++) {
+			sb.append(a[i]);
+			if (i == imax) {
+				return sb.append("]").toString();
+			}
+			sb.append(',');
+		}
+	}
+
 	private static void printCollection(Collection<? extends Person> al) {
 		Iterator<? extends Person> it = al.iterator();
-    	while(it.hasNext()) {
-    		Person s = it.next();
-    		System.out.println(s);
-    	}
+		while (it.hasNext()) {
+			Person s = it.next();
+			System.out.println(s);
+		}
 	}
+
 	private static void printCollectionBySuper(Collection<? super Student> al) {
 		Iterator<? super Student> it = al.iterator();
-    	while(it.hasNext()) {
-    		System.out.println(it.next());
-    	}
+		while (it.hasNext()) {
+			System.out.println(it.next());
+		}
 	}
 
 //	private static ArrayList getSingleArrayList(ArrayList al) {
@@ -434,12 +460,3 @@ public class Main {
 //	}
 
 }
-
-
-
-
-
-
-
-
-
