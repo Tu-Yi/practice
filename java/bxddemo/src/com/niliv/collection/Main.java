@@ -1,6 +1,14 @@
 package com.niliv.collection;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
@@ -247,27 +255,156 @@ public class Main {
 //    	alp.add(new Worker("p3",29));
 //    	printCollectionBySuper(alp);
     	
-    	Map<Integer,String> map = new HashMap<Integer, String>();
+		/*
+		 * Map<Integer,String> map = new HashMap<Integer, String>();
+		 * 
+		 * //增加修改 System.out.println(map.put(1, "wangcai")); //null
+		 * System.out.println(map.put(1, "xiaoqiang")); //wangcai
+		 * System.out.println(map); //{1=xiaoqiang}
+		 * 
+		 * map.put(2, "zhgangshan"); map.put(3, "lisi");
+		 * 
+		 * //删除 System.out.println("remove:.."+map.remove(2)); //remove:..zhgangshan
+		 * System.out.println(map); //{1=xiaoqiang, 3=lisi}
+		 * 
+		 * //判断 System.out.println("containsKey:.."+map.containsKey(2));
+		 * //containsKey:..false
+		 * 
+		 * //获取 System.out.println(map.get(3)); //lisi
+		 */    	
+		/*
+		 * Set<Integer> keys = map.keySet(); Iterator<Integer> it = keys.iterator();
+		 * while(it.hasNext()) { Integer key = it.next(); String value = map.get(key);
+		 * System.out.println(key+":"+value); }
+		 */
     	
-    	//增加修改
-    	System.out.println(map.put(1, "wangcai")); //null
-    	System.out.println(map.put(1, "xiaoqiang")); //wangcai
-    	System.out.println(map); //{1=xiaoqiang}
     	
-    	map.put(2, "zhgangshan");
-    	map.put(3, "lisi");
     	
-    	//删除
-    	System.out.println("remove:.."+map.remove(2)); //remove:..zhgangshan
-    	System.out.println(map); //{1=xiaoqiang, 3=lisi}
+		/*
+		 * Set<Map.Entry<Integer,String>> entry = map.entrySet();
+		 * Iterator<Map.Entry<Integer,String>> it = entry.iterator();
+		 * while(it.hasNext()) { Map.Entry<Integer,String> me = it.next(); Integer key =
+		 * me.getKey(); String value = me.getValue(); System.out.println(key+":"+value);
+		 * }
+		 */
     	
-    	//判断
-    	System.out.println("containsKey:.."+map.containsKey(2)); //containsKey:..false
+		/*
+		 * Collection<String> values = map.values(); Iterator<String> it =
+		 * values.iterator(); while(it.hasNext()) { System.out.println(it.next()); }
+		 */
     	
-    	//获取
-    	System.out.println(map.get(3)); //lisi
+		/*
+		 * HashMap<Student,String> hs = new HashMap<Student,String>(); hs.put(new
+		 * Student("s1",21), "上海"); hs.put(new Student("s2",22), "北京"); hs.put(new
+		 * Student("s3",23), "成都"); hs.put(new Student("s4",24), "广州"); hs.put(new
+		 * Student("s1",21), "杭州"); //自动调用Person的equals，hashCode方法
+		 * 
+		 * Iterator<Student> it = hs.keySet().iterator(); while(it.hasNext()) { Student
+		 * key = it.next(); String value = hs.get(key);
+		 * System.out.println(key.getName()+":"+key.getAge()+"---"+value); }
+		 */
+    	
+		/*
+		 * TreeMap<Student,String> hs = new TreeMap<Student,String>(new
+		 * ComparatorByName()); hs.put(new Student("s1",21), "上海"); hs.put(new
+		 * Student("s2",26), "北京"); hs.put(new Student("s3",23), "成都"); hs.put(new
+		 * Student("s4",24), "广州"); hs.put(new Student("s1",21), "杭州");
+		 * //自动调用Person的equals，hashCode方法
+		 * 
+		 * Iterator<Map.Entry<Student,String>> it = hs.entrySet().iterator();
+		 * while(it.hasNext()) { Map.Entry<Student,String> me = it.next(); Student key =
+		 * me.getKey(); String value = me.getValue();
+		 * System.out.println(key.getName()+":"+key.getAge()+"---"+value); }
+		 */
+    	
+		/*
+		 * HashMap<Integer,String> hs = new LinkedHashMap<Integer,String>();
+		 * //保证存入和取出顺序一致 hs.put(7, "zhangsan1"); hs.put(8, "zhangsan2"); hs.put(2,
+		 * "zhangsan3");
+		 * 
+		 * Iterator<Map.Entry<Integer,String>> it = hs.entrySet().iterator();
+		 * while(it.hasNext()) { Map.Entry<Integer,String> me = it.next(); Integer key =
+		 * me.getKey(); String value = me.getValue(); System.out.println(key+":"+value);
+		 * }
+		 */
+    	
+		/*
+		 * String str = "f+_dgavcbsacADdfs"; char[] chs = str.toCharArray();
+		 * 
+		 * Map<Character,Integer> map = new TreeMap<>(); for(int i=0;i<chs.length;i++) {
+		 * if(chs[i]>='a' && chs[i]<='z' || chs[i]>='A' && chs[i]<='Z') { Integer value
+		 * = map.get(chs[i]); if(value==null) { map.put(chs[i], 1); }else {
+		 * map.put(chs[i], value+1); } }
+		 * 
+		 * }
+		 * 
+		 * StringBuilder sb = new StringBuilder(); Iterator<Character> it =
+		 * map.keySet().iterator(); while(it.hasNext()) { Character key = it.next();
+		 * Integer value = map.get(key); sb.append(key+"("+value+")"); }
+		 * 
+		 * System.out.println(sb.toString());
+		 */
+    	
+		/*
+		 * List<String> list = new ArrayList<String>(); list.add("sfas");
+		 * list.add("agg"); list.add("rth"); list.add("xzbvz"); list.add("agg");
+		 * 
+		 * Collections.sort(list);
+		 * 
+		 * System.out.println(list); //[agg, agg, rth, sfas, xzbvz]
+		 */    	
+    	
+    	
+//    	TreeSet<String> ts = new TreeSet<String>(Collections.reverseOrder());
+//    	ts.add("abc");
+//    	ts.add("bcd");
+//    	ts.add("cde");
+//    	ts.add("def");
+//    	
+//    	System.out.println(ts);
+    	
+//    	int[] iarr = {4,6,8,90,1,2,4};
+//    	
+//    	System.out.println(myArraysToString(iarr)); //[4,6,8,90,1,2,4]
+    	
+		/*
+		 * int[] iarr = {4,6,8,90,1,2,4}; int[] ibrr = {31,11,51,61}; String[] arr =
+		 * {"asdfas","agas","hh","sgas"};
+		 * 
+		 * List<String> list = Arrays.asList(arr); List arrList = Arrays.asList(iarr);
+		 * List<int[]> brrList = Arrays.asList(ibrr);
+		 * 
+		 * System.out.println(list); System.out.println(arrList);
+		 * System.out.println(brrList); //[asdfas, agas, hh, sgas] //[[I@15db9742]
+		 */    
+    	
+    	
+    	List<String> list = new ArrayList<String>();
+    	list.add("abc1");
+    	list.add("abc2");
+    	list.add("abc3");
+    	
+    	String[] arr = list.toArray(new String[list.size()]);
+    	System.out.println(Arrays.toString(arr));  //[abc1, abc2, abc3]
+    	}
+    
+    public static String myArraysToString(int[] a) {
+    	int imax = a.length-1;
+    	if(imax==-1) {
+    		return "[]";
+    	}
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("[");
+    	for(int i=0;;i++) {
+    		sb.append(a[i]);
+    		if(i == imax) {
+    			return sb.append("]").toString();
+    		}
+    		sb.append(',');
+    	}
     }
-
+    
+    
 	private static void printCollection(Collection<? extends Person> al) {
 		Iterator<? extends Person> it = al.iterator();
     	while(it.hasNext()) {
