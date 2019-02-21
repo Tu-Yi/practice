@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import static java.util.Collections.*;
 
 public class Main {
 	public static void main(String[] args) {
@@ -378,6 +379,10 @@ public class Main {
 		list.add("abc1");
 		list.add("abc2");
 		list.add("abc3");
+		
+		sort(list);
+		max(list);
+		
 
 //    	String[] arr = list.toArray(new String[list.size()]);
 //    	System.out.println(Arrays.toString(arr));  //[abc1, abc2, abc3]
@@ -406,7 +411,7 @@ public class Main {
 	}
 	
 	public static int add(int a,int... arr) {
-		System.out.println(a);
+		System.out.println(a); //1
 		int sum=0;
 		for (int i = 0; i < arr.length; i++) {
 			sum+=arr[i];
