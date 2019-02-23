@@ -1,34 +1,22 @@
 import  java.awt.*;
 import javax.swing.*;
 
-/**
- * 
- * @author niliv
- * @version 1.0
- */
 public class BallGame extends JFrame {
 
-	int å˜é‡ = 1;
-	String $sdfString = "asfd";
-	String _sdfString="asfs";
-	//int 1sfd=2;
-	
-	
-	
 	Image ball = Toolkit.getDefaultToolkit().getImage("images/ball.png");
     Image desk = Toolkit.getDefaultToolkit().getImage("images/desk.jpg");
     
-    double  x=100;    //Ð¡ï¿½ï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½
-    double  y=100; //Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    //boolean  right = true;   //ï¿½ï¿½ï¿½ï¿½
-    double degree = 3.14/3;    //ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ë´ï¿½ï¿½ï¿½ï¿½Ç£ï¿½60ï¿½ï¿½
-    //ï¿½ï¿½ï¿½ï¿½ï¿½ÚµÄ·ï¿½ï¿½ï¿½
+    double  x=100;    //Ð¡ÇòµÄºá×ø±ê
+    double  y=100; //Ð¡ÇòµÄ×Ý×ø±ê
+    //boolean  right = true;   //·½Ïò
+    double degree = 3.14/3;    //»¡¶È¡£´Ë´¦¾ÍÊÇ£º60¶È
+    
+    //»­´°¿ÚµÄ·½·¨
     public void paint(Graphics  g){
-        System.out.println("ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Î£ï¿½");
+        System.out.println("´°¿Ú±»»­ÁËÒ»´Î£¡");
         g.drawImage(desk, 0, 0, null);
         g.drawImage(ball, (int)x, (int)y, null);
         
-		
 //        if(right) {
 //            x = x+10;
 //        }else {
@@ -46,27 +34,27 @@ public class BallGame extends JFrame {
         x  = x+ 10*Math.cos(degree);
         y  = y +10*Math.sin(degree); 
          
-        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â±ß½ï¿½
-        if(y>500-40-30||y<40+40){//500ï¿½Ç´ï¿½ï¿½Ú¸ß¶È£ï¿½40ï¿½ï¿½ï¿½ï¿½ï¿½Ó±ß¿ï¿½30ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½40ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ß¶ï¿½
+        //Åöµ½ÉÏÏÂ±ß½ç
+        if(y>500-40-30||y<40+40){//500ÊÇ´°¿Ú¸ß¶È£»40ÊÇ×À×Ó±ß¿ò£¬30ÊÇÇòÖ±¾¶£»×îºóÒ»¸ö40ÊÇ±êÌâÀ¸µÄ¸ß¶È
             degree = -degree;
         }
          
-        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò±ß½ï¿½
+        //Åöµ½×óÓÒ±ß½ç
         if(x<40||x>856-40-30){
             degree = 3.14 - degree;
         }
     }
     
-	//ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½
+	//´°¿Ú¼ÓÔØ
     void launchFrame(){
         setSize(856,500);
         setLocation(50,50);
         setVisible(true);
-      //ï¿½Ø»ï¿½ï¿½ï¿½ï¿½ï¿½,Ã¿ï¿½ë»­25ï¿½ï¿½
+      //ÖØ»­´°¿Ú,Ã¿Ãë»­25´Î
         while(true){
             repaint(); 
             try{
-                Thread.sleep(40);   //40ms,   1ï¿½ï¿½=1000ï¿½ï¿½ï¿½ï¿½.  ï¿½ï¿½Ô¼Ò»ï¿½ë»­25ï¿½Î´ï¿½ï¿½ï¿½
+                Thread.sleep(40);   //40ms,   1Ãë=1000ºÁÃë.  ´óÔ¼Ò»Ãë»­25´Î´°¿Ú
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -77,6 +65,8 @@ public class BallGame extends JFrame {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
         BallGame game = new BallGame();
+        BallGame.setDefaultLookAndFeelDecorated(true);
+        //game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.launchFrame();
 	}
 
