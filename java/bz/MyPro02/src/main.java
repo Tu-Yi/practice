@@ -14,17 +14,17 @@ public class main {
 		
 		
 		  //输入半径，求圆的周长和面积 
-//		Scanner saScanner = new Scanner(System.in);
-//		String radius;
-//		do {
-//			System.out.println("请输入圆的半径：");
-//			radius = saScanner.nextLine();
-//		} while (isEmpty(radius) || !isNumeric(radius));
-//		System.out.println("该圆的半径为：" + radius);
-//		double r = Double.parseDouble(radius);
-//		Circle circle = new Circle(r);
-//		System.out.println("该圆的面积为："+circle.getArea());
-//		System.out.println("该圆的周长为："+circle.getRound());
+		Scanner saScanner = new Scanner(System.in);
+		String radius;
+		do {
+			System.out.println("请输入圆的半径：");
+			radius = saScanner.nextLine();
+		} while (isEmpty(radius) || !isNumeric(radius));
+		System.out.println("该圆的半径为：" + radius);
+		double r = Double.parseDouble(radius);
+		Circle circle = new Circle(r);
+		System.out.println("该圆的面积为："+circle.getArea());
+		System.out.println("该圆的周长为："+circle.getRound());
 		 
 		
 		/*输入存款、年限、方式，求出总存款
@@ -52,22 +52,17 @@ public class main {
 //		} while (num < 1000 || num > 9999);
 //		getPassword(num);
 		
-		Scanner saScanner = new Scanner(System.in);
-		String s;
-		do {
-			System.out.println("请输入本金：");
-			s = saScanner.nextLine();
-		} while (isEmpty(s) || !isNumeric(s));
-		System.out.println("本金为：" + s);
-		double deposit = Double.parseDouble(s);
-		long hq1 = Math.round(deposit+deposit*(0.35/100));
-		long hq2 = Math.round(deposit+deposit*(0.35/100)*2);
-		long dq1 = Math.round(deposit+deposit+deposit*(1.5/100));
-		long dq2 = Math.round(deposit+deposit*(2.1/100)*2);
-		System.out.println("活期一年的本息合计为："+hq1);
-		System.out.println("活期两年的本息合计为："+hq2);
-		System.out.println("定期一年的本息合计为："+dq1);
-		System.out.println("定期两年的本息合计为："+dq2);
+		/*
+		 * Scanner saScanner = new Scanner(System.in); String s; do {
+		 * System.out.println("请输入本金："); s = saScanner.nextLine(); } while (isEmpty(s)
+		 * || !isNumeric(s)); System.out.println("本金为：" + s); double deposit =
+		 * Double.parseDouble(s); long hq1 = Math.round(deposit+deposit*(0.35/100));
+		 * long hq2 = Math.round(deposit+deposit*(0.35/100)*2); long dq1 =
+		 * Math.round(deposit+deposit+deposit*(1.5/100)); long dq2 =
+		 * Math.round(deposit+deposit*(2.1/100)*2);
+		 * System.out.println("活期一年的本息合计为："+hq1); System.out.println("活期两年的本息合计为："+hq2);
+		 * System.out.println("定期一年的本息合计为："+dq1); System.out.println("定期两年的本息合计为："+dq2);
+		 */
 		 
 		
 	}

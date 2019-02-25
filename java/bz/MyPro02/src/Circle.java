@@ -9,19 +9,18 @@ import java.math.RoundingMode;
 public class Circle {
 
 	private double r;
-	final float PI = 3.14f;
 	
 	public Circle(double r) {
 		this.r = r;
 	}
 	
 	public double getRound() {
-		BigDecimal bgPerimeter = new BigDecimal(2 * PI * r).setScale(2, RoundingMode.UP);
+		BigDecimal bgPerimeter = new BigDecimal(2 * Math.PI * r).setScale(2, RoundingMode.UP);
 		return bgPerimeter.doubleValue();
 	}
 	
 	public double getArea() {
-		BigDecimal bgArea = new BigDecimal(PI * r * r).setScale(2, RoundingMode.UP);
+		BigDecimal bgArea = new BigDecimal(Math.PI * Math.pow(r, 2)).setScale(2, RoundingMode.UP);
 		return bgArea.doubleValue();
 	}
 }
