@@ -13,18 +13,18 @@ public class main {
 		
 		
 		
-		  //输入半径，求圆的周长和面积 
-		Scanner saScanner = new Scanner(System.in);
-		String radius;
-		do {
-			System.out.println("请输入圆的半径：");
-			radius = saScanner.nextLine();
-		} while (isEmpty(radius) || !isNumeric(radius));
-		System.out.println("该圆的半径为：" + radius);
-		double r = Double.parseDouble(radius);
-		Circle circle = new Circle(r);
+//		  //输入半径，求圆的周长和面积 
+//		Scanner saScanner = new Scanner(System.in);
+//		String radius;
+//		do {
+//			System.out.println("请输入圆的半径：");
+//			radius = saScanner.nextLine();
+//		} while (isEmpty(radius) || !isNumeric(radius));
+//		System.out.println("该圆的半径为：" + radius);
+//		double r = Double.parseDouble(radius);
+		Point point = new Point(100, 100);
+		Circle circle = new Circle(5,point);
 		System.out.println("该圆的面积为："+circle.getArea());
-		System.out.println("该圆的周长为："+circle.getRound());
 		 
 		
 		/*输入存款、年限、方式，求出总存款
