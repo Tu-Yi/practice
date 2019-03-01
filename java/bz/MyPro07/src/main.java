@@ -1,15 +1,18 @@
 public class main {
 	public static void main(String[] args) {
-			int[] arr = {1,2,3,4,5,6,7};
-			User[] userUsers = {
-					new User("旺财1", 1),
-					new User("旺财2", 2),
-					new User("旺财3", 3)
-			};
-			User[] users =new User[3];
-			int[] brr = new int[3];
-			System.out.println(brr[0]); //0
-			System.out.println(users[0]); //null
+//			int[] arr = {1,2,3,4,5,6,7};
+//			User[] userUsers = {
+//					new User("旺财1", 1),
+//					new User("旺财2", 2),
+//					new User("旺财3", 3)
+//			};
+//			User[] users =new User[3];
+//			int[] brr = new int[3];
+//			System.out.println(brr[0]); //0
+//			System.out.println(users[0]); //null
+		
+		double d = 0.123456789123456789;
+		System.out.println(d);
 	}
 }
 class User{
