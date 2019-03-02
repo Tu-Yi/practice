@@ -7,9 +7,10 @@ package com.niliv.DoubleBall;
 public class Ball {
 	
 	//颜色、球号、每注单价
-	private String color;
-	private int num;
-	static final int BALL_PRICE=2;
+	String color;
+	int num;
+	static final String COLOR_RED="red";
+	static final String COLOR_BLUE="blue";
 	
 	public Ball() {}
 	
@@ -17,20 +18,19 @@ public class Ball {
 		this.color = color;
 		this.num = num;
 	}
-	//随机生成6位红球 范围1-33
-	public int[] rockNumber_red() {
-		int[] rockNum = new int[6];
-		for(int i=0;i<rockNum.length;i++) {
-			rockNum[i] = random(33);
+	/**
+	 * 随机生成一个中奖号
+	 * @return
+	 */
+	public static int[] getLuckNum(){
+		int luckNum[]=new int[7];
+		for(int i=0;i<luckNum.length;i++){
+			if(i<luckNum.length-1){//红球
+				luckNum[i]=(int)(Math.random()*33)+1;//生成一个1-33的随机数
+			}else{//蓝球
+				luckNum[i]=(int)(Math.random()*16)+1;//生成一个1-16的随机数
+			}
 		}
-		return rockNum;
-	}
-	//随机生成1位蓝球 范围1-16
-	public int rockNumber_blue() {
-		return random(16);
-	}
-	
-	private int random(int range) {
-		return  (int)(33*Math.random()+1);
+		return luckNum;
 	}
 }
