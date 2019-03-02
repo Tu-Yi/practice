@@ -7,29 +7,38 @@ import java.awt.event.KeyEvent;
 public class Plane extends GameObject {
 	int speed = 3;
 	boolean left,up,down,right;
+	boolean live = true;
 	
 	public void drawSelf(Graphics g) {
-		g.drawImage(imgImage, (int)x, (int)y, null);
 		
-		//由于在不断重绘，所以标志在不断判断，从而实现坐标的加减
-		if(left) {
-			x-=speed;
+		if(live) {
+			g.drawImage(imgImage, (int)x, (int)y, null);
+			
+			//由于在不断重绘，所以标志在不断判断，从而实现坐标的加减
+			if(left) {
+				x-=speed;
+			}
+			if(right) {
+				x+=speed;
+			}
+			if(up) {
+				y-=speed;
+			}
+			if(down) {
+				y+=speed;
+			}
 		}
-		if(right) {
-			x+=speed;
-		}
-		if(up) {
-			y-=speed;
-		}
-		if(down) {
-			y+=speed;
-		}
+		
 	}
 	
-	public Plane(Image imgImage, double x, double y) {
-		super(imgImage, x, y);
-	}
 	
+	
+	public Plane(Image imgImage, double x, double y, int speed, int width, int height) {
+		super(imgImage, x, y, speed, width, height);
+	}
+
+
+
 	//根据键盘方向键按下事件改变方向标志
 	public void addDirection(KeyEvent e) {
 		switch (e.getKeyCode()) {

@@ -2,8 +2,9 @@ package com.niliv.game;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 
-import com.sun.javafx.geom.Rectangle;
+
 
 /**
  * 游戏物体父类
