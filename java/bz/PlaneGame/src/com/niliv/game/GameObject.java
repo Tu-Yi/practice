@@ -8,7 +8,7 @@ import java.awt.Rectangle;
 
 /**
  * 游戏物体父类
- * @author Administrator
+ * @author yuankun
  *
  */
 public class GameObject {

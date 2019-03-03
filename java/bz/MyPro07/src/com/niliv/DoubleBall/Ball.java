@@ -2,7 +2,7 @@ package com.niliv.DoubleBall;
 /**
  * 双色球类
  * @author yuankun
- *
+ * @version 0.1
  */
 public class Ball {
 	
@@ -22,15 +22,15 @@ public class Ball {
 	 * 随机生成一个中奖号
 	 * @return
 	 */
-	public static int[] getLuckNum(){
-		int luckNum[]=new int[7];
-		for(int i=0;i<luckNum.length;i++){
-			if(i<luckNum.length-1){//红球
-				luckNum[i]=(int)(Math.random()*33)+1;//生成一个1-33的随机数
+	public static Ball[] getLuckNum(){
+		Ball[] luckBall=new Ball[7];
+		for(int i=0;i<luckBall.length;i++){
+			if(i<luckBall.length-1){//红球
+				luckBall[i]=new Ball(COLOR_RED, (int)(Math.random()*33)+1) ;//生成一个1-33的随机数
 			}else{//蓝球
-				luckNum[i]=(int)(Math.random()*16)+1;//生成一个1-16的随机数
+				luckBall[i]=new Ball(COLOR_BLUE, (int)(Math.random()*16)+1);//生成一个1-16的随机数
 			}
 		}
-		return luckNum;
+		return luckBall;
 	}
 }

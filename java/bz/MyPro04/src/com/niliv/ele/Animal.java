@@ -1,4 +1,4 @@
-package niliv.oop;
+package com.niliv.ele;
 
 public class Animal {
 	private String name;

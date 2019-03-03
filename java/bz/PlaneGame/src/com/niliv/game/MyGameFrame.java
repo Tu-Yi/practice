@@ -14,7 +14,11 @@ import java.util.Date;
 
 import javax.swing.JFrame;
 
-
+/**
+ * 游戏主方法类
+ * @author yuankun
+ *
+ */
 public class MyGameFrame extends Frame {
 
 	//获取图片
@@ -36,14 +40,16 @@ public class MyGameFrame extends Frame {
 		
 		Color c = g.getColor();
 		
+		//绘制背景
 		g.drawImage(bg, 0, 0, null);
-		
+		//绘制飞机
 		plane.drawSelf(g);
-		
+		//绘制炸弹
 		for(int i=0;i<shells.length;i++) {
 			shells[i].draw(g);
-			
+			//矩形相交
 			boolean peng = shells[i].getRect().intersects(plane.getRect());
+			//如果相交，不显示飞机，显示炸弹动画
 			if(peng) {
 				plane.live=false;
 				if(baoExplode==null) {
@@ -53,6 +59,7 @@ public class MyGameFrame extends Frame {
 				}
 				baoExplode.draw(g);
 			}
+			//显示游戏时间信息
 			if(!plane.live) {
 				g.setColor(Color.red);
 				Font font = new Font("宋体",Font.BOLD,20);
@@ -79,7 +86,7 @@ public class MyGameFrame extends Frame {
 		}
 	}
 	
-	
+	//鼠标按下释放事件
 	class KeyMonitor extends KeyAdapter{
 
 		@Override
@@ -127,7 +134,7 @@ public class MyGameFrame extends Frame {
 		frame.launchFrame();
 	}
 	
-	
+	//防止窗体抖动
 	private Image offScreenImage = null;
 	 
 	public void update(Graphics g) {

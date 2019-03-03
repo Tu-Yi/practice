@@ -3,17 +3,11 @@ package com.niliv.DoubleBall;
 /**
  * 开奖类
  * @author yuankun
- *
+ * @version 0.1
  */
 public class Lottery {
-	
-	//中奖球号
-	int[] luckNum;
 
-	public Lottery(int[] luckNum) {
-		super();
-		this.luckNum = luckNum;
-	}
+	public Lottery() {}
 
 	/**
 	 * 计算获奖等级
@@ -21,25 +15,25 @@ public class Lottery {
 	 * @param luckNum  当期中奖号
 	 * @return
 	 */
-	public int getCompareResult(int num[]){
+	public static int getCompareResult(Ball[] balls, Ball[] luckBalls){
 		//查看自己中奖情况
 		int luckLevel=0;//中奖等级1-6
 		int redEqualCount=0;//红球相等数量
 		boolean isBlue=false;//蓝球相等数量
 		
 		//将自己的彩票号与开奖号进行比较
-		for(int i=0;i<num.length;i++){
-			if(i<num.length-1){
+		for(int i=0;i<balls.length;i++){
+			if(i<balls.length-1){
 		    //比较红球==自己买的彩票的红球号与中奖的红球号进行比较
-			  int r=num[i];//每遍历一次将自己的一个红球号与中奖的所有红球号进行比较
-		      for(int j=0;j<this.luckNum.length-1;j++){
-				if(r==this.luckNum[j]){
+			  Ball b=balls[i];//每遍历一次将自己的一个红球号与中奖的所有红球号进行比较
+		      for(int j=0;j<luckBalls.length-1;j++){
+				if(b.num==luckBalls[j].num){
 					redEqualCount++;
 				}
 			  }	
 			}else{
 		    //比较蓝球==自己买的彩票的蓝球号与中奖的蓝球号进行比较
-			 if(num[num.length-1]==this.luckNum[this.luckNum.length-1]){
+			 if(balls[balls.length-1].num==luckBalls[luckBalls.length-1].num){
 				 isBlue=true;
 			 }
 			}

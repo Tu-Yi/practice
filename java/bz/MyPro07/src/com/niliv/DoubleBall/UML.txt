@@ -1,0 +1,44 @@
+@startuml
+class Ball {
+	~String color
+	~int num
+	~String COLOR_RED
+	~String COLOR_BLUE
+	+Ball()
+	+Ball(String color, int num)
+	+Ball[] getLuckNum()
+}
+class Note {
+	~Citizen citizen
+	~Ball[] balls
+	~int num
+	~boolean isLottery
+	~int BALL_PRICE
+	+Note(Citizen citizen, Ball[] balls, int num)
+	+boolean isLottery()
+	+void setLottery(boolean isLottery)
+}
+class Lottery {
+	+Lottery()
+	+int getCompareResult(Ball[] balls, Ball[] luckBalls)
+}
+class Citizen {
+	~String name
+	~int[][] nums
+	~double payment
+	~int count
+	~boolean isBuy
+	~long sum
+	+Citizen()
+}
+class DoubleBallMain {
+	+void main(String[] args)
+}
+Citizen->Note:公民对象
+Ball->Note:双色球对象
+Note->Lottery:注对象
+DoubleBallMain-->Lottery: 调用
+DoubleBallMain-->Ball: 调用
+DoubleBallMain-->Citizen: 调用
+DoubleBallMain-->Note: 调用
+@enduml

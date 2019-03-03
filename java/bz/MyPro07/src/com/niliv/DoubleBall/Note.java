@@ -3,10 +3,10 @@ package com.niliv.DoubleBall;
 /**
  * 注类
  * @author yuankun
- *
+ * @version 0.1
  */
 public class Note {
-	
+	//公民、选中的号码、注数、是否中奖、每注价格
 	Citizen citizen;
 	Ball[] balls;
 	int num;

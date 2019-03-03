@@ -1,4 +1,4 @@
-package niliv.oop;
+package com.niliv.ele;
 
 public class Freezer {
 	private String brand;

@@ -2,7 +2,11 @@ package com.niliv.game;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
+/**
+ * 炸弹类
+ * @author yuankun
+ *
+ */
 public class Shell extends GameObject {
 	double degree;
 	public Shell() {
@@ -14,7 +18,7 @@ public class Shell extends GameObject {
 		
 		degree = Math.random()*Math.PI*2;
 	}
-	
+	//画炸弹
 	public void draw(Graphics g) {
 		Color color = g.getColor();
 		g.setColor(Color.yellow);

@@ -3,7 +3,11 @@ package com.niliv.game;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-
+/**
+ * 飞机类
+ * @author yuankun
+ *
+ */
 public class Plane extends GameObject {
 	int speed = 3;
 	boolean left,up,down,right;
@@ -30,8 +34,6 @@ public class Plane extends GameObject {
 		}
 		
 	}
-	
-	
 	
 	public Plane(Image imgImage, double x, double y, int speed, int width, int height) {
 		super(imgImage, x, y, speed, width, height);
