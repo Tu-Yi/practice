@@ -4,6 +4,8 @@ public interface InterfaceA {
 	public void show();
 }
 interface InterfaceB extends InterfaceA {
+	
+	//实现A的show
 	public void show();
 }
 class MyClass implements InterfaceA,InterfaceB{

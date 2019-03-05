@@ -33,6 +33,4 @@ public class Student extends Person implements Play {
 		System.out.println("student-method");
 	}
 	
-	
-
 }

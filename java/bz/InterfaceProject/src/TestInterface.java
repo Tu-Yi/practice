@@ -16,7 +16,9 @@ public class TestInterface {
 		//为什么抽象类的静态方法和属性，用实例都可以调用？
 		Person person = new Student();
 		person.study(); //abstract-static
+		Person.study();
 		System.out.println(person.name); //Person
+		
 	}
 
 }
