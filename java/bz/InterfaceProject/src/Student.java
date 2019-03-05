@@ -26,5 +26,13 @@ public class Student extends Person implements Play {
 		// TODO Auto-generated method stub
 		
 	}
+	//覆盖接口默认方法
+	@Override
+	public void method() {
+		// TODO Auto-generated method stub
+		System.out.println("student-method");
+	}
+	
+	
 
 }

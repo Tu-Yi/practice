@@ -7,12 +7,17 @@ public interface Play {
 	public void cry(String name); //可以省略public abstract
 	void eat();
 	
-	//1.8新特性  定义非抽象方法 
+	//1.8新特性  定义非抽象方法  默认方法可以被子类覆盖
 	public default void method() {
-		System.out.println("interface-method");
+		System.out.println("Play-method");
+	}
+	
+	//默认方法
+	public default void defaultMethod() {
+		System.out.println("Play-default");
 	}
 	//静态方法
-	public static void mehtod1() {
-		System.out.println("interface-static");
+	public static void staticMehtod() {
+		System.out.println("Play-static");
 	}
 }
