@@ -7,7 +7,7 @@ public class TestPerson {
 		Animal amD = new Dog();
 		System.out.println(amC.num);
 		System.out.println(amD.num);
-		amC.catchMouse();
+		//amC.catchMouse();
 		amC.eat();
 		amC.cry();
 		amD.eat();
