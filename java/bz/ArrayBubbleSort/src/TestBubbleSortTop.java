@@ -1,5 +1,10 @@
 import java.util.Arrays;
 
+/**
+ * 冒泡排序
+ * @author yuankun
+ * @version 0.1
+ */
 public class TestBubbleSortTop {
 
 	public static void main(String[] args) {
@@ -11,6 +16,7 @@ public class TestBubbleSortTop {
 		for(int i=0;i<arr.length-1;i++) {
 			count++;
 			flag=true;
+			//对无序数据进行交换判断
 			for(int j=0;j<arr.length-1-i;j++) {
 				if(arr[j]>arr[j+1]) {
 					temp=arr[j];
@@ -19,6 +25,7 @@ public class TestBubbleSortTop {
 					flag=false;
 				}
 			}
+			//如果未发生交换则退出排序
 			if(flag) {
 				break;
 			}
