@@ -14,7 +14,7 @@ public class FactorialCal {
 //		}
 		//循环实现
 		for(int i=1;i<=5;i++) {
-			int t=1;
+			int t=0;
 			for(int j=1;j<=i;j++) {
 				t*=j;
 			}
