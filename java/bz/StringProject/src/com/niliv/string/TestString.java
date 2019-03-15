@@ -2,30 +2,32 @@ package com.niliv.string;
 
 public class TestString {
 	public static void main(String[] args) {
-		/*
-		 * String string="abc"; System.out.println(string); //charAt
-		 * System.out.println(string.charAt(1)); //equalsIgnoreCase
-		 * System.out.println(string.equalsIgnoreCase("ABC")); //indexOf
-		 * System.out.println(string.indexOf('b')); //char自动转换为int
-		 * System.out.println(string.indexOf("bc")); //字符串
-		 * System.out.println(string.indexOf(98)); //int
-		 * System.out.println(string.indexOf('l')); //-1 //lastIndexOf String string2 =
-		 * "helloworld"; System.out.println(string2.indexOf('o',5)); //6
-		 * System.out.println(string2.lastIndexOf('o',3)); //-1 //反向搜索 //replace 不改变原字符串
-		 * 只操作了方法区的常量池 System.out.println(string2.replace('o', 'p')); //hellpwprld
-		 * System.out.println(string2); //helloworld //startsWith endsWith
-		 * System.out.println(string2.startsWith("h")); //true
-		 * System.out.println(string2.endsWith("d")); //true //substring 不改变原字符串
-		 * 只操作了方法区的常量池 System.out.println(string2.substring(3)); //loworld 一直到结尾
-		 * System.out.println(string2.substring(3,7)); //lowo 含头不含尾
-		 * System.out.println(string2); //helloworld //toUpperCase toLowerCase 不改变原字符串
-		 * 只操作了方法区的常量池 System.out.println(string2.toUpperCase()); //HELLOWORLD
-		 * System.out.println(string2); //helloworld
-		 * System.out.println("JAVA".toLowerCase()); //java //trim 去掉前后空格 不改变原字符串
-		 * 只操作了方法区的常量池 String string3 = "     hello   world";
-		 * System.out.println(string3.trim()); //hello world
-		 * System.out.println(string3); // hello world
-		 */		
+		
+		  String string="abc"; 
+		  System.out.println(string); //charAt
+		  System.out.println(string.charAt(1)); //equalsIgnoreCase
+		  System.out.println(string.equalsIgnoreCase("ABC")); //indexOf
+		  System.out.println(string.indexOf('b')); //char自动转换为int
+		  System.out.println(string.indexOf("bc")); //字符串
+		  System.out.println(string.indexOf(98)); //int
+		  System.out.println(string.indexOf('l')); //-1 //lastIndexOf 
+		  String string2 ="helloworld"; 
+		  System.out.println(string2.indexOf('o',5)); //6
+		  System.out.println(string2.lastIndexOf('o',3)); //-1 //反向搜索 //replace 不改变原字符串只操作了方法区的常量池 
+		  System.out.println(string2.replace('o', 'p')); //hellpwprld
+		  System.out.println(string2); //helloworld //startsWith endsWith
+		  System.out.println(string2.startsWith("h")); //true
+		  System.out.println(string2.endsWith("d")); //true //substring 不改变原字符串只操作了方法区的常量池
+		  System.out.println(string2.substring(3)); //loworld 一直到结尾
+		  System.out.println(string2.substring(3,7)); //lowo 含头不含尾
+		  System.out.println(string2); //helloworld //toUpperCase toLowerCase 不改变原字符串只操作了方法区的常量池
+		  System.out.println(string2.toUpperCase()); //HELLOWORLD
+		  System.out.println(string2); //helloworld
+		  System.out.println("JAVA".toLowerCase()); //java //trim 去掉前后空格 不改变原字符串只操作了方法区的常量池
+		  String string3 = "     hello   world";
+		  System.out.println(string3.trim()); //hello world
+		  System.out.println(string3); // hello world
+		 		
 		
 		/*compareTo*/
 		String aString = "apple";
