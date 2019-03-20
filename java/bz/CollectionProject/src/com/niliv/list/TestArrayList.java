@@ -1,6 +1,7 @@
 package com.niliv.list;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -9,6 +10,12 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class TestArrayList {
 	public static void main(String[] args) {
+		
+		int[] arr = {1,2,3,4,5,6};
+		System.arraycopy(arr, 3, arr, 2, 3); //arr位置为3的元素开始复制3个，替换arr位置为2开始的3个元素
+		System.out.println(Arrays.toString(arr));
+		
+		
 		
 		List list = new ArrayList();
 		
