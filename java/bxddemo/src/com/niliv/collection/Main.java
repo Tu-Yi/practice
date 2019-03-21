@@ -5,9 +5,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import static java.util.Collections.*;
@@ -302,18 +304,24 @@ public class Main {
 		 * System.out.println(key.getName()+":"+key.getAge()+"---"+value); }
 		 */
 
-		/*
-		 * TreeMap<Student,String> hs = new TreeMap<Student,String>(new
-		 * ComparatorByName()); hs.put(new Student("s1",21), "上海"); hs.put(new
-		 * Student("s2",26), "北京"); hs.put(new Student("s3",23), "成都"); hs.put(new
-		 * Student("s4",24), "广州"); hs.put(new Student("s1",21), "杭州");
-		 * //自动调用Person的equals，hashCode方法
-		 * 
-		 * Iterator<Map.Entry<Student,String>> it = hs.entrySet().iterator();
-		 * while(it.hasNext()) { Map.Entry<Student,String> me = it.next(); Student key =
-		 * me.getKey(); String value = me.getValue();
-		 * System.out.println(key.getName()+":"+key.getAge()+"---"+value); }
-		 */
+		
+//		  TreeMap<Person,String> hs = new TreeMap<Person,String>(); 
+//		  hs.put(new Person("s1",21), "上海"); 
+//		  hs.put(new Person("s2",26), "北京"); 
+//		  hs.put(new Person("s3",23), "成都"); 
+//		  hs.put(new Person("s4",24), "广州");
+//		  hs.put(new Person("s1",21), "杭州");
+//		  //自动调用Person的equals，hashCode方法
+//		  
+//		  Iterator<Map.Entry<Person,String>> it = hs.entrySet().iterator();
+//		  while(it.hasNext()) 
+//		  { 
+//			  Map.Entry<Person,String> me = it.next(); 
+//			  Person key =me.getKey(); 
+//			  String value = me.getValue();
+//			  System.out.println(key.getName()+":"+key.getAge()+"---"+value); 
+//		}
+		 
 
 		/*
 		 * HashMap<Integer,String> hs = new LinkedHashMap<Integer,String>();
@@ -375,13 +383,13 @@ public class Main {
 		 * System.out.println(brrList); //[asdfas, agas, hh, sgas] //[[I@15db9742]
 		 */
 
-		List<String> list = new ArrayList<String>();
-		list.add("abc1");
-		list.add("abc2");
-		list.add("abc3");
-		
-		sort(list);
-		max(list);
+//		List<String> list = new ArrayList<String>();
+//		list.add("abc1");
+//		list.add("abc2");
+//		list.add("abc3");
+//		
+//		sort(list);
+//		max(list);
 		
 
 //    	String[] arr = list.toArray(new String[list.size()]);
@@ -406,8 +414,14 @@ public class Main {
 		 * System.out.println(key+":"+value); }
 		 */
 		
-		System.out.println(add(1,2,3,4)); //10
-		System.out.println(add(1,2,3,4,5,6)); //21
+//		System.out.println(add(1,2,3,4)); //10
+//		System.out.println(add(1,2,3,4,5,6)); //21
+		
+		HashSet hashSet = new HashSet();
+		hashSet.add(new Person("zhangsan", 12));
+		hashSet.add(new Person("lisi", 12));
+		hashSet.add(new Person("zhangsan", 12));  //如果不重写hascode和equals,这会看作是不同对象
+		System.out.println(hashSet); //[Person [name=zhangsan, age=12], Person [name=zhangsan, age=12], Person [name=lisi, age=12]]
 	}
 	
 	public static int add(int a,int... arr) {

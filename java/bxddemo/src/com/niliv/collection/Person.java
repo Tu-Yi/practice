@@ -21,14 +21,14 @@ public class Person extends Object implements Comparable<Person> {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	//¸²¸ÇhashCodeºÍequals·½·¨
+	//ï¿½ï¿½ï¿½ï¿½hashCodeï¿½ï¿½equalsï¿½ï¿½ï¿½ï¿½
 	@Override
 	public boolean equals(Object obj) {
 		if(this == obj) {
 			return true;
 		}
 		if(!(obj instanceof Person)) {
-			throw new ClassCastException("ÀàÐÍ´íÎó£¡");
+			throw new ClassCastException("ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½");
 		}
 		System.out.println(this+"..equals.."+obj);
 		System.out.println("Person equals");
@@ -42,21 +42,12 @@ public class Person extends Object implements Comparable<Person> {
 	}
 	@Override
 	public int compareTo(Person p) {
-		
-		
-		//Person p =(Person)o;
 		int temp = this.age-p.age;
-		return temp==0?this.name.compareTo(p.name):temp;
-		
-//		if(this.age>p.age) {
-//			return 1;
-//		}
-//		if(this.age<p.age) {
-//			return -1;
-//		}
-//		if(this.age==p.age) {
-//			this.name.compareTo(p.name);
-//		}
-		
+		return temp;
 	}
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + "]";
+	}
+	
 }
