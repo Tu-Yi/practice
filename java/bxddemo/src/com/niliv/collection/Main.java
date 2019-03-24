@@ -417,6 +417,15 @@ public class Main {
 //		System.out.println(add(1,2,3,4)); //10
 //		System.out.println(add(1,2,3,4,5,6)); //21
 		
+		TreeSet<String> treeSet = new TreeSet<String>();
+		treeSet.add("123");
+		
+		
+		
+		ArrayList arrayList = new ArrayList();
+		arrayList.add("123");
+		arrayList.contains("123");
+		
 		HashSet hashSet = new HashSet();
 		hashSet.add(new Person("zhangsan", 12));
 		hashSet.add(new Person("lisi", 12));
