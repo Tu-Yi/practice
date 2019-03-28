@@ -1,6 +1,7 @@
 package com.niliv.list;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class TestMain {
@@ -36,7 +37,6 @@ public class TestMain {
 		System.out.println(myList.toArray()); //[Ljava.lang.Object;@1554909b
 		myList.clear();
 		System.out.println(myList); //[]
-		
 		
 	
 	}
