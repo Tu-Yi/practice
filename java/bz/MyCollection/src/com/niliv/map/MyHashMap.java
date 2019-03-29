@@ -2,10 +2,10 @@ package com.niliv.map;
 /**
  * 自己动手实现HashMap
  * 第一版实现功能
- * 构造函数、添加、删除、查询、转为字符串，后面再继续
+ * 构造函数、获取长度、添加、删除、查询、转为字符串，遍历key，后面再继续
  * @author yuankun
- * @param <K>
- * @param <V>
+ * @param <K> 键泛型
+ * @param <V> 值泛型
  * @version 0.1
  */
 public class MyHashMap<K,V> {
@@ -129,6 +129,13 @@ public class MyHashMap<K,V> {
 	    return null;  
 	}
 	/**
+	 * 获取长度
+	 * @return 长度
+	 */
+	public int getSize() {
+		return this.size;
+	}
+	/**
 	 * 重写toString，遍历哈希数组，遍历链表，获取键值组合字符串
 	 */
 	@Override
@@ -142,6 +149,27 @@ public class MyHashMap<K,V> {
 		for (Entry<K, V> entry : table) {
 			while(entry!=null) {
 				string = string+""+entry.key+":"+entry.value+",";
+				entry = entry.next;
+			}
+		}
+		sBuilder.append(string);
+		sBuilder.replace(sBuilder.length()-1, sBuilder.length(), "]");
+		return sBuilder.toString();
+	}
+	/**
+	 * 获取所有的key的字符串
+	 * @return key数组
+	 */
+	public String getAllKey() {
+		if(size==0) {
+			return "[]";
+		}
+		StringBuilder sBuilder = new StringBuilder();
+		sBuilder.append("[");
+		String string = "";
+		for (Entry<K, V> entry : table) {
+			while(entry!=null) {
+				string = string+""+entry.key+",";
 				entry = entry.next;
 			}
 		}
