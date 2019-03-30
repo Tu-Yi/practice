@@ -12,12 +12,6 @@ import java.io.IOException;
  * @version 0.1
  */
 public class FileCopyByte {
-	public static void main(String[] args) throws IOException {
-		File srcDir = new File("E:\\Dropbox\\工作\\锐谛");
-		File posDir = new File("D:\\锐谛");
-		//copyFile(srcFile, posFile);
-		copyDir(srcDir, posDir);
-	}
 	/**
 	 * 复制文件夹
 	 * @param srcDir 源文件夹
