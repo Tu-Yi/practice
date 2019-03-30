@@ -16,10 +16,6 @@ public class TestArrayStream {
 		byte[] bytes = write();
 		read(bytes);
 		
-		
-
-		
-		
 	}
 	public static void read(byte[] bytes) throws IOException, ClassNotFoundException {
 		ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
@@ -44,6 +40,5 @@ public class TestArrayStream {
 		
 		return bos.toByteArray();
 	}
-	
 	
 }
