@@ -2,13 +2,12 @@ package com.niliv.thread;
 
 public class TicketR implements Runnable {
 
-	private int num=100;
+	private int num=10;
 	@Override
 	public void run() {
-		while(true) {
+		for(int i=0;i<100;i++) {
 			if(num>0) {
-				num--;
-				System.out.println(Thread.currentThread().getName()+"..."+num);
+				System.out.println(Thread.currentThread().getName()+"正在卖第"+num--+"张票");
 			}
 		}
 	}
