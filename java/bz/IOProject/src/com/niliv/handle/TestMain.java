@@ -2,7 +2,6 @@ package com.niliv.handle;
 
 import java.io.File;
 import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
 
 public class TestMain {
@@ -12,8 +11,9 @@ public class TestMain {
 		
 		double start = System.currentTimeMillis();
 		//自定义拷贝方法
-		//FileCopyByte.copyDir(srcDir, posDir);
-		FileUtils.copyDirectory(srcDir, posDir);
+		FileCopyByte.copyDir(srcDir, posDir);
+		//使用工具 感觉要快点
+		//FileUtils.copyDirectory(srcDir, posDir);
 		double end = System.currentTimeMillis();
 		System.out.println((end-start)/1000 + "秒");
 	}
