@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 
 public class TestNa {
 	public static void main(String[] args) throws UnknownHostException {
+	
 		/*InetAddress*/
 		InetAddress ia = InetAddress.getByName("localhost");
 		System.out.println(ia.getHostName()); //localhost
