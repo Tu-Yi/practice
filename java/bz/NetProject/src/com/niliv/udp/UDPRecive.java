@@ -1,9 +1,13 @@
 package com.niliv.udp;
 
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+
+import com.sun.javafx.scene.layout.region.Margins.Converter;
 
 public class UDPRecive {
 	public static void main(String[] args) throws IOException {
@@ -21,15 +25,23 @@ public class UDPRecive {
 		
 		byte[] buf = new byte[1024];
 		DatagramPacket dPacket = new DatagramPacket(buf, buf.length);
+		while(true) {
+			dpSocket.receive(dPacket);
+			
+			String ipString = dPacket.getAddress().getHostAddress();
+			int port = dPacket.getPort();
+			//String text=new String(dPacket.getData(),0,dPacket.getLength());
+			System.out.println(ipString + " " + port + " "+convert(dPacket.getData()));
+		}
 		
-		dpSocket.receive(dPacket);
 		
-		String ipString = dPacket.getAddress().getHostAddress();
-		int port = dPacket.getPort();
-		String text=new String(dPacket.getData(),0,dPacket.getLength());
-		System.out.println(ipString + port + text);
+		//dpSocket.close();
 		
-		dpSocket.close();
-		
+	}
+	public static double convert(byte[] buf) throws IOException {
+		DataInputStream dis = new DataInputStream(new ByteArrayInputStream(buf));
+		double num = dis.readDouble();
+		dis.close();
+		return num;
 	}
 }

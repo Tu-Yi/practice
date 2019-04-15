@@ -17,11 +17,14 @@ public class server {
 		 */
 		
 		ServerSocket ss = new ServerSocket(10001);
+		
 		Socket s = ss.accept(); //阻塞
 		String ip = s.getInetAddress().getHostAddress();
+		
 		InputStream is =  s.getInputStream();
 		byte[] buf = new byte[1024];
 		int len = is.read(buf);
+		
 		String text = new String(buf,0,len);
 		System.out.println(ip + " server:"+text);
 		

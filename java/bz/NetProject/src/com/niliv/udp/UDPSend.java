@@ -1,6 +1,8 @@
 package com.niliv.udp;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.DatagramPacket;
@@ -22,19 +24,33 @@ public class UDPSend {
 		
 		DatagramSocket dSocket = new DatagramSocket();
 		
-		BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
-		String lineString = null;
-		while((lineString=bufr.readLine())!=null) {
-			byte[] buf = lineString.getBytes();
-			DatagramPacket dPacket = new DatagramPacket(buf, buf.length, InetAddress.getByName("192.168.0.102"),10000);
-			
-			dSocket.send(dPacket);
-			if("exit".equals(lineString)) {
-				break;
-			}
-		}
-
+//		BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
+//		String lineString = null;
+//		while((lineString=bufr.readLine())!=null) {
+//			byte[] buf = lineString.getBytes();
+//			DatagramPacket dPacket = new DatagramPacket(buf, buf.length, InetAddress.getByName("192.168.0.102"),10000);
+//			
+//			dSocket.send(dPacket);
+//			if("exit".equals(lineString)) {
+//				break;
+//			}
+//		}
+		byte[] buf = convert(81.23);
+		DatagramPacket dPacket = new DatagramPacket(buf, buf.length, InetAddress.getByName("192.168.0.102"),10000);
+		
+		dSocket.send(dPacket);
 		
 		dSocket.close();
+	}
+	
+	public static byte[] convert(double num) throws IOException {
+		byte[] data=null;
+		
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		DataOutputStream dos = new DataOutputStream(bos);
+		dos.writeDouble(num);
+		dos.flush();
+		data = bos.toByteArray();
+		return data;
 	}
 }
