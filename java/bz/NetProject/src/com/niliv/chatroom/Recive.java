@@ -2,7 +2,13 @@ package com.niliv.chatroom;
 
 import java.io.DataInputStream;
 import java.net.Socket;
-
+/**
+ * 客户端接收线程
+ * @author yuankun
+ * @Date 2019-04-16 10:40:56
+ * @Description 
+ *
+ */
 public class Recive implements Runnable {
 	
 	private DataInputStream dis;
@@ -31,6 +37,7 @@ public class Recive implements Runnable {
 	public void run() {
 		while(isRunning) {
 			System.out.println(receive());
+			System.out.println("-------------------------------");
 		}
 	}
 }
