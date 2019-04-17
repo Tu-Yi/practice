@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="{employee.xsd}">
+	<employee id="1001">
+		<name>高淇</name>
+		<age>18</age>
+		<post>程序员</post>
+		<salary>30000</salary>
+		<assistance>5000</assistance>
+	</employee>
+	<employee id="1002">
+		<name>高小二</name>
+		<age>19</age>
+		<post>讲师</post>
+		<salary>35000</salary>
+		<assistance>2000</assistance>
+	</employee>
+	<employee id="1003">
+		<name>高小松</name>
+		<age>20</age>
+		<post>教授</post>
+		<salary>20000</salary>
+		<assistance>3000</assistance>
+	</employee>
+</employees>

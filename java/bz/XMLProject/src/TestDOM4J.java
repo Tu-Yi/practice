@@ -14,11 +14,11 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 public class TestDOM4J {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DocumentException {
 //		1)	创建SAXReader对象
 		SAXReader reader=new SAXReader();
 //	2)	调用read方法
-		Document doc=reader.read(new File("book.xml"));
+		Document doc=reader.read(new File("employee.xml"));
 //	3)	获取根元素
 		Element root=doc.getRootElement();//books
 //	4)	通过迭代器遍历直接节点
@@ -33,15 +33,15 @@ public class TestDOM4J {
 		}
 		
 		System.out.println("\n------------------------------------");
-		List<Book> bookList=new ArrayList<Book>();
-		for(Iterator<Element> iteBook=root.elementIterator();iteBook.hasNext();){
+		List<Employee> employeeList=new ArrayList<Employee>();
+		for(Iterator<Element> iteEmployee=root.elementIterator();iteEmployee.hasNext();){
 			//创建Book对象
-			Book book=new Book();
-			Element bookEle=iteBook.next();//得到每一个book
+			Employee employee=new Employee();
+			Element employeeEle=iteEmployee.next();//得到每一个book
 			//使用for循环继续遍历
-			for(Iterator<Element> subBookEle=bookEle.elementIterator();subBookEle.hasNext();){
+			for(Iterator<Element> subEmployeeEle=employeeEle.elementIterator();subEmployeeEle.hasNext();){
 				//得到每一个子元素
-				Element subEle=subBookEle.next();
+				Element subEle=subEmployeeEle.next();
 				System.out.println(subEle.getName()+"\t"+subEle.getText());
 				/**
 				 * 封装成Book对象
@@ -50,26 +50,32 @@ public class TestDOM4J {
 				String nodeName=subEle.getName();//name,author,price
 				//使用switch判断
 				switch (nodeName) {
-				case "name":
-					book.setName(subEle.getText());
-					break;
-				case "author":
-					book.setAuthor(subEle.getText());
-					break;
-				case "price":
-					book.setPrice(Double.parseDouble(subEle.getText()));
-					break;
+					case "name":
+						employee.setName(subEle.getText());
+						break;
+					case "age":
+						employee.setAge(Integer.parseInt(subEle.getText()));
+						break;
+					case "post":
+						employee.setPost(subEle.getText());
+						break;
+					case "salary":
+						employee.setSalary(Double.parseDouble(subEle.getText()));
+						break;
+					case "assistance":
+						employee.setAssistance(Double.parseDouble(subEle.getText()));
+						break;
 				}
 			
 			}
 				//添加到集合中
-			bookList.add(book);
+			employeeList.add(employee);
 		}
 		
 		//遍历集合
 		System.out.println("\n遍历集合-----------------------\n");
-		for (Book b : bookList) {
-			System.out.println(b.getName()+"\t"+b.getAuthor()+"\t"+b.getPrice());
+		for (Employee b : employeeList) {
+			System.out.println(b.getName()+"\t"+b.getAge()+"\t"+b.getPost()+"\t"+b.getSalary()+"\t"+b.getAssistance());
 		}
 	}
 }
