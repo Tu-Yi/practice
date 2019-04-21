@@ -1,16 +1,24 @@
-package com.niliv.reflect;
+package com.niliv.ReflectEmployee;
 
-public class Person {
+/**
+ * Employee bean
+ * @author yuankun
+ * @Date 2019-04-21 22:01:33
+ * @Description 
+ *
+ */
+public class Employee {
+	
 	private String name;
 	private int age;
 	private String post;
 	private double salary;
 	private double assistance;
 	
-	public Person() {
+	public Employee() {
 		super();
 	}
-	public Person(String name, int age, String post, double salary, double assistance) {
+	public Employee(String name, int age, String post, double salary, double assistance) {
 		super();
 		this.name = name;
 		this.age = age;
@@ -48,4 +56,6 @@ public class Person {
 	public void setAssistance(double assistance) {
 		this.assistance = assistance;
 	}
+	
+	
 }

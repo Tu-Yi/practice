@@ -22,29 +22,21 @@ public class TestDOM4J {
 //	3)	获取根元素
 		Element root=doc.getRootElement();//books
 //	4)	通过迭代器遍历直接节点
-		for(Iterator<Element> iteBook=root.elementIterator();iteBook.hasNext();){
-			Element bookEle=iteBook.next();
-			//System.out.println(bookEle.getName());
-			//得到book的属性
-			for(Iterator<Attribute> iteAtt=bookEle.attributeIterator();iteAtt.hasNext();){
-				Attribute att=iteAtt.next();
-				System.out.println(att.getName()+"\t"+att.getText());
-			}
-		}
 		
 		System.out.println("\n------------------------------------");
 		List<Employee> employeeList=new ArrayList<Employee>();
+		String className = "com";
 		for(Iterator<Element> iteEmployee=root.elementIterator();iteEmployee.hasNext();){
-			//创建Book对象
+			//创建Employee对象
 			Employee employee=new Employee();
-			Element employeeEle=iteEmployee.next();//得到每一个book
+			Element employeeEle=iteEmployee.next();//得到每一个Employee
 			//使用for循环继续遍历
 			for(Iterator<Element> subEmployeeEle=employeeEle.elementIterator();subEmployeeEle.hasNext();){
 				//得到每一个子元素
 				Element subEle=subEmployeeEle.next();
 				System.out.println(subEle.getName()+"\t"+subEle.getText());
 				/**
-				 * 封装成Book对象
+				 * 封装成Employee对象
 				 * */
 				//获取节点的名称
 				String nodeName=subEle.getName();//name,author,price
