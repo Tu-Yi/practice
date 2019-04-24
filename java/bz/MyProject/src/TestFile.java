@@ -68,7 +68,7 @@ public class TestFile {
 			System.out.println(file.getAbsolutePath());
 		}
 	}
-	
+	//统计文件夹的大小
 	private static void getAllFile() {
 		
 	}
