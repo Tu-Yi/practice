@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -18,6 +19,10 @@ public class TestSAXParse {
 		BookDeaultHandler bdh=new BookDeaultHandler();
 	//4)	调用parse方法
 		parser.parse("book.xml", bdh);
-
+		
+		List<Book> books = bdh.getData();
+		for (Book book : books) {
+			System.out.println(book.getName()+"：" +book.getAuthor()+ "-" + book.getPrice());
+		}
 	}
 }

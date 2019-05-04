@@ -38,7 +38,7 @@ public class EmployeeHandle {
 		//遍历节点构造3个对象
 		for(Iterator<Element> iteEmployee=root.elementIterator();iteEmployee.hasNext();){
 			//空构造初始化对象
-			Object object = clazz.newInstance();
+			Object object = clazz.getConstructor().newInstance();
 			Element employeeEle=iteEmployee.next();
 			for(Iterator<Element> subEmployeeEle=employeeEle.elementIterator();subEmployeeEle.hasNext();){
 				Element subEle=subEmployeeEle.next();
