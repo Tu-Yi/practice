@@ -8,13 +8,15 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
+import com.niliv.utils.IOClose;
 
-public class Server01 {
+
+public class Server {
 	
 	private ServerSocket serverSocket;
 	private boolean isRunning;
 	public static void main(String[] args) throws IOException {
-		Server01 server = new Server01();
+		Server server = new Server();
 		server.start();
 	}
 	
@@ -25,30 +27,25 @@ public class Server01 {
 			receive();
 		} catch (IOException e) {
 			stop();
-			e.printStackTrace();
 		}
 		
 	}
 	
-	public void receive() throws IOException {
+	public void receive() {
 		
-		while(isRunning) {
-			Socket client= serverSocket.accept();
-			System.out.println("一个客户端建立连接");
-			
-			new Thread(new Dispatcher(client)).start();
+		try {
+			while(isRunning) {
+				Socket client= serverSocket.accept();
+				new Thread(new Dispatcher(client)).start();
+			}
+		} catch (Exception e) {
+			stop();
 		}
-		
-		
 	}
 	
 	public void stop() {
 		isRunning=false;
-		try {
-			this.serverSocket.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		IOClose.closeAll(serverSocket);
 	}
 
 	
