@@ -1,5 +1,6 @@
 package com.niliv.server;
 
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -10,12 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class Request {
 	
 	//协议信息
 		private String requestInfo;
 		//请求方式
-		private String method; 
+		private String method=""; 
 		//请求url
 		private String url; 
 		//请求参数
@@ -28,13 +30,20 @@ public class Request {
 		}
 		public Request(InputStream is) {		
 			parameterMap = new HashMap<String,List<String>>();
-			byte[] datas = new byte[1024*1024*1024];
+			StringBuffer request=new StringBuffer(2048);
+			byte[] datas = new byte[2048];
 			int len;
 			try {
 				len = is.read(datas);
-				this.requestInfo = new String(datas,0,len);			
+				for(int j=0;j<len;j++){
+					request.append((char)datas[j]);
+				}
+				System.out.println(request);
+				this.requestInfo = request.toString();	
+				System.out.println(requestInfo);
 			} catch (IOException e) {
 				e.printStackTrace();
+				len=-1;
 				return ;
 			}
 			//分解字符串
@@ -44,6 +53,7 @@ public class Request {
 		private void parseRequestInfo() {
 			this.method = this.requestInfo.substring(0, this.requestInfo.indexOf("/")).toLowerCase();
 			this.method=this.method.trim();
+
 			//1)、获取/的位置
 			int startIdx = this.requestInfo.indexOf("/")+1;
 			//2)、获取 HTTP/的位置
@@ -51,6 +61,7 @@ public class Request {
 			//3)、分割字符串
 			this.url = this.requestInfo.substring(startIdx, endIdx);	
 			this.url = this.url.trim();
+			System.out.println(this.url);
 			//4)、获取？的位置
 			int queryIdx =this.url.indexOf("?");	
 			if(queryIdx>=0) {//表示存在请求参数

@@ -26,6 +26,7 @@ public class Server {
 			isRunning=true;
 			receive();
 		} catch (IOException e) {
+			e.printStackTrace();
 			stop();
 		}
 		
@@ -39,6 +40,7 @@ public class Server {
 				new Thread(new Dispatcher(client)).start();
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			stop();
 		}
 	}
@@ -47,7 +49,5 @@ public class Server {
 		isRunning=false;
 		IOClose.closeAll(serverSocket);
 	}
-
-	
 }
 
