@@ -3,7 +3,13 @@ package com.niliv.controll;
 import com.niliv.server.Request;
 import com.niliv.server.Response;
 import com.niliv.server.Servletable;
-
+/**
+ * 登录处理
+ * @author yuankun
+ * @Date 2019-05-08 13:06:12
+ * @Description 
+ *
+ */
 public class LoginServlet implements Servletable {
 
 	@Override

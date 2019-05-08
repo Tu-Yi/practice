@@ -2,9 +2,19 @@ package com.niliv.server;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
+/**
+ * webapp
+ * @author yuankun
+ * @Date 2019-05-08 13:19:26
+ * @Description 
+ *
+ */
 public class WebApp {
+	//wen上下文
 	private static WebContext  webContext ;
+	/**
+	 * 获取解析的路由xml
+	 */
 	static {
 		try {
 			//SAX解析
@@ -17,7 +27,7 @@ public class WebApp {
 			WebHandler handler=new WebHandler();
 			//5、解析
 			parse.parse(Thread.currentThread().getContextClassLoader()
-			.getResourceAsStream("WEB_INFO/web.xml")
+			.getResourceAsStream("WEB_CONFIG/web.xml")
 			,handler);			
 			//获取数据
 			webContext = new WebContext(handler.getEntitys(),handler.getMappings());

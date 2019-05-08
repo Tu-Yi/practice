@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>file</title>
+    <style>
+        .box {width:400px; height:150px; border:1px solid black; background:#CCC; position: absolute; margin-left: -200px; margin-top: -75px; left:50%; top:50%; text-align:center; line-height:150px;}
+    </style>
+    <script>
+        window.onload=function(){
+            let oBox=document.querySelector('.box');
+            
+            oBox.ondragenter=function(){
+                oBox.innerHTML='松手上传';
+            };
+            oBox.ondragleave=function (){
+                oBox.innerHTML='请拖到这里';
+            };
+            oBox.ondragover=function (){      //只要鼠标还没松手、并且还没离开，一直不停发生
+                console.log("let go!");
+                //ondragover不阻止默认事件，ondrop不会触发
+                return false;
+            };
+            oBox.ondrop=function(ev){
+                let data=new FormData();
+
+                Array.from(ev.dataTransfer.files).forEach(file=>{
+                data.append('f1', file);
+                });
+
+                //
+                let oAjax=new XMLHttpRequest();
+
+                //POST
+                oAjax.open('POST', `http://localhost:8888/upload`, true);
+                oAjax.send(data);
+
+                oAjax.onreadystatechange=function (){
+                if(oAjax.readyState==4){
+                    if(oAjax.status>=200 && oAjax.status<300 || oAjax.status==304){
+                        alert('上传成功');
+                    }else{
+                        alert('上传失败');
+                    }
+                }
+                };
+
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">请拖到这里</div>
+</body>
+</html>

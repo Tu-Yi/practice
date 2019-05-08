@@ -1,15 +1,17 @@
 package com.niliv.server;
+
 /**
- * <servlet>
-  <servlet-name>login</servlet-name>
-  <servlet-class>com.shsxt.LoginServlet</servlet-class>
-  </servlet>
- * 
- * @author 裴新 QQ:3401997271
+ * Servlet实体类
+ * @author yuankun
+ * @Date 2019-05-08 13:10:08
+ * @Description 
  *
  */
 public class Entity {
+	
+	//servlet-name
 	private String name;
+	//servlet-class
 	private String clz;
 	public Entity() {
 		// TODO Auto-generated constructor stub

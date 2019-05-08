@@ -7,20 +7,27 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 /**
- * 处理器
- * 
- * @author 裴新 QQ:3401997271
+ * 解析xml
+ * @author yuankun
+ * @Date 2019-05-08 13:21:29
+ * @Description 
  *
  */
 public class WebHandler extends DefaultHandler{
+	//servlets
 	private List<Entity> entitys  = new ArrayList<Entity>();
+	//mappings
 	private List<Mapping> mappings = new ArrayList<Mapping>();
+	//servlet实体
 	private Entity entity ;
+	//mapping实体
 	private Mapping mapping ;
 	private String tag; //存储操作标签
 	private boolean isMapping = false;
 	
-	
+	/**
+	 * 开始解析节点
+	 */
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 		if(null!=qName) {
@@ -34,7 +41,9 @@ public class WebHandler extends DefaultHandler{
 			}
 		}
 	}
-	
+	/**
+	 * 解析内容
+	 */
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		String contents = new String(ch,start,length).trim();
@@ -54,7 +63,9 @@ public class WebHandler extends DefaultHandler{
 			}			
 		}
 	}
-	
+	/**
+	 * 结束解析节点
+	 */
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		if(null!=qName) { 
@@ -66,11 +77,17 @@ public class WebHandler extends DefaultHandler{
 		}
 		tag = null; //tag丢弃了
 	}
-
+	/**
+	 * 获取servlet实体
+	 * @return
+	 */
 	public List<Entity> getEntitys() {
 		return entitys;
 	}
-
+	/**
+	 * 获取mapping实体
+	 * @return
+	 */
 	public List<Mapping> getMappings() {
 		return mappings;
 	}	

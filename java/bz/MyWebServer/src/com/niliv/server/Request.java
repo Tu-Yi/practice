@@ -11,10 +11,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * 请求处理
+ * @author yuankun
+ * @Date 2019-05-08 13:11:49
+ * @Description 
+ *
+ */
 public class Request {
 	
-	//协议信息
+		//协议信息
 		private String requestInfo;
 		//请求方式
 		private String method=""; 
@@ -24,10 +30,20 @@ public class Request {
 		private String queryStr;
 		//存储参数
 		private Map<String,List<String>> parameterMap;
+		//换行
 		private final  String CRLF = "\r\n";
+		/**
+		 * 构造函数
+		 * @param client
+		 * @throws IOException
+		 */
 		public Request(Socket client) throws IOException {
 			this(client.getInputStream());
 		}
+		/**
+		 * 构造函数
+		 * @param is
+		 */
 		public Request(InputStream is) {		
 			parameterMap = new HashMap<String,List<String>>();
 			StringBuffer request=new StringBuffer(2048);
@@ -49,8 +65,13 @@ public class Request {
 			//分解字符串
 			parseRequestInfo();
 		}
-		//分解字符串
+		/**
+		 * 分解字符串
+		 */
 		private void parseRequestInfo() {
+			if("".equals(this.requestInfo) || null==this.requestInfo) {
+				return;
+			}
 			this.method = this.requestInfo.substring(0, this.requestInfo.indexOf("/")).toLowerCase();
 			this.method=this.method.trim();
 
@@ -83,9 +104,14 @@ public class Request {
 			queryStr = null==queryStr?"":queryStr;
 			System.out.println(method+"-->"+url+"-->"+queryStr);
 			//转成Map fav=1&fav=2&uname=shsxt&age=18&others=
-			convertMap();
+			if(this.url!="upload") {
+				convertMap();
+			}
+			
 		}
-		//处理请求参数为Map
+		/**
+		 * 处理请求参数为Map
+		 */
 		private void convertMap() {
 			//1、分割字符串 &
 			String[] keyValues =this.queryStr.split("&");

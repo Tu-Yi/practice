@@ -3,17 +3,16 @@ package com.niliv.server;
 import java.util.HashSet;
 import java.util.Set;
 /**
- * <servlet-mapping>
-  <servlet-name>login</servlet-name>
-  <url-pattern>/login</url-pattern> 
-  <url-pattern>/g</url-pattern> 
- </servlet-mapping>  
- * 
- * @author 裴新 QQ:3401997271
+ * mapping实体类
+ * @author yuankun
+ * @Date 2019-05-08 13:11:09
+ * @Description 
  *
  */
 public class Mapping {
+	//servlet-name
 	private String name;
+	//url
 	private Set<String> patterns ;
 	public Mapping() {
 		patterns = new HashSet<String>();

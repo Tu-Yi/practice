@@ -1,0 +1,134 @@
+@startuml
+class Server {
+	-ServerSocket serverSocket
+	-boolean isRunning
+	+{static}void main(String[] args)
+	+void start()
+	+void receive()
+	+void stop()
+}
+Dispatcher->Server: 线程
+class Dispatcher {
+	-Socket client
+	~Request request
+	~Response response
+	-int code
+	+Dispatcher(Socket client)
+	+void run()
+	-void releaseClient()
+}
+class Request {
+	-String requestInfo
+	-String method
+	-String url
+	-String queryStr
+	-Map<String,List<String>> parameterMap
+	-String CRLF
+	+Request(Socket client)
+	+Request(InputStream is)
+	-void parseRequestInfo()
+	-void convertMap()
+	-String decode(String value, String enc)
+	+String[] getParameterValues(String key)
+	+String getParameter(String key)
+	+String getMethod()
+	+String getUrl()
+	+String getQueryStr()
+}
+class Response {
+	-BufferedWriter bw
+	-StringBuilder content
+	-StringBuilder header
+	-int len
+	-String blank
+	-String crlf
+	+Response()
+	+Response(Socket client)
+	+Response(OutputStream os)
+	+Response print(String info)
+	+Response println(String info)
+	-void createrHeader(int code)
+	+void push(int code)
+}
+class StaticDeal {
+	+{static}String handler(String url)
+}
+Response-->Dispatcher: 调用
+Request-->Dispatcher: 调用
+StaticDeal-->Dispatcher: 调用
+WebApp-->Dispatcher: 调用
+class WebApp {
+	-{static}WebContext webContext
+	+{static}Servletable getServletFromUrl(String url)
+}
+WebContext-->WebApp: 调用
+class WebContext {
+	-List<Entity> entitys
+	-List<Mapping> mappings
+	-Map<String,String> entityMap
+	-Map<String,String> mappingMap
+	+WebContext(List<Entity> entitys, List<Mapping> mappings)
+	+String getClz(String pattern)
+}
+WebHandler-->WebContext: 调用
+class WebHandler {
+	-List<Entity> entitys
+	-List<Mapping> mappings
+	-Entity entity
+	-Mapping mapping
+	-String tag
+	-boolean isMapping
+	+void startElement(String uri, String localName, String qName, Attributes attributes)
+	+void characters(char[] ch, int start, int length)
+	+void endElement(String uri, String localName, String qName)
+	+List<Entity> getEntitys()
+	+List<Mapping> getMappings()
+}
+class Entity {
+	-String name
+	-String clz
+	+Entity()
+	+String getName()
+	+void setName(String name)
+	+String getClz()
+	+void setClz(String clz)
+}
+class Mapping {
+	-String name
+	-Set<String> patterns
+	+Mapping()
+	+String getName()
+	+void setName(String name)
+	+Set<String> getPatterns()
+	+void setPatterns(Set<String> patterns)
+	+void addPattern(String pattern)
+}
+Entity-->WebContext: 调用
+Mapping-->WebContext: 调用
+Mapping-->WebHandler: 调用
+Entity-->WebHandler: 调用
+Servletable-->WebApp: 调用
+interface Servletable {
+	void service(Request req, Response res)
+}
+class LoginServlet {
+	+void service(Request req, Response res)
+}
+interface Servletable {
+}
+Servletable <|.. LoginServlet
+class RegisterServlet {
+	+void service(Request req, Response res)
+}
+interface Servletable {
+}
+Servletable <|.. RegisterServlet
+class UploadServlet {
+	+void service(Request req, Response res)
+}
+interface Servletable {
+}
+Servletable <|.. UploadServlet
+Request-->Servletable: 调用
+Response-->Servletable: 调用
+@enduml

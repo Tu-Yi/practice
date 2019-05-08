@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <style>
+        div{
+            width: 400px;
+            margin: 300px auto;
+            border: 1px solid #ccc;
+        }
+        p{
+            text-align: center;
+        }
+        input{
+            display:block;
+            margin-left:100px;
+            margin-bottom: 20px;
+            width: 200px;
+            height: 30px;
+        }
+        button{
+            height: 40px;
+            width: 80px;
+            margin-bottom: 30px;
+        }
+        #reg{
+            margin-left: 110px;
+        }
+        #login{
+            margin-left: 20px;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+        $(function(){
+            $('#reg').click(function(){
+                $.ajax({
+                    url: 'http://localhost:8888/reg',
+                    data: {user: $('#user').val(), pass: $('#pass').val()},
+                    dataType: 'text',
+                    success(data){
+                        if(data.errCode){
+                            alert("err | "+data.msg)
+                        }else{
+                            alert("注册成功")
+                        }
+                    },
+                    error(e){
+                        console.log(e)
+                        alert("注册失败")
+                    }
+                })
+            });
+            $('#login').click(function(){
+                $.ajax({
+                    url: 'http://localhost:8888/login',
+                    data: {user: $('#user').val(), pass: $('#pass').val()},
+                    dataType: 'text',
+                    success(data){
+                        console.log(data)
+                        if(data.err){
+                            alert("err | "+data.msg)
+                        }else{
+                            alert(data)
+                        }
+                    },
+                    error(e){
+                        console.log(e)
+                        alert("登录失败")
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- <form action="http://localhost:9999/test?id=1&name=niliv" method="post">
+        用户名： <input type="text" name="user">
+        密码： <input type="password" name="pass" >
+        <input type="submit" value="登录">
+    </form> -->
+    <div>
+        <p>登录</p>
+        <input type="text" id="user" name="user" placeholder="请输入用户名">
+        <input type="password" id="pass" placeholder="请输入密码">
+        <button id="reg">注册</button>
+        <button id="login">登录</button>
+    </div>
+</body>
+</html>

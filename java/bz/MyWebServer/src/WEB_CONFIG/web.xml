@@ -4,6 +4,10 @@
   <servlet-name>login</servlet-name>
   <servlet-class>com.niliv.controll.LoginServlet</servlet-class>
  </servlet>
+  <servlet>
+  <servlet-name>upload</servlet-name>
+  <servlet-class>com.niliv.controll.UploadServlet</servlet-class>
+ </servlet>
    <servlet>
   <servlet-name>reg</servlet-name>
   <servlet-class>com.niliv.controll.RegisterServlet</servlet-class>
@@ -14,6 +18,11 @@
   <url-pattern>/g</url-pattern> 
   <url-pattern>/hahaha</url-pattern> 
  </servlet-mapping>  
+ <servlet-mapping>
+  <servlet-name>upload</servlet-name>
+  <url-pattern>/upload</url-pattern> 
+  <url-pattern>/u</url-pattern>  
+ </servlet-mapping>
  <servlet-mapping>
   <servlet-name>reg</servlet-name>
   <url-pattern>/reg</url-pattern> 

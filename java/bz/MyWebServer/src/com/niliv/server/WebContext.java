@@ -4,15 +4,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
+/**
+ * 包装servlet对象
+ * @author yuankun
+ * @Date 2019-05-08 13:20:25
+ * @Description 
+ *
+ */
 public class WebContext {
+	//servlet实体
 	private List<Entity> entitys  =null;
+	//mapping实体
 	private List<Mapping> mappings =null;
 	
 	//key-->servlet-name  value -->servlet-class
 	private Map<String,String> entityMap =new HashMap<String,String>();
 	//key -->url-pattern value -->servlet-name
 	private Map<String,String> mappingMap =new HashMap<String,String>();
+	/**
+	 * 包装map
+	 * @param entitys
+	 * @param mappings
+	 */
 	public WebContext(List<Entity> entitys, List<Mapping> mappings) {
 		this.entitys = entitys;
 		this.mappings = mappings;
