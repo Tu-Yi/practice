@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,19 @@
     <title>Document</title>
     <script src="../node_modules/vue/dist/vue.js"></script>
     <style>
-        #appDiv{
+        #appDiv {
             margin: 0 auto;
             width: 800px;
         }
     </style>
 </head>
+
 <body>
     <div id="app"></div>
     <script>
         // 全局过滤器，所有数据都可以使用，优先级小于组件自身过滤器
-        Vue.filter('changeText',function(dataStr,lang){
-            return lang + ':' +dataStr + '| filter'
+        Vue.filter('changeText', function (dataStr, lang) {
+            return lang + ':' + dataStr + '| filter'
         })
         Vue.component(
             'global-com', {
@@ -59,78 +61,83 @@
                 `,
                 // 父组件传来名字为'father'的值
                 props: ['father'],
-                data () {
+                data() {
                     return {
                         mySubText: 'hello com',
-                        stu: [1,2,3,4,5],
-                        obj: [{name:'jack'}],
+                        stu: [1, 2, 3, 4, 5],
+                        obj: [{
+                            name: 'jack'
+                        }],
                         isExit: false
                     }
                 },
                 methods: {
-                    change () {
+                    change() {
                         this.mySubText = 'hello com'
                     }
                 },
                 // 数据使用的时候改变它
                 filters: {
-                    changeText (dataStr,lang) {
-                        return lang + ':' +dataStr + '| filters'
+                    changeText(dataStr, lang) {
+                        return lang + ':' + dataStr + '| filters'
                     }
                 },
                 // 监视单个数据的变化
                 watch: {
                     obj: {
                         deep: true,
-                        handler(n,o){
-                            console.log(o,n)
+                        handler(n, o) {
+                            console.log(1)
+                            console.log(o, n)
                         }
                     },
-                    mySubText: function (n,o) {
+                    mySubText: function (n, o) {
                         this.$refs.watchO.innerText = o;
                         this.$refs.watchN.innerText = n;
                     }
                 },
                 // 监视所有数据的变化
                 computed: {
-                    result () {
+                    result() {
                         return this.mySubText + " || " + this.obj[0].name
                     }
                 },
-                beforeCreate () {
-                    console.log(this.mySubText)  // 组件创建之前，undefined
+                beforeCreate() {
+                    console.log("beforeCreate data " + this.mySubText) // 组件创建之前，undefined
                 },
-                created () {
-                    console.log(this.mySubText) // 组件创建之后，可以操作数据，hello com  可以掉ajax
-                    console.log(this.$refs.watchP)
+                created() {
+                    console.log("created data " + this.mySubText) // 组件创建之后，可以操作数据，hello com  可以掉ajax
+                    console.log("created ref " + this.$refs.watchP)
                 },
-                beforeMount () {
-                    console.log('beforeMount')  // vue起作用，装在到dom之前
+                beforeMount() {
+                    console.log("beforeMount data " + this.mySubText) // vue起作用，装在到dom之前
+                    console.log("beforeMount ref " + this.$refs.watchP)
                 },
-                mounted () {
+                mounted() {
                     console.log('mounted') // vue起作用，装在到dom之后  //也可以在这里调ajax
-                    console.log(this.$refs.watchP)
+                    console.log("mounted ref " + this.$refs.watchP)
                     this.isExit = true
-                    this.$nextTick(function(){
+                    //isExit更新需要时间，所以这里要用回调，也可以在update里获取
+                    this.$nextTick(function () {
                         this.$refs.input.focus();
                     })
                 },
-                beforeUpdate () {
-                    console.log('beforeUpdate')  // 更新前
+                beforeUpdate() {
+                    console.log('beforeUpdate') // 更新前
                 },
-                updated () {
+                updated() {
                     console.log('updated') // 更新后
                 },
-                beforeDestroy () {
-                    console.log('beforeDestroy')  // 
+                beforeDestroy() {
+                    console.log('beforeDestroy') // 
                 },
-                destroyed () {
+                destroyed() {
                     console.log('destroyed') // 
                 },
-                activated () {
-                    console.log('activated')  // 避免频繁销毁创建，被keep-alive包含
+                activated() {
+                    console.log('activated') // 避免频繁销毁创建，被keep-alive包含
                 },
-                deactivated () {
+                deactivated() {
                     console.log('deactivated') // 避免频繁销毁创建，被keep-alive包含
                 }
             }
@@ -149,13 +156,13 @@
                     <button @click='isExit = !isExit'>组件生死</button>
             </div>
             `,
-            data () {
+            data() {
                 return {
                     myText: 'hello vue',
                     isExit: true
                 }
             },
-            mounted () {
+            mounted() {
                 console.log(this.$refs.global)
             }
         }
@@ -164,10 +171,11 @@
         new Vue({
             el: '#app',
             components: {
-                app:App
+                app: App
             },
             template: `<app/>`
         });
     </script>
 </body>
+
 </html>

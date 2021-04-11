@@ -22,5 +22,4 @@ public class TestInterface {
 		System.out.println(Person.name); //Person-static-var
 		
 	}
-
-}
+@

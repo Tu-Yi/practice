@@ -1,24 +1,27 @@
 <template>
-<div class="container">
-    <mt-loadmore :auto-fill="false" :bottom-method="loadBottom" ref="loadmore" :bottom-all-loaded="isAllLoad">
+  <div class="container">
+    <mt-loadmore
+      :auto-fill="false"
+      :bottom-method="loadBottom"
+      ref="loadmore"
+      :bottom-all-loaded="isAllLoad"
+    >
       <div style="height:98px;"></div>
-        <ul>
+      <ul>
         <li v-for="item in goodsList" :key="item.id">
-          <router-link :to="{name: 'goods.detail', params: {id: item.id}}">
+          <router-link :to="{ name: 'goods.detail', params: { id: item.id } }">
             <div class="imgDiv">
-              <img :src="item.src" alt="no">
+              <img :src="item.src" alt="no" />
             </div>
             <div class="titleDiv">
-              {{item.title | convertStr(20)}}
+              {{ item.title | convertStr(20) }}
             </div>
-            <div class="priceDiv">
-              ￥{{item.price}}
-            </div>
+            <div class="priceDiv">￥{{ item.price }}</div>
           </router-link>
         </li>
-        </ul>
+      </ul>
     </mt-loadmore>
-</div>
+  </div>
 </template>
 <script>
 export default {
@@ -30,7 +33,7 @@ export default {
       pageSize: 4,
       isAllLoad: false,
       boxHeight: ''
-    // ...
+      // ...
     }
   },
   props: ['appRefs'],
@@ -38,7 +41,7 @@ export default {
     this.doSearch()
   },
   // mounted () {
-    
+
   //   let headerHeight = this.appRefs.appHeader.$el.offsetHeight
   //   let footerHeight = this.appRefs.appFooter.$el.offsetHeight
   //   let height = document.documentElement.clientHeight - headerHeight - footerHeight
@@ -74,49 +77,49 @@ export default {
 }
 </script>
 <style scoped>
-.container{
-    position: absolute;
-    left:0;
-    top:-58px;
-    width:100%;
-    height: 100%;
-    overflow:auto;
-    box-sizing:border-box;
-    -webkit-overflow-scrolling: touch;
-    z-index:-1;
+.container {
+  position: absolute;
+  left: 0;
+  top: -58px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  z-index: -1;
 }
-ul{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
-li{
-    list-style: none;
-    width: 49%;
-    border: 1px solid #333;
+li {
+  list-style: none;
+  width: 49%;
+  border: 1px solid #333;
 }
-.imgDiv{
-    display: flex;
-    width: 100%;
-    height: 180px;
-    align-items:center;
-    justify-content:center;
+.imgDiv {
+  display: flex;
+  width: 100%;
+  height: 180px;
+  align-items: center;
+  justify-content: center;
 }
-img{
-    width: 70%;
-    height: 160px;
+img {
+  width: 70%;
+  height: 160px;
 }
-.titleDiv{
-    padding-left: 3px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.titleDiv {
+  padding-left: 3px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-.priceDiv{
-    padding-left: 3px;
-    color: red;
-    padding-top: 11px;
-    padding-bottom: 10px;
-    background-color: #ddd;
+.priceDiv {
+  padding-left: 3px;
+  color: red;
+  padding-top: 11px;
+  padding-bottom: 10px;
+  background-color: #ddd;
 }
 </style>

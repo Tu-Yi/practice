@@ -1,29 +1,31 @@
 <template>
-    <div>
-      <header>
-        <ul>
-          <li>
-            <a href="javascript:;" @click="loadPhotoByType(0)">全部图片</a>
-          </li>
-          <li>
-            <a href="javascript:;" @click="loadPhotoByType(1)">食品</a>
-          </li>
-          <li>
-            <a href="javascript:;" @click="loadPhotoByType(2)">截图</a>
-          </li>
-          <li>
-            <a href="javascript:;" @click="loadPhotoByType(3)">其他</a>
-          </li>
-        </ul>
-      </header>
-      <ul id="photolist">
-        <li v-for="item in photoList" :key="item.id" :id="item.id">
-          <router-link :to="{name: 'photo.detail', params: {photoId: item.id}}">
-            <img v-lazy="item.path" alt="图片不存在">
-          </router-link>
+  <div>
+    <header>
+      <ul>
+        <li>
+          <a href="javascript:;" @click="loadPhotoByType(0)">全部图片</a>
+        </li>
+        <li>
+          <a href="javascript:;" @click="loadPhotoByType(1)">食品</a>
+        </li>
+        <li>
+          <a href="javascript:;" @click="loadPhotoByType(2)">截图</a>
+        </li>
+        <li>
+          <a href="javascript:;" @click="loadPhotoByType(3)">其他</a>
         </li>
       </ul>
-    </div>
+    </header>
+    <ul id="photolist">
+      <li v-for="item in photoList" :key="item.id" :id="item.id">
+        <router-link
+          :to="{ name: 'photo.detail', params: { photoId: item.id } }"
+        >
+          <img v-lazy="item.path" alt="图片不存在" />
+        </router-link>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 export default {
@@ -55,6 +57,7 @@ export default {
           console.log(res)
           this.photoList = res.data
           if (this.photoList.length === 0) {
+            console.log(this)
             this.$toast({
               message: '没有图片',
               iconClass: 'iconfont icon-danmokuai'
@@ -66,33 +69,33 @@ export default {
 }
 </script>
 <style scoped>
-div{
+div {
   background-color: #ddd;
 }
-ul{
-    margin: 0;
-    padding: 0;
+ul {
+  margin: 0;
+  padding: 0;
 }
-li{
+li {
   list-style: none;
 }
-header li{
-    height: 20px;
-    float: left;
-    text-align: left;
-    padding: 5px;
+header li {
+  height: 20px;
+  float: left;
+  text-align: left;
+  padding: 5px;
 }
-#photolist li{
+#photolist li {
   margin-top: 5px;
   text-align: center;
   padding-left: 5px;
   padding-right: 5px;
 }
-#photolist li img{
+#photolist li img {
   width: 100%;
   height: 200px;
 }
-image[lazy=loading] {
+image[lazy="loading"] {
   width: 40px;
   height: 300px;
   margin: auto;

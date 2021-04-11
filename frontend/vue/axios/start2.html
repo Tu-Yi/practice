@@ -237,6 +237,10 @@
                     this.$axios.get('login', {
                             params: {
                                 id: 1
+														},
+														transformRequest(data) {
+																console.log(data)
+																return data
                             },
                             transformResponse(data) {
                                 return data + '5';
